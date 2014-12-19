@@ -1,0 +1,417 @@
+@height-menu: 50px;
+@height-header: 150px;
+@height-headerGroup: 85px;
+
+@space-left: 7%;
+@space-right: 7%;
+@content-space-l: 15%;
+@content-space-r: 8%;
+
+@color-base: #222222;
+@color-back: #303030;
+@color-btn-light: #F5F5F5;
+@color-fnt-md: #574500;
+@color-active: #111111;
+@color-surf: #0CE3AC;
+@color-surf-hover: #008966;
+@color-surf-shad: lighten(#0BC3DB, 1%);
+@color-blue: #375A7F;
+@color-danger: #E74C3C;
+@color-danger-hover: #d62c1a;
+@color-shad: lighten(@color-base, 20%);//#4F5052
+
+
+body{
+    margin: 0;
+    padding: 0;
+    overflow-x : hidden;
+    font-weight: 300;
+    background-color: lighten(@color-base, 2%);
+}
+
+p{
+    clear: both;
+}
+
+h4{
+    font-weight: bold;
+}
+
+input[type="checkbox"]{ 
+    position: absolute;
+    opacity: 0;
+}
+/* Normal Track */
+input[type="checkbox"].ios-switch + div {
+    vertical-align: middle;
+    width: 40px;	height: 20px;
+    border: 1px solid rgba(0,0,0,.4);
+    border-radius: 999px;
+    background-color: rgba(0, 0, 0, 0.1);
+    -webkit-transition-duration: .4s;
+    -webkit-transition-property: background-color, box-shadow;
+    box-shadow: inset 0 0 0 0px rgba(0,0,0,0.4);
+    margin: 15px 1.2em 15px 2.5em;
+}
+/* Checked Track (Blue) */
+input[type="checkbox"].ios-switch:checked + div {
+    width: 40px;
+    background-position: 0 0;
+    background-color: @color-surf-shad;
+    border: 1px solid #0e62cd;
+    box-shadow: inset 0 0 0 10px @color-surf;
+}
+/* Tiny Track */
+input[type="checkbox"].tinyswitch.ios-switch + div {
+    width: 34px;	height: 18px;
+}
+/* Big Track */
+input[type="checkbox"].bigswitch.ios-switch + div {
+    width: 50px;	height: 25px;
+}
+/* Green Track */
+input[type="checkbox"].green.ios-switch:checked + div {
+    background-color: #00e359;
+    border: 1px solid rgba(0, 162, 63,1);
+    box-shadow: inset 0 0 0 10px rgba(0,227,89,1);
+}
+/* Normal Knob */
+input[type="checkbox"].ios-switch + div > div {
+    float: left;
+    width: 18px; height: 18px;
+    border-radius: inherit;
+    background: #ffffff;
+    -webkit-transition-timing-function: cubic-bezier(.54,1.85,.5,1);
+    -webkit-transition-duration: 0.4s;
+    -webkit-transition-property: transform, background-color, box-shadow;
+    -moz-transition-timing-function: cubic-bezier(.54,1.85,.5,1);
+    -moz-transition-duration: 0.4s;
+    -moz-transition-property: transform, background-color;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3), 0px 0px 0 1px rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+    margin-top: 1px;
+    margin-left: 1px;
+}
+/* Checked Knob (Blue Style) */
+input[type="checkbox"].ios-switch:checked + div > div {
+    -webkit-transform: translate3d(20px, 0, 0);
+    -moz-transform: translate3d(20px, 0, 0);
+    background-color: #ffffff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3), 0px 0px 0 1px rgba(8, 80, 172,1);
+}
+/* Tiny Knob */
+input[type="checkbox"].tinyswitch.ios-switch + div > div {
+    width: 16px; height: 16px;
+    margin-top: 1px;
+}
+/* Checked Tiny Knob (Blue Style) */
+input[type="checkbox"].tinyswitch.ios-switch:checked + div > div {
+    -webkit-transform: translate3d(16px, 0, 0);
+    -moz-transform: translate3d(16px, 0, 0);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3), 0px 0px 0 1px rgba(8, 80, 172,1);
+}
+/* Big Knob */
+input[type="checkbox"].bigswitch.ios-switch + div > div {
+    width: 23px; height: 23px;
+    margin-top: 1px;
+}
+/* Checked Big Knob (Blue Style) */
+input[type="checkbox"].bigswitch.ios-switch:checked + div > div {
+    -webkit-transform: translate3d(25px, 0, 0);
+    -moz-transform: translate3d(16px, 0, 0);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3), 0px 0px 0 1px @color-surf-shad;
+}
+/* Green Knob */
+input[type="checkbox"].green.ios-switch:checked + div > div {
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3), 0 0 0 1px @color-surf-shad;
+}
+
+*[unselectable=on] {
+    -moz-user-select: none;
+    -o-user-select:none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.content{
+    margin: 0;
+    margin-left: @content-space-l;
+    margin-right: @content-space-r;
+    padding: 20px;
+    background-color: @color-base;
+    min-height: 1000px;
+    width: auto;
+    border-left: 1px solid @color-shad;
+    border-right: 1px solid @color-shad;
+}
+
+.badgeInfo{
+    margin-top: 23px;
+    margin-left: -10px; 
+    color: @color-danger;
+    position: absolute;
+}
+.menu-container{
+    margin: 0;
+    margin-top: 10px;
+    padding: 0;
+    padding-left: @content-space-l;
+    padding-right: @content-space-r;
+    border: 0;
+    position: inline;
+}
+/*
+.navbar-default{
+    background-color: @color-base;
+    font-size: 25px;
+    line-height: 40px;
+}
+.navbar-nav > li > a{
+    line-height: 20px;
+}
+.navbar-default .navbar-nav > li > a:hover, 
+.navbar-default .navbar-nav > li > a:focus, 
+.navbar-default .navbar-nav > .under > a:hover, 
+.navbar-default .navbar-nav > .under > a:focus
+.navbar-default .navbar-nav > .open > a, 
+.navbar-default .navbar-nav > .open > a:hover{
+    background-color: lighten(@color-active, 10%);
+}
+.dropdown-menu > li > a{
+    font-size: 14px;
+}
+.navbar-default .navbar-nav > .under > a{
+    background-color: @color-active;
+}
+.dropdown-menu{
+    background-color: lighten(@color-base, 10%);
+}
+*/
+.under{
+    border-bottom: 5px solid @color-surf;
+}
+.modal.fade:not(.in).right .modal-dialog {
+    -webkit-transform: translate3d(125%, 0, 0);
+    transform: translate3d(125%, 0, 0);
+}
+.divider{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 20px;
+}
+.br{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 2px;
+    clear: both;
+}
+.br-shad{
+    height: 1px;
+    background-color: @color-shad;
+    clear: both;
+}
+.br-line{
+    background-color: @color-surf;
+}
+.invlink{
+    color: #F5F5F5;        
+}
+.invlink:hover{
+    color: @color-surf;
+}
+.input-group-sm{
+    height: 20px;
+}
+.headerElement{
+    float: left; 
+    margin: 10px; 
+    display: inline-block;
+}
+
+.blockContainer{
+    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    text-align: center;
+    clear: both;
+}
+
+.blockInfo{
+    margin: 0 auto;
+    padding: 0;
+    padding-right: 1.83%;
+    padding-left: 1.83%;
+    min-width: 300px;
+    width: 33%;
+    min-height: 200px;
+    float: left;
+}
+
+.emptySpace{
+    margin: 0;
+    padding: 0;
+    height: 40px;
+}
+
+.btnLogin{
+    margin-top: 15px;
+    margin-left: 12px;
+    font-weight: bold;
+    float: right;
+}
+
+.btnRegister{
+    margin-top: 15px;
+    margin-left: 12px;
+    color: @color-danger;
+    font-weight: bold;
+    background-color: transparent;
+    float: right;
+}
+
+#logo{
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    height: 40px;
+    display: inline-block;
+}
+
+#logoText, #logoPic{        
+    display:inline-block;
+    line-height: 20px;   
+}
+
+#searchInput{
+}
+
+#menu{
+    height: @height-menu;
+    background-color: @color-back;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    position: static;
+    border-radius: 0;
+    z-index: 1000;
+}
+#header{
+    margin: 0;
+    padding: 0;
+    padding-top: 40px;
+    padding-left: @space-left;
+    padding-right: @space-right;
+    background-color: @color-base;
+    min-height: @height-header;
+    width: 100%;
+    position: relative;
+}
+
+#mainMenu{
+    float: right;     
+    display: inline-block; 
+}
+
+#mainBlock{
+    margin: 0;
+    padding: 0;
+    padding-left: @space-left;
+    padding-right: @space-right;
+    background-color: @color-base;
+    min-height: 200px;
+    width: 100%;
+    position: relative;
+}
+
+#footer{
+    margin: 0;
+    padding: 0;
+    background-color: green;
+    height: 100px;
+    width: 100%;
+}
+
+#companyLogo{
+    margin: 0;
+    margin-left: 20%;
+    padding: auto;
+    height: 102px;
+    width: 102px;
+    float: left;
+    background-color: transparent;
+    font-size: 80px;
+    color: @color-surf;
+}
+
+#siteName{
+    margin: 0;
+    margin-left: 25px;
+    padding: 10px;
+    height: 100px;
+    min-width: 300px;
+    float: left;
+    border: 2px solid @color-surf;
+    border-radius: 10px;
+    font-family: Trebuchet MS;
+    font-size: 48px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+#btnRegister:hover{
+    border: 1px solid @color-danger;
+}
+
+#headerGroup{
+    width: auto;
+    height: @height-headerGroup;
+}
+
+#modalDialogLogin{
+    width: 100%;
+}
+
+#modalDialogRegister{
+    width: 100%;
+}
+
+#modalContentLogin{
+    top: @height-headerGroup + 10;
+    right: 30%;
+    position: fixed;
+    width: 15%;
+}
+
+#modalContentRegister{
+    top: @height-headerGroup + 10;
+    right: 15%;
+    position: fixed;
+    width: 15%;
+}
+
+#logoutLink:hover{
+    color: @color-danger;
+}
+
+#messageBlock{
+    position: absolute;
+    z-index: 1050;
+}
+
+#invBtns{
+    margin-top: -12px;
+    float: right;
+    position: relative;
+    left: 360px;
+}
+
+#logoutLink{
+    display: inline;
+    content: 'Link';
+}

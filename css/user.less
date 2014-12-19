@@ -1,0 +1,124 @@
+@width-panel: 300px;
+@height-menu: 80px;
+
+@color-blue: #375A7F;
+@color-base: #222222;
+@color-back: #303030;
+@color-surf: #0CE3AC;
+@color-surf-hover: #008966;
+@color-danger: #E74C3C;
+@color-danger-hover: #d62c1a;
+@color-shad: lighten(@color-base, 20%);
+@color-white: #fefefe;
+@color-dark-grey: #aeaeae;
+@color-light-grey: #dfdfdf;
+
+a{
+    color: @color-dark-grey;
+}
+.nav > li > a:hover{
+    color: @color-light-grey;
+    background-color: @color-blue;
+}
+
+.nav-pills > li.active > a{
+    background-color: @color-back;
+}
+.nav-pills > li.active > a:hover{
+    background-color: @color-back;
+}
+.nav > li > a{
+    margin-left: 5px;
+    padding: 5px 10px;
+}
+.glyphicon{
+    margin-right: 10px;
+}
+
+.panelTitle{
+    margin: 20px 15px;
+    color: @color-dark-grey;
+    clear: both;
+    font-size: 14px;
+}
+.panelElement1{
+    margin: 10px;
+    margin-left: 35px;
+    color: @color-light-grey;
+    clear: both;
+    
+}
+.panelElement1:hover{
+    background-color: @color-dark-grey;
+    color: @color-white;
+}
+
+#userTop{
+    margin: 0;
+    padding: 0;
+    display: inline;
+    width: 100%;
+}
+#userTopInfo{
+    background-color: @color-back;
+    width: @width-panel;
+    height: @height-menu;
+    top: 0px;
+    position: fixed;
+    line-height: 75px;
+    z-index: 1053;
+}
+#avatar{
+    margin: 16px;
+    border: 2px solid @color-white;
+    border-radius: 3px;
+    background-color: transparent;
+    width: 48px;
+    height: 48px;
+    float: left;
+}
+#userName{
+    color: @color-white;
+    font-size: 16px;
+    float: left;
+}
+
+#userTopBlock{
+    padding: 20px;
+    margin-left: @width-panel;
+    background-color: @color-blue;
+    width: 100%;
+    height: @height-menu;
+    top: 0px;
+    position: fixed;
+    color: @color-white;
+    z-index: 1050;
+    box-shadow: -2px 3px 3px #888888;
+}
+#siteName{
+    margin-left: 10px;
+    float: left;
+}
+#companyLogo{
+    margin-left: 20px;
+    float: left;
+    font-size: 24px;
+    line-height: 40px;
+}
+
+#userPanel{
+    padding: 10px;
+    top: @height-menu;
+    width: @width-panel;
+    height: 100%;
+    position: fixed;
+    background-color: @color-base;
+    display: inline;
+    z-index: 1052;
+}
+#data{
+    padding: 20px;
+    margin-top: @height-menu;
+    margin-left: @width-panel;
+    height: 1500px;
+}
