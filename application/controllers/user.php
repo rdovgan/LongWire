@@ -7,7 +7,12 @@ class User extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
+        
+        $this->load->library('events');
+        $this->load->event('system_events');
+        
         $this->load->model('user_model');
+        $this->load->model('achiev_model');
     }
 
     private function getMenu() {
@@ -48,6 +53,7 @@ class User extends CI_Controller {
         $data['title'] = 'Welcome';
         $data['head_menu'] = $this->getMenu();
         $this->load->view('header_view', $data);
+        $this->load->view("main_top_view.php", $data);
         $this->load->view('menu_view.php', $data);
         $this->load->view('welcome_view.php', $data);
         $this->load->view('footer_view', $data);
@@ -68,10 +74,11 @@ class User extends CI_Controller {
         $password = md5($this->input->post('pass'));
 
         $result = $this->user_model->login($username, $password);
-        if ($result)
+        if ($result){
             $this->welcome();
-        else
+        }else{
             $this->index();
+        }
     }
 
     public function thank() {
@@ -111,6 +118,9 @@ class User extends CI_Controller {
         if ($this->isLoggedIn()) {
             $data['title'] = 'User page';
             $data['head_menu'] = $this->getMenu();
+            $userId = $this->session->userdata('user_id');
+            $this->achiev_model->gotAchiev(1, $userId);
+            $data['achievs'] = $this->achiev_model->getUserAchievs($userId);
             $this->load->view('user_head_view', $data);
             $this->load->view('user_panel_view', $data);
             $this->load->view('user_footer_view', $data);

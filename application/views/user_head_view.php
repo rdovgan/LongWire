@@ -14,12 +14,12 @@
         <div id="userTop">
             <div id="userTopInfo"><div id="avatar"></div><div id="userName">Babuin Volohatij</div></div>
             <div id="userTopBlock">
-                <div id="siteLogo">
+                <?php echo anchor('user/index','<div id="siteLogo">
                     <div id="companyLogo">
                         <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
                     </div>
                     <h5 id="siteName">Long Wire Company</h5>
-                </div>
+                </div>'); ?>
             </div>                
         </div>
 
