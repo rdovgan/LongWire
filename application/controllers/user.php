@@ -8,8 +8,6 @@ class User extends CI_Controller {
     public function __construct() {
         parent::__construct();
         
-        $this->load->library('events');
-        $this->load->event('system_events');
         
         $this->load->model('user_model');
         $this->load->model('achiev_model');
@@ -74,6 +72,7 @@ class User extends CI_Controller {
         $password = md5($this->input->post('pass'));
 
         $result = $this->user_model->login($username, $password);
+        $this->achList = $this->achiev_model->getUserAchId($this->session->userdata('user_id'));
         if ($result){
             $this->welcome();
         }else{
@@ -99,6 +98,9 @@ class User extends CI_Controller {
             $this->index();
         } else {
             $this->user_model->add_user();
+            $result = Events::trigger('register_event', 'system_events', 'string');//TODO:give result to $this->thank()
+            //call modal with message
+            $this->achiev_model->gotAchiev(1, $this->session->userdata('user_id'));
             $this->thank();
         }
     }
@@ -118,12 +120,9 @@ class User extends CI_Controller {
         if ($this->isLoggedIn()) {
             $data['title'] = 'User page';
             $data['head_menu'] = $this->getMenu();
-            $userId = $this->session->userdata('user_id');
-            $this->achiev_model->gotAchiev(1, $userId);
-            $data['achievs'] = $this->achiev_model->getUserAchievs($userId);
+            $data['achievs'] = $this->achiev_model->getUserAchievs($this->session->userdata('user_id'));
             $this->load->view('user_head_view', $data);
             $this->load->view('user_panel_view', $data);
-            $this->load->view('user_footer_view', $data);
         } else {
             $this->guest();
         }

@@ -22,7 +22,10 @@ class Achiev_model extends CI_Model {
     }
 
     function isContain($elem, $arr) {
-        if ((isset($arr)) && (count($arr) > 0)) {
+        if(($arr == false) || ($elem == false)){
+            return false;
+        }
+        if (count($arr) > 0) {
             foreach ($arr as $item) {
                 $item = (array)$item;
                 if ($item['ach_id'] == $elem) {
@@ -34,7 +37,10 @@ class Achiev_model extends CI_Model {
     }
 
     function getDateQuery($ach_id, $arr) {
-        if ((isset($arr)) && (count($arr) > 0)) {
+        if(($arr == false) || ($ach_id == false)){
+            return '';
+        }
+        if (count($arr) > 0) {
             foreach ($arr as $item) {
                 $item = (array)$item;
                 if ($item['ach_id'] == $ach_id) {
@@ -57,6 +63,20 @@ class Achiev_model extends CI_Model {
         }
         return false;
     }
+    
+    function getUserAchId($user_id){
+        $this->db->where("user_id", $user_id);
+        $query = $this->db->get("user_ach");
+        if ($query->num_rows() > 0) {
+            $result = array();
+            foreach ($query->result() as $rows) {
+                $rows = (array)$rows;
+                array_push($result, $rows['ach_id']);//user_ach_id, ach_id, got
+            }
+            return $result;
+        }
+        return false;
+    }
 
     function getUserAchievs($user_id) {
         if (!isset($user_id)) {
@@ -67,7 +87,6 @@ class Achiev_model extends CI_Model {
         $result = array();
         foreach ($achievs as $ach) {
             $ach = (array)$ach;
-            log_message('debug', "!!!Date:".getDate($ach['achievs_id']));
             $item = array(
                 'ach_name' => $ach['achievs_name'],
                 'ach_desc' => $ach['achievs_desc'],
