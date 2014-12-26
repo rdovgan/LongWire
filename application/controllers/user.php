@@ -128,6 +128,14 @@ class User extends CI_Controller {
         }
     }
 
+    public function action(){
+        $data['title'] = 'Home';
+        $data['head_menu'] = $this->getMenu();
+        $this->load->view('header_view', $data);
+        $this->load->view('menu_view', $data);
+        $this->load->view('action_view.php', $data);
+        $this->load->view('footer_view', $data);
+    }
 }
 
 ?>
