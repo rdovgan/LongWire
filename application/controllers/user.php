@@ -80,12 +80,12 @@ class User extends CI_Controller {
         }
     }
 
-    public function thank() {
+    public function thanks() {
         $data['title'] = 'Thank';
         $data['head_menu'] = $this->getMenu();
         $this->load->view('header_view', $data);
         $this->load->view('menu_view', $data);
-        $this->load->view('thank_view.php', $data);
+        $this->load->view('thanks_view.php', $data);
         $this->load->view('footer_view', $data);
     }
 
@@ -101,7 +101,7 @@ class User extends CI_Controller {
             $result = Events::trigger('register_event', 'system_events', 'string');//TODO:give result to $this->thank()
             //call modal with message
             $this->achiev_model->gotAchiev(1, $this->session->userdata('user_id'));
-            $this->thank();
+            $this->thanks();
         }
     }
 
@@ -132,6 +132,7 @@ class User extends CI_Controller {
         $data['title'] = 'Home';
         $data['head_menu'] = $this->getMenu();
         $this->load->view('header_view', $data);
+        $this->load->view('action_top_view', $data);
         $this->load->view('menu_view', $data);
         $this->load->view('action_view.php', $data);
         $this->load->view('footer_view', $data);

@@ -1,3 +1,3 @@
 <div id="content" class="container content">
-    Hello
+    This is the action page
 </div>
