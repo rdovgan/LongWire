@@ -5,6 +5,7 @@
         <title>LongWire</title>
         <meta name="author" content="LongWireComp" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/css/darkly.css">
+        <link rel="stylesheet/less" type="text/css" href="<?php echo base_url(); ?>/fonts/fonts.css">  
         <link rel="stylesheet/less" type="text/css" href="<?php echo base_url(); ?>/css/style.less">  
         <script type="text/javascript" src="<?php echo base_url(); ?>/js/less.min.js"></script> 
         <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>/js/jquery-2.1.1.js"></script>
