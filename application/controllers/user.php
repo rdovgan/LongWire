@@ -47,10 +47,10 @@ class User extends CI_Controller {
         }
     }
 
-    public function welcome($message='') {
+    public function welcome($message = '') {
         $data['title'] = 'Welcome';
         $data['head_menu'] = $this->getMenu();
-        if ((isset($message))&&($message != '')) {
+        if ((isset($message)) && ($message != '')) {
             $data['messageText'] = $message;
         }
         $this->load->view('header_view', $data);
@@ -63,7 +63,9 @@ class User extends CI_Controller {
     public function guest($option = '') {
         $data['title'] = 'Home';
         $data['head_menu'] = $this->getMenu();
-        $data['option'] = $option
+        if ((isset($option)) && ($option != '')) {
+            $data['option'] = $option;
+        }
         $this->load->view('header_view', $data);
         $this->load->view("main_top_view.php", $data);
         $this->load->view("menu_view.php", $data);
@@ -99,7 +101,7 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[4]|max_length[32]');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->guest();
+            $this->guest('register');
         } else {
             $this->user_model->add_user();
             $result = Events::trigger('register_event', 'system_events', 'string'); //TODO:give result to $this->thank()

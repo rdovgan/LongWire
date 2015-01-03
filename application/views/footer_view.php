@@ -62,5 +62,8 @@
         </div>
     </div>
 </div>
+<script>
+var option = <?php if(isset($option)){echo '"'.$option.'"';} else {echo '""';} ?>
+</script>
 </body>
 </html>

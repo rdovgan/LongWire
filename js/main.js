@@ -39,6 +39,7 @@ $(document).ready(function () {
         $('#registerName').focus();
     });
     showMessage();
+    showModalOption();
 });
 
 function printInfo(time, left, top, right, bottom) {
@@ -50,7 +51,15 @@ function printInfo(time, left, top, right, bottom) {
 }
 
 function showMessage() {
-    if($("#messageText").text()!=="")
+    if ($("#messageText").text() !== "")
         printInfo(5000, 20, 30);
+}
+function showModalOption() {
+    alert(option);
+    if (option === 'login') {
+        $("#modalLogin").modal('show');
+    } else if (option === 'register') {
+        $("#modalRegister").modal('show');
+    }
 }
 //printInfo("New text", 100, 75, -24, 10);
