@@ -36,7 +36,7 @@
 <div id="modalRegister" class="modal fade right">
     <div id="modalDialogRegister" class="modal-dialog">
         <div id="modalContentRegister" class="modal-content">
-            <div id="formRegister" class="col-md-12">
+            <form id="formRegister" class="col-md-12">
                 <?php echo validation_errors('<p class="error">'); ?>
                 <?php echo form_open("user/registration"); ?>
                 <div class="modal-header">
@@ -58,12 +58,18 @@
                     <input name="submit" class="btn btn-sm btn-danger" type="submit" value="Register">
                 </div>
                 <?php echo form_close(); ?>
-            </div>
+            </form>
         </div>
     </div>
 </div>
 <script>
-var option = <?php if(isset($option)){echo '"'.$option.'"';} else {echo '""';} ?>
+    var option = <?php if (isset($option)) {
+                    echo '"' . $option . '"';
+                } else {
+                    echo '""';
+                } ?>
 </script>
+<script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>/js/jquery.validate.js"></script>
+<script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>/js/validate.js"></script>
 </body>
 </html>
