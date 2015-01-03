@@ -82,7 +82,7 @@ class User extends CI_Controller {
         if ($result) {
             $this->welcome('Login succesful');
         } else {
-            $this->index();
+            $this->guest('login');
         }
     }
 
@@ -95,9 +95,18 @@ class User extends CI_Controller {
         $this->load->view('footer_view', $data);
     }
 
+    function username_check($str) {
+        if ($this->user_model->checkLogin($str)) {
+            $this->form_validation->set_message('username_check', 'The %s is already existed');
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
+
     public function registration() {
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('user_name', 'User Name', 'trim|required|min_length[4]|xss_clean');
+        $this->form_validation->set_rules('user_name', 'Username', 'trim|required|min_length[4]|max_length[30]|xss_clean|callback_username_check');
         $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[4]|max_length[32]');
 
         if ($this->form_validation->run() == FALSE) {

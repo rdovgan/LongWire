@@ -48,18 +48,27 @@ $(document).ready(function () {
     showModalOption();
 });
 
-function printInfo(time, left, top, right, bottom) {
+function printInfo(time, left, top, width, height) {
     $("#messageBlock").css("margin-left", left + '%');
     $("#messageBlock").css("margin-top", top + 'px');
-    $("#messageBlock").css("margin-right", right + '%');
-    $("#messageBlock").css("margin-bottom", bottom + '%');
+    $("#messageBlock").css("min-width", width + 'px');
+    $("#messageBlock").css("min-height", height + 'px');
     $("#messageBlock").prop("hidden", false);
+    setTimeout(function () {
+        messageClear()
+    }, time);
 }
 
 function showMessage() {
     if ($("#messageText").text() !== "")
-        printInfo(5000, 20, 30);
+        printInfo(5000, 10, 0, 200, 100);
 }
+
+function messageClear() {
+    $("#messageBlock").text('');
+    $("#messageBlock").prop("hidden", true);
+}
+
 function showModalOption() {
     if (option === 'login') {
         $("#modalLogin").modal('show');
@@ -67,4 +76,7 @@ function showModalOption() {
         $("#modalRegister").modal('show');
     }
 }
-//printInfo("New text", 100, 75, -24, 10);
+
+$(function () {
+    $("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
+});

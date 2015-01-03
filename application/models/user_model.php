@@ -18,6 +18,15 @@ class User_model extends CI_Model {
         parent::__construct();
     }
     
+    function checkLogin($username){
+        $this->db->where("user_login", $username);
+        $query = $this->db->get("users");
+        if($query->num_rows() > 0){
+            return true;
+        }
+        return false;
+    }
+    
     function login($username, $password) {
         $this->db->where("user_login", $username);
         $this->db->where("user_pass", $password);

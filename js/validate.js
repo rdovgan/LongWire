@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $('#formRegister').validate({
+    $('#formRegisterValid').validate({
         rules: {
             user_name: {
                 minlength: 4,

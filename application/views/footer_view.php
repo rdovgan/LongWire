@@ -34,42 +34,49 @@
 </div>
 
 <div id="modalRegister" class="modal fade right">
+    <!--<form id="formRegisterValid">-->
     <div id="modalDialogRegister" class="modal-dialog">
         <div id="modalContentRegister" class="modal-content">
-            <form id="formRegister" class="col-md-12">
-                <?php echo validation_errors('<p class="error">'); ?>
+            <div id="formRegister" class="col-md-12">
                 <?php echo form_open("user/registration"); ?>
                 <div class="modal-header">
                     <h4 class="modal-title">Register</h4>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body control-group">
                     <div class="input-group input-group-sm col-md-12">
-                        <input id="registerName" name="user_name" type="text" 
+                        <input id="registerName" name="user_name" type="text" minlength="4" required
+                               data-validation-required-message="Username is required"
                                value="<?php echo set_value('user_name'); ?>" class="form-control col-md-8" placeholder="Username">
                     </div>
                     <div class="br"></div>
                     <div class="input-group input-group-sm col-md-12">
-                        <input name="password" type="password" 
+                        <input name="password" type="password" minlength="4" required="true"
+                               data-validation-required-message="Password is required"
                                value="<?php echo set_value('password'); ?>" class="form-control col-md-8" placeholder="Password">
-                    </div>       
+                    </div> 
+                    <p class="help-block"></p>
+                    <?php echo validation_errors('<p class="error">'); ?>    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
                     <input name="submit" class="btn btn-sm btn-danger" type="submit" value="Register">
                 </div>
                 <?php echo form_close(); ?>
-            </form>
+            </div>
         </div>
     </div>
+    <!--</form>-->
 </div>
 <script>
-    var option = <?php if (isset($option)) {
+    var option = <?php
+                if (isset($option)) {
                     echo '"' . $option . '"';
                 } else {
                     echo '""';
-                } ?>
+                }
+                ?>
 </script>
-<script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>/js/jquery.validate.js"></script>
-<script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>/js/validate.js"></script>
+<script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>/js/jqBootstrapValidation.js"></script>
+<!--<script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>/js/validate.js"></script>-->
 </body>
 </html>
