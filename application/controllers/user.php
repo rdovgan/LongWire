@@ -57,9 +57,10 @@ class User extends CI_Controller {
         $this->load->view('footer_view', $data);
     }
 
-    public function guest() {
+    public function guest($option = '') {
         $data['title'] = 'Home';
         $data['head_menu'] = $this->getMenu();
+        $data['option'] = $option
         $this->load->view('header_view', $data);
         $this->load->view("main_top_view.php", $data);
         $this->load->view("menu_view.php", $data);
@@ -81,7 +82,7 @@ class User extends CI_Controller {
     }
 
     public function thanks() {
-        $data['title'] = 'Thank';
+        $data['title'] = 'Thanks';
         $data['head_menu'] = $this->getMenu();
         $this->load->view('header_view', $data);
         $this->load->view('menu_view', $data);
@@ -95,7 +96,7 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[4]|max_length[32]');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->index();
+            $this->guest();
         } else {
             $this->user_model->add_user();
             $result = Events::trigger('register_event', 'system_events', 'string');//TODO:give result to $this->thank()

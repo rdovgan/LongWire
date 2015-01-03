@@ -5,10 +5,19 @@ if (!defined('BASEPATH'))
 
 class User_model extends CI_Model {
 
+    /*
+     * USERS
+     * user_id
+     * user_login
+     * user_pass
+     * user_hash
+     * user_ip
+     */
+    
     public function __construct() {
         parent::__construct();
     }
-
+    
     function login($username, $password) {
         $this->db->where("user_login", $username);
         $this->db->where("user_pass", $password);
@@ -29,12 +38,13 @@ class User_model extends CI_Model {
         return false;
     }
 
-    public function add_user() {
+    public function add_user($userId) {
         $data = array(
             'user_login' => $this->input->post('user_name'),
             'user_pass' => md5($this->input->post('password'))
         );
         $this->db->insert('users', $data);
+        
     }
 
 }

@@ -5,6 +5,19 @@ if (!defined('BASEPATH'))
 
 class Achiev_model extends CI_Model {
 
+    /*
+     * USER_ACH
+     * user_ach_id
+     * ach_id
+     * got
+     * 
+     * ACHIEVS
+     * achievs_id
+     * achievs_name
+     * achievs_desc
+     * achievs_group
+     */
+    
     public function __construct() {
         parent::__construct();
     }
