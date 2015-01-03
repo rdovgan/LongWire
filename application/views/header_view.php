@@ -53,5 +53,5 @@
         </div>
         <div id="messageBlock" class="alert alert-warning alert-dismissible" hidden>
             <button type="button" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <p id="messageText"></p>
+            <p id="messageText"><?php echo $messageText ?></p>
         </div>
