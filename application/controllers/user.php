@@ -7,8 +7,8 @@ class User extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        
-        
+
+
         $this->load->model('user_model');
         $this->load->model('achiev_model');
     }
@@ -47,9 +47,12 @@ class User extends CI_Controller {
         }
     }
 
-    public function welcome() {
+    public function welcome($message='') {
         $data['title'] = 'Welcome';
         $data['head_menu'] = $this->getMenu();
+        if ((isset($message))&&($message != '')) {
+            $data['messageText'] = $message;
+        }
         $this->load->view('header_view', $data);
         $this->load->view("main_top_view.php", $data);
         $this->load->view('menu_view.php', $data);
@@ -73,9 +76,9 @@ class User extends CI_Controller {
 
         $result = $this->user_model->login($username, $password);
         $this->achList = $this->achiev_model->getUserAchId($this->session->userdata('user_id'));
-        if ($result){
-            $this->welcome();
-        }else{
+        if ($result) {
+            $this->welcome('Login succesful');
+        } else {
             $this->index();
         }
     }
@@ -98,7 +101,7 @@ class User extends CI_Controller {
             $this->index();
         } else {
             $this->user_model->add_user();
-            $result = Events::trigger('register_event', 'system_events', 'string');//TODO:give result to $this->thank()
+            $result = Events::trigger('register_event', 'system_events', 'string'); //TODO:give result to $this->thank()
             //call modal with message
             $this->achiev_model->gotAchiev(1, $this->session->userdata('user_id'));
             $this->thanks();
@@ -128,7 +131,7 @@ class User extends CI_Controller {
         }
     }
 
-    public function action(){
+    public function action() {
         $data['title'] = 'Home';
         $data['head_menu'] = $this->getMenu();
         $this->load->view('header_view', $data);
@@ -137,6 +140,7 @@ class User extends CI_Controller {
         $this->load->view('action_view.php', $data);
         $this->load->view('footer_view', $data);
     }
+
 }
 
 ?>

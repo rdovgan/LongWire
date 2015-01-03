@@ -38,14 +38,19 @@ $(document).ready(function () {
     $('#modalRegister').on('shown.bs.modal', function () {
         $('#registerName').focus();
     });
+    showMessage();
 });
 
-function printInfo(info, time, left, top, right, bottom) {
-    $("#messageText").html(info);
+function printInfo(time, left, top, right, bottom) {
     $("#messageBlock").css("margin-left", left + '%');
     $("#messageBlock").css("margin-top", top + 'px');
     $("#messageBlock").css("margin-right", right + '%');
     $("#messageBlock").css("margin-bottom", bottom + '%');
     $("#messageBlock").prop("hidden", false);
+}
+
+function showMessage() {
+    if($("#messageText").text()!=="")
+        printInfo(5000, 20, 30);
 }
 //printInfo("New text", 100, 75, -24, 10);
