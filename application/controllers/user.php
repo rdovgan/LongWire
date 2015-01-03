@@ -65,6 +65,10 @@ class User extends CI_Controller {
         $data['head_menu'] = $this->getMenu();
         if ((isset($option)) && ($option != '')) {
             $data['option'] = $option;
+            if ($option == "wrong_pass") {
+                $data['option'] = "login";
+                $data['help_message'] = "Wrong password";
+            }
         }
         $this->load->view('header_view', $data);
         $this->load->view("main_top_view.php", $data);
@@ -74,6 +78,12 @@ class User extends CI_Controller {
     }
 
     public function login() {
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[4]|max_length[30]|xss_clean|callback_is_username');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->guest('login');
+        }
         $username = $this->input->post('username');
         $password = md5($this->input->post('pass'));
 
@@ -82,7 +92,7 @@ class User extends CI_Controller {
         if ($result) {
             $this->welcome('Login succesful');
         } else {
-            $this->guest('login');
+            $this->guest('wrong_pass');
         }
     }
 
@@ -93,6 +103,15 @@ class User extends CI_Controller {
         $this->load->view('menu_view', $data);
         $this->load->view('thanks_view.php', $data);
         $this->load->view('footer_view', $data);
+    }
+
+    function is_username($str) {
+        if (!$this->user_model->checkLogin($str)) {
+            $this->form_validation->set_message('is_username', 'Wrong username');
+            return FALSE;
+        } else {
+            return TRUE;
+        }
     }
 
     function username_check($str) {

@@ -22,23 +22,27 @@
                         <label unselectable="on" onselectstart="return false;"><input type="checkbox" name="attach_ip" class="switch ios-switch tinyswitch" checked />
                             <div style="margin: 0px; margin-top: 8px;"><div></div></div></label>
                     </div>
+                    <?php echo validation_errors('<p class="error">'); ?>
+                    <?php if (isset($help_message)) {
+                        echo '<p class="error">'.$help_message.'</p>';
+                    }
+                    ?>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
                     <input name="submit" class="btn btn-sm btn-danger" type="submit" value="Enter">
                 </div>
-                <?php echo form_close(); ?>
+<?php echo form_close(); ?>
             </div>
         </div>
     </div>    
 </div>
 
 <div id="modalRegister" class="modal fade right">
-    <!--<form id="formRegisterValid">-->
     <div id="modalDialogRegister" class="modal-dialog">
         <div id="modalContentRegister" class="modal-content">
             <div id="formRegister" class="col-md-12">
-                <?php echo form_open("user/registration"); ?>
+<?php echo form_open("user/registration"); ?>
                 <div class="modal-header">
                     <h4 class="modal-title">Register</h4>
                 </div>
@@ -55,26 +59,25 @@
                                value="<?php echo set_value('password'); ?>" class="form-control col-md-8" placeholder="Password">
                     </div> 
                     <p class="help-block"></p>
-                    <?php echo validation_errors('<p class="error">'); ?>    
+<?php echo validation_errors('<p class="error">'); ?>    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
                     <input name="submit" class="btn btn-sm btn-danger" type="submit" value="Register">
                 </div>
-                <?php echo form_close(); ?>
+<?php echo form_close(); ?>
             </div>
         </div>
     </div>
-    <!--</form>-->
 </div>
 <script>
     var option = <?php
-                if (isset($option)) {
-                    echo '"' . $option . '"';
-                } else {
-                    echo '""';
-                }
-                ?>
+if (isset($option)) {
+    echo '"' . $option . '"';
+} else {
+    echo '""';
+}
+?>
 </script>
 <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>/js/jqBootstrapValidation.js"></script>
 <!--<script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>/js/validate.js"></script>-->
