@@ -16,15 +16,16 @@
                     <div class="br"></div>
                     <div class="input-group input-group-sm col-md-12">
                         <input id="pass" name="pass" type="password" class="form-control col-md-8" placeholder="Password">
-                    </div>                        
+                    </div>                    
                     <div class="input-group input-group-sm" style="margin-top:10px; margin-left: -12px;">
                         <span class="input-group-addon" style="background-color: transparent;">Remember me</span>
                         <label unselectable="on" onselectstart="return false;"><input type="checkbox" name="attach_ip" class="switch ios-switch tinyswitch" checked />
                             <div style="margin: 0px; margin-top: 8px;"><div></div></div></label>
                     </div>
                     <?php echo validation_errors('<p class="error">'); ?>
-                    <?php if (isset($help_message)) {
-                        echo '<p class="error">'.$help_message.'</p>';
+                    <?php
+                    if (isset($help_message)) {
+                        echo '<p class="error">' . $help_message . '</p>';
                     }
                     ?>
                 </div>
@@ -80,6 +81,5 @@ if (isset($option)) {
 ?>
 </script>
 <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>/js/jqBootstrapValidation.js"></script>
-<!--<script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>/js/validate.js"></script>-->
 </body>
 </html>
