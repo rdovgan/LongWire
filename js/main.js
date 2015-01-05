@@ -4,7 +4,6 @@ $(document).ready(function () {
 
     $(window).scroll(function () {
         if (($(window).scrollTop() > headerMenuHeight) && (!$("#invBtns").hasClass('open'))) {
-            $("#invBtns").attr("hidden", false);
             $("#invBtns").animate({
                 left: 0
             }, 500).addClass('open');
@@ -12,11 +11,6 @@ $(document).ready(function () {
             $("#invBtns").animate({
                 left: '360px'
             }, 500).removeClass('open');
-            setTimeout(function () {
-                $("#invBtns").animate({
-                    left: '360px'
-                }, 500).attr("hidden", true)
-            }, 1000);
         }
         if ($(window).scrollTop() > headerContentHeight) {
             $('#menu').css({position: 'fixed', top: '0px'});

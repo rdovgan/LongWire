@@ -47,7 +47,7 @@ class User_model extends CI_Model {
         return false;
     }
 
-    public function add_user($userId) {
+    public function add_user() {
         $data = array(
             'user_login' => $this->input->post('user_name'),
             'user_pass' => md5($this->input->post('password'))
