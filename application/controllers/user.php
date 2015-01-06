@@ -10,6 +10,7 @@ class User extends CI_Controller {
 
         $this->load->model('user_model');
         $this->load->model('achiev_model');
+        $this->load->model('person_model');
     }
 
     private function getMenu() {
@@ -156,6 +157,7 @@ class User extends CI_Controller {
             $data['achievs'] = $this->achiev_model->getUserAchievs($this->session->userdata('user_id'));
             $this->load->view('user_head_view', $data);
             $this->load->view('user_panel_view', $data);
+            $this->load->view('user_achiev_view', $data);
         } else {
             $this->guest();
         }
@@ -169,6 +171,24 @@ class User extends CI_Controller {
         $this->load->view('menu_view', $data);
         $this->load->view('action_view.php', $data);
         $this->load->view('footer_view', $data);
+    }
+
+    public function person() {
+        if ($this->isLoggedIn()) {
+            $data['title'] = 'Personal information';
+            $data['head_menu'] = $this->getMenu();
+            $this->load->view('user_head_view', $data);
+            $this->load->view('user_panel_view', $data);
+            $this->load->view('user_person_view', $data);
+        } else {
+            $this->guest();
+        }
+    }
+
+    public function savePerson() {
+        $this->person_model->addPerson($this->session->userdata('user_id'));
+        //show message
+        $this->person();
     }
 
 }

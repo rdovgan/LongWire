@@ -20,7 +20,7 @@ class Person_model extends CI_Model {
 
     function getId() {
         $this->db->where("person_user_id", $this->session->userdata('user_id'));
-        $query = $this->db->get("person");
+        $query = $this->db->get("persons");
         if ($query->num_rows() > 0) {
             return $query->row()->person_id;
         }
@@ -29,7 +29,7 @@ class Person_model extends CI_Model {
 
     function getPerson($userId) {
         $this->db->where("person_user_id", $userId);
-        $query = $this->db->get("person");
+        $query = $this->db->get("persons");
         if ($query->num_rows() > 0) {
             return $query->row(); //return first result
         }
@@ -54,4 +54,3 @@ class Person_model extends CI_Model {
 
 }
 ?>
-
