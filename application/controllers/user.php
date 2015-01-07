@@ -177,6 +177,7 @@ class User extends CI_Controller {
         if ($this->isLoggedIn()) {
             $data['title'] = 'Personal information';
             $data['head_menu'] = $this->getMenu();
+            $data['personData'] = $this->person_model->getPerson($this->session->userdata('user_id'));
             $this->load->view('user_head_view', $data);
             $this->load->view('user_panel_view', $data);
             $this->load->view('user_person_view', $data);
@@ -190,6 +191,18 @@ class User extends CI_Controller {
         //show message
         $this->person();
     }
+    
+    public function galary(){        
+        if ($this->isLoggedIn()) {
+            $data['title'] = 'Galary';
+            $data['head_menu'] = $this->getMenu();
+            $this->load->view('user_head_view', $data);
+            $this->load->view('user_panel_view', $data);
+            $this->load->view('user_galary_view', $data);
+        } else {
+            $this->guest();
+        }
+    }    
 
 }
 

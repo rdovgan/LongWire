@@ -31,7 +31,7 @@ class Person_model extends CI_Model {
         $this->db->where("person_user_id", $userId);
         $query = $this->db->get("persons");
         if ($query->num_rows() > 0) {
-            return $query->row(); //return first result
+            return (array)$query->row(); //return first result
         }
     }
 
