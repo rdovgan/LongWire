@@ -51,6 +51,9 @@
             </div>
             <div class="br-shad"></div>
         </div>
+        <?php
+        $this->session->userdata('user_id') . "<br>" . $this->session->userdata('user_name') . "<br>" . $this->session->userdata('user_login') . "<br>" . $this->session->userdata('logged_in');
+        ?> 
         <div id="messageBlock" class="alert alert-warning alert-dismissible" hidden>
             <button type="button" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
             <p id="messageText"><?php echo $messageText ?></p>

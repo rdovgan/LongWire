@@ -37,7 +37,7 @@ class User_model extends CI_Model {
                 //add all data to session
                 $newdata = array(
                     'user_id' => $rows->user_id,
-                    'user_name' => $rows->user_login,
+                    'user_login' => $rows->user_login,
                     'logged_in' => TRUE,
                 );
             }

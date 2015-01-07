@@ -1,6 +1,6 @@
 <div id="data" class='content'>
 
-    <div class="bigText">Galary page</div>
+    <div class="bigText">Gallery page</div>
 
     <div id="imgGalary"></div>
     

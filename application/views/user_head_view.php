@@ -9,10 +9,17 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>/js/less.min.js"></script> 
         <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>/js/jquery-2.1.1.js"></script>
         <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>/js/bootstrap.js"></script>
+        <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>/js/user.js"></script>
     </head>
     <body>
         <div id="userTop">
-            <div id="userTopInfo"><div id="avatar"></div><div id="userName">Babuin Volohatij</div></div>
+            <div id="userTopInfo"><div id="avatar"></div><div id="userName"><?php 
+            if($this->session->userdata('user_name')){
+                echo $this->session->userdata('user_name');
+            }else{
+                echo $this->session->userdata('user_login');
+            }
+            ?></div></div>
             <div id="userTopBlock">
                 <?php echo anchor('user/index','<div id="siteLogo">
                     <div id="companyLogo">

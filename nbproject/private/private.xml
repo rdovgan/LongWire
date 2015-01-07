@@ -5,10 +5,13 @@
         <group>
             <file>file:/D:/Code/Denver/home/longwire.ua/www/application/views/menu_view.php</file>
             <file>file:/D:/Code/Denver/home/longwire.ua/www/css/user.less</file>
-            <file>file:/D:/Code/Denver/home/longwire.ua/www/css/style.less</file>
+            <file>file:/D:/Code/Denver/home/longwire.ua/www/application/views/user_achiev_view.php</file>
             <file>file:/D:/Code/Denver/home/longwire.ua/www/application/views/footer_view.php</file>
             <file>file:/D:/Code/Denver/home/longwire.ua/www/application/controllers/user.php</file>
-            <file>file:/D:/Code/Denver/home/longwire.ua/www/js/main.js</file>
+            <file>file:/D:/Code/Denver/home/longwire.ua/www/application/views/user_galary_view.php</file>
+            <file>file:/D:/Code/Denver/home/longwire.ua/www/application/models/person_model.php</file>
+            <file>file:/D:/Code/Denver/home/longwire.ua/www/application/views/user_panel_view.php</file>
+            <file>file:/D:/Code/Denver/home/longwire.ua/www/application/views/user_person_view.php</file>
         </group>
     </open-files>
 </project-private>

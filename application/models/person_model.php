@@ -31,7 +31,7 @@ class Person_model extends CI_Model {
         $this->db->where("person_user_id", $userId);
         $query = $this->db->get("persons");
         if ($query->num_rows() > 0) {
-            return (array)$query->row(); //return first result
+            return (array) $query->row(); //return first result
         }
     }
 
@@ -50,7 +50,9 @@ class Person_model extends CI_Model {
         } else {
             $this->db->insert('persons', $data);
         }
+        $this->session->set_userdata(array('user_name' => $this->input->post('person_name') . ' ' . $this->input->post('person_surname')));
     }
 
 }
+
 ?>

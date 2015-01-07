@@ -36,7 +36,7 @@ class User extends CI_Controller {
     }
 
     public function isLoggedIn() {
-        return ($this->session->userdata('user_name') != "") ? true : false;
+        return $this->session->userdata('logged_in');
     }
 
     public function index() {
@@ -90,6 +90,10 @@ class User extends CI_Controller {
         $result = $this->user_model->login($username, $password);
         $this->achList = $this->achiev_model->getUserAchId($this->session->userdata('user_id'));
         if ($result) {
+            $person = $this->person_model->getPerson($this->session->userdata('user_id'));
+            if ($person) {
+                $this->session->set_userdata(array('user_name' => $person['person_name'] . ' ' . $person['person_surname']));
+            }
             $this->welcome('Login succesful');
         } else {
             $this->guest('wrong_pass');
@@ -143,7 +147,8 @@ class User extends CI_Controller {
         $newdata = array(
             'user_id' => '',
             'user_name' => '',
-            'logged_in' => FALSE,
+            'user_login' => '',
+            'logged_in' => FALSE
         );
         $this->session->unset_userdata($newdata);
         $this->session->sess_destroy();
@@ -154,6 +159,7 @@ class User extends CI_Controller {
         if ($this->isLoggedIn()) {
             $data['title'] = 'User page';
             $data['head_menu'] = $this->getMenu();
+            $data['activeItem'] = 'profileItem';
             $data['achievs'] = $this->achiev_model->getUserAchievs($this->session->userdata('user_id'));
             $this->load->view('user_head_view', $data);
             $this->load->view('user_panel_view', $data);
@@ -177,6 +183,7 @@ class User extends CI_Controller {
         if ($this->isLoggedIn()) {
             $data['title'] = 'Personal information';
             $data['head_menu'] = $this->getMenu();
+            $data['activeItem'] = 'personItem';
             $data['personData'] = $this->person_model->getPerson($this->session->userdata('user_id'));
             $this->load->view('user_head_view', $data);
             $this->load->view('user_panel_view', $data);
@@ -191,18 +198,19 @@ class User extends CI_Controller {
         //show message
         $this->person();
     }
-    
-    public function galary(){        
+
+    public function gallery() {
         if ($this->isLoggedIn()) {
             $data['title'] = 'Galary';
             $data['head_menu'] = $this->getMenu();
+            $data['activeItem'] = 'galleryItem';
             $this->load->view('user_head_view', $data);
             $this->load->view('user_panel_view', $data);
-            $this->load->view('user_galary_view', $data);
+            $this->load->view('user_gallery_view', $data);
         } else {
             $this->guest();
         }
-    }    
+    }
 
 }
 
