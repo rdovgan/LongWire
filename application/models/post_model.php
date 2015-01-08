@@ -36,6 +36,24 @@ class Post_model extends CI_Model {
         $this->db->insert('posts', $data);
     }
     
+    public function deletePost($postId){
+        
+    }
+    
+    public function getAllPostsFromUser($userId){
+        
+    }
+    
+    /*  
+     * $order - can be by time, popularity, top rated, most favoutites
+     * $limit - count of posts on page
+     */
+    public function getAllPostsLimit($order, $limit){
+        
+    }
+    
+    public function updatePost($postId, $name, $desc, $body, $tags){
+        
+    }
 }
 ?>
-

@@ -17,6 +17,8 @@ class Post extends CI_Controller {
         return $this->session->userdata('logged_in');
     }
     
+    
+    
 }
 ?>
 
