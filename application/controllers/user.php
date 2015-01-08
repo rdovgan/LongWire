@@ -211,6 +211,45 @@ class User extends CI_Controller {
             $this->guest();
         }
     }
+    
+    public function messages(){        
+        if ($this->isLoggedIn()) {
+            $data['title'] = 'Messages';
+            $data['head_menu'] = $this->getMenu();
+            $data['activeItem'] = 'messagesItem';
+            $this->load->view('user_head_view', $data);
+            $this->load->view('user_panel_view', $data);
+            $this->load->view('user_messages_view', $data);
+        } else {
+            $this->guest();
+        }
+    }
+    
+    public function people(){        
+        if ($this->isLoggedIn()) {
+            $data['title'] = 'People';
+            $data['head_menu'] = $this->getMenu();
+            $data['activeItem'] = 'peopleItem';
+            $this->load->view('user_head_view', $data);
+            $this->load->view('user_panel_view', $data);
+            $this->load->view('user_people_view', $data);
+        } else {
+            $this->guest();
+        }
+    }
+    
+    public function calendar(){        
+        if ($this->isLoggedIn()) {
+            $data['title'] = 'Calendar';
+            $data['head_menu'] = $this->getMenu();
+            $data['activeItem'] = 'calendarItem';
+            $this->load->view('user_head_view', $data);
+            $this->load->view('user_panel_view', $data);
+            $this->load->view('user_calendar_view', $data);
+        } else {
+            $this->guest();
+        }
+    }
 
 }
 

@@ -13,6 +13,9 @@ class Post extends CI_Controller {
         $this->load->model('post_model');
     }    
     
+    public function isLoggedIn() {
+        return $this->session->userdata('logged_in');
+    }
     
 }
 ?>

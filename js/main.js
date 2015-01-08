@@ -48,14 +48,15 @@ function printInfo(time, left, top, width, height) {
     $("#messageBlock").css("min-width", width + 'px');
     $("#messageBlock").css("min-height", height + 'px');
     $("#messageBlock").prop("hidden", false);
-    setTimeout(function () {
-        messageClear()
-    }, time);
+    $('#messageBlock').fadeIn().delay(time).fadeOut('slow'); 
+//    setTimeout(function () {
+//        messageClear();
+//    }, time+5000);
 }
 
 function showMessage() {
     if ($("#messageText").text() !== "")
-        printInfo(5000, 10, 0, 200, 100);
+        printInfo(2000, 70, 0, 200, 100);
 }
 
 function messageClear() {
