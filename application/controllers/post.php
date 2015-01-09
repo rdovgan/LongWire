@@ -17,8 +17,13 @@ class Post extends CI_Controller {
         return $this->session->userdata('logged_in');
     }
     
-    
+    public function createPost(){
+        $data['title'] = 'Welcome';
+        $data['head_menu'] = Elements::getMenu();
+        $this->load->view('user_head_view', $data);
+        $this->load->view('user_panel_view', $data);
+        $this->load->view('form_post_view', $data);
+    }
     
 }
 ?>
-
