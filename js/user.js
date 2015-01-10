@@ -15,5 +15,5 @@ function description(event){
 }
 
 function createPostDialog(){
-    alert(0);
+    $("#modalPost").modal('show');
 }
