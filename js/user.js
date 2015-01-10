@@ -13,3 +13,7 @@ function description(event){
     else
         obj.attr('hidden',true);
 }
+
+function createPostDialog(){
+    alert(0);
+}

@@ -14,7 +14,9 @@ class Post extends CI_Controller {
     }
 
     public function isLoggedIn() {
-        return $this->session->userdata('logged_in');
+        if(! $this->session->userdata('logged_in')){
+            redirect('user/guest');
+        }
     }
 
     public function formPost() {
@@ -60,6 +62,7 @@ class Post extends CI_Controller {
     }
 
     public function postsList() {
+        $this->isLoggedIn();
         $data['title'] = 'Posts';
         $data['head_menu'] = Elements::getMenu();
         $data['activeItem'] = 'postsItem';

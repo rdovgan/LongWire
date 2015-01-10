@@ -28,8 +28,13 @@ a{
     background-color: @color-back;
 }
 .nav > li > a{
+    margin: 0;
     margin-left: 5px;
     padding: 5px 10px;
+}
+.nav-stacked > li + li{
+    margin-top: 2px;
+    margin-bottom: 2px;
 }
 .glyphicon{
     margin-right: 10px;
@@ -50,6 +55,12 @@ a{
     float: left;
     font-family: Trebuchet MS;
     clear: both;
+}
+
+.fineText{
+    font-family: Trebuchet MS;
+    font-style: italic;
+    font-size: 18px;
 }
 
 .postDescription{
@@ -77,12 +88,19 @@ a{
     height: 10px;
 }
 
+.divider{
+    margin: 0px;
+    padding: 0px;
+    border-top: 1px solid @color-blue;
+}
+
 #userTop{
     margin: 0;
     padding: 0;
     display: inline;
     width: 100%;
 }
+
 #userTopInfo{
     background-color: @color-back;
     width: @width-panel;
@@ -92,6 +110,7 @@ a{
     line-height: 75px;
     z-index: 1053;
 }
+
 #avatar{
     margin: 16px;
     border: 2px solid @color-white;
@@ -101,6 +120,7 @@ a{
     height: 48px;
     float: left;
 }
+
 #userName{
     color: @color-white;
     font-size: 16px;
@@ -119,11 +139,13 @@ a{
     z-index: 1050;
     box-shadow: -2px 3px 3px #888888;
 }
+
 #siteName{
     margin-left: 10px;
     float: left;
     color: @color-white;
 }
+
 #companyLogo{
     margin-left: 20px;
     float: left;
@@ -142,17 +164,32 @@ a{
     display: inline;
     z-index: 1052;
 }
+
 #data{
     padding: 20px;
     margin-top: @height-menu;
     margin-left: @width-panel;
     min-height: 500px;
 }
+
 #personForm{
     padding: 20px;  
     clear: both;
 }
+
 #personData{
     padding: 20px;
     clear: both;
+}
+
+#btnCreatePost{
+    padding: 5px 9px;
+    float: right;
+    width: 31px;
+    height: 31px;
+    border-radius: 4px;
+    color: @color-blue;
+}
+#btnCreatePost:hover{
+    color: @color-danger;
 }
