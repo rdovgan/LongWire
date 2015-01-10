@@ -59,9 +59,9 @@ class Post_model extends CI_Model {
         if ($query->num_rows() > 0) {
             $posts = array();
             foreach ($query->result() as $rows) {
-                array_push($posts, $rows);
+                array_push($posts, (array)$rows);
             }
-            return $posts;
+            return (array)$posts;
         }
         return false;
     }
