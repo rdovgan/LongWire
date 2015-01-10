@@ -199,19 +199,6 @@ class User extends CI_Controller {
         }
     }
     
-    public function people(){        
-        if (Elements::isLoggedIn()) {
-            $data['title'] = 'People';
-            $data['head_menu'] = Elements::getMenu();
-            $data['activeItem'] = 'peopleItem';
-            $this->load->view('user_head_view', $data);
-            $this->load->view('user_panel_view', $data);
-            $this->load->view('user_people_view', $data);
-        } else {
-            $this->guest();
-        }
-    }
-    
     public function calendar(){        
         if (Elements::isLoggedIn()) {
             $data['title'] = 'Calendar';

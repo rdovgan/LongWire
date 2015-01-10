@@ -23,7 +23,13 @@ class Post_model extends CI_Model {
         parent::__construct();
     }
     
-    public function addPost($userId){
+    public function getLastPostId($userId){
+        $query = $this->db->query('SELECT post_id FROM posts WHERE post_user_id = '.$userId.' ORDER BY post_date DESC LIMIT 1');
+        return $query->row()->post_id;
+    }
+    
+    public function addPost(){
+        $userId = $this->session->userdata('user_id');
         $date = date("Y-m-d H:i:s");
         $data = array(
             'post_user_id' => $userId,
@@ -33,7 +39,14 @@ class Post_model extends CI_Model {
             'post_body' => $this->input->post('post_body'),
             'post_tags' => $this->input->post('post_tags')            
         );
-        $this->db->insert('posts', $data);
+        return $this->db->insert('posts', $data);
+        //return postId //if postId doesn't return - get last post by data
+    }
+    
+    public function getPost($postId){
+        $this->db->where('post_id',$postId);
+        $query = $this->db->get('posts');
+        return (array)$query->row();
     }
     
     public function deletePost($postId){
@@ -41,7 +54,16 @@ class Post_model extends CI_Model {
     }
     
     public function getAllPostsFromUser($userId){
-        
+        $this->db->where('post_user_id',$userId);
+        $query = $this->db->get('posts');
+        if ($query->num_rows() > 0) {
+            $posts = array();
+            foreach ($query->result() as $rows) {
+                array_push($posts, $rows);
+            }
+            return $posts;
+        }
+        return false;
     }
     
     /*  
