@@ -25,7 +25,9 @@ class Post_model extends CI_Model {
     
     public function getLastPostId($userId){
         $query = $this->db->query('SELECT post_id FROM posts WHERE post_user_id = '.$userId.' ORDER BY post_date DESC LIMIT 1');
-        return $query->row()->post_id;
+        if($query->num_rows() > 0)
+            return $query->row()->post_id;
+        return false;
     }
     
     public function addPost(){
