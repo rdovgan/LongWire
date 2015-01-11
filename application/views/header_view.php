@@ -31,7 +31,7 @@
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
-                                        <li><?php echo anchor("post/formPost","Create post"); ?></li>
+                                        <li><a href="#" id="btnCreatePost">Create post</a></li>
                                         <li><?php echo anchor("post/lastPost","Last post"); ?></li>
                                         <li><a href="#">Something else here</a></li>
                                         <li class="divider"></li>

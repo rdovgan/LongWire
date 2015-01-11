@@ -20,12 +20,15 @@ $(document).ready(function () {
             $('.content').css({'margin-top': '0px'});
         }
     });
-    /* Login/Register buttons */
+    /* Buttons with modals */
     $(".btnLogin").click(function () {
         $("#modalLogin").modal('show');
     });
     $(".btnRegister").click(function () {
         $("#modalRegister").modal('show');
+    });
+    $("#btnCreatePost").click(function(){
+        $("#modalPost").modal('show');
     });
     /* Close message block */
     $("button.close").click(function () {
