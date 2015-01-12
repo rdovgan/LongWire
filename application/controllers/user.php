@@ -14,11 +14,8 @@ class User extends CI_Controller {
     }
 
     public function index() {
-        if (Elements::isLoggedIn()) {
-            $this->welcome();
-        } else {
-            $this->guest();
-        }
+        Elements::isLoggedIn();
+        $this->welcome();
     }
 
     public function welcome($message = '') {
@@ -130,17 +127,13 @@ class User extends CI_Controller {
     }
 
     public function profile() {
-        if (Elements::isLoggedIn()) {
-            $data['title'] = 'User page';
-            $data['head_menu'] = Elements::getMenu();
-            $data['activeItem'] = 'profileItem';
-            $data['achievs'] = $this->achiev_model->getUserAchievs($this->session->userdata('user_id'));
-            $this->load->view('user_head_view', $data);
-            $this->load->view('user_panel_view', $data);
-            $this->load->view('user_achiev_view', $data);
-        } else {
-            $this->guest();
-        }
+        Elements::isLoggedIn();
+        $data['title'] = 'User page';
+        $data['head_menu'] = Elements::getMenu();
+        $data['activeItem'] = 'profileItem';
+        $this->load->view('user_head_view', $data);
+        $this->load->view('user_panel_view', $data);
+        $this->load->view('user_home_view', $data);
     }
 
     public function action() {
@@ -154,17 +147,14 @@ class User extends CI_Controller {
     }
 
     public function person() {
-        if (Elements::isLoggedIn()) {
-            $data['title'] = 'Personal information';
-            $data['head_menu'] = Elements::getMenu();
-            $data['activeItem'] = 'personItem';
-            $data['personData'] = $this->person_model->getPerson($this->session->userdata('user_id'));
-            $this->load->view('user_head_view', $data);
-            $this->load->view('user_panel_view', $data);
-            $this->load->view('user_person_view', $data);
-        } else {
-            $this->guest();
-        }
+        Elements::isLoggedIn();
+        $data['title'] = 'Personal information';
+        $data['head_menu'] = Elements::getMenu();
+        $data['activeItem'] = 'personItem';
+        $data['personData'] = $this->person_model->getPerson($this->session->userdata('user_id'));
+        $this->load->view('user_head_view', $data);
+        $this->load->view('user_panel_view', $data);
+        $this->load->view('user_person_view', $data);
     }
 
     public function savePerson() {
@@ -174,42 +164,44 @@ class User extends CI_Controller {
     }
 
     public function gallery() {
-        if (Elements::isLoggedIn()) {
-            $data['title'] = 'Galary';
-            $data['head_menu'] = Elements::getMenu();
-            $data['activeItem'] = 'galleryItem';
-            $this->load->view('user_head_view', $data);
-            $this->load->view('user_panel_view', $data);
-            $this->load->view('user_gallery_view', $data);
-        } else {
-            $this->guest();
-        }
+        Elements::isLoggedIn();
+        $data['title'] = 'Galary';
+        $data['head_menu'] = Elements::getMenu();
+        $data['activeItem'] = 'galleryItem';
+        $this->load->view('user_head_view', $data);
+        $this->load->view('user_panel_view', $data);
+        $this->load->view('user_gallery_view', $data);
     }
-    
-    public function messages(){        
-        if (Elements::isLoggedIn()) {
-            $data['title'] = 'Messages';
-            $data['head_menu'] = Elements::getMenu();
-            $data['activeItem'] = 'messagesItem';
-            $this->load->view('user_head_view', $data);
-            $this->load->view('user_panel_view', $data);
-            $this->load->view('user_messages_view', $data);
-        } else {
-            $this->guest();
-        }
+
+    public function messages() {
+        Elements::isLoggedIn();
+        $data['title'] = 'Messages';
+        $data['head_menu'] = Elements::getMenu();
+        $data['activeItem'] = 'messagesItem';
+        $this->load->view('user_head_view', $data);
+        $this->load->view('user_panel_view', $data);
+        $this->load->view('user_messages_view', $data);
     }
-    
-    public function calendar(){        
-        if (Elements::isLoggedIn()) {
-            $data['title'] = 'Calendar';
-            $data['head_menu'] = Elements::getMenu();
-            $data['activeItem'] = 'calendarItem';
-            $this->load->view('user_head_view', $data);
-            $this->load->view('user_panel_view', $data);
-            $this->load->view('user_calendar_view', $data);
-        } else {
-            $this->guest();
-        }
+
+    public function calendar() {
+        Elements::isLoggedIn();
+        $data['title'] = 'Calendar';
+        $data['head_menu'] = Elements::getMenu();
+        $data['activeItem'] = 'calendarItem';
+        $this->load->view('user_head_view', $data);
+        $this->load->view('user_panel_view', $data);
+        $this->load->view('user_calendar_view', $data);
+    }
+
+    public function achiev() {
+        Elements::isLoggedIn();
+        $data['title'] = 'Calendar';
+        $data['head_menu'] = Elements::getMenu();
+        $data['achievs'] = $this->achiev_model->getUserAchievs($this->session->userdata('user_id'));
+        $data['activeItem'] = 'achievItem';
+        $this->load->view('user_head_view', $data);
+        $this->load->view('user_panel_view', $data);
+        $this->load->view('user_achiev_view', $data);
     }
 
 }

@@ -5,7 +5,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Elements {
     
     public function isLoggedIn() {
-        return $this->session->userdata('logged_in');
+        if(! $this->session->userdata('logged_in')){
+            redirect('user/guest');
+        }
     }
     
     public function getMenu() {

@@ -13,13 +13,8 @@ class Post extends CI_Controller {
         $this->load->model('post_model');
     }
 
-    public function isLoggedIn() {
-        if(! $this->session->userdata('logged_in')){
-            redirect('user/guest');
-        }
-    }
-
     public function formPost() {
+        Elements::isLoggedIn();
         $data['title'] = 'Create new post';
         $data['head_menu'] = Elements::getMenu();
         //add activeItem
@@ -29,6 +24,7 @@ class Post extends CI_Controller {
     }
 
     public function viewPost($postId) {
+        Elements::isLoggedIn();
         $data['title'] = 'View post';
         $data['activeItem'] = 'postsItem';
         $data['postData'] = $this->post_model->getPost($postId);
@@ -57,12 +53,13 @@ class Post extends CI_Controller {
     }
 
     public function lastPost() {
+        Elements::isLoggedIn();
         $postId = $this->post_model->getLastPostId($this->session->userdata('user_id'));
         $this->viewPost($postId);
     }
 
     public function postsList() {
-        $this->isLoggedIn();
+        Elements::isLoggedIn();
         $data['title'] = 'Posts';
         $data['head_menu'] = Elements::getMenu();
         $data['activeItem'] = 'postsItem';
