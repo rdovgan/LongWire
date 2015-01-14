@@ -24,11 +24,11 @@ class User extends CI_Controller {
         if ((isset($message)) && ($message != '')) {
             $data['messageText'] = $message;
         }
-        $this->load->view('header_view', $data);
-        $this->load->view("main_top_view.php", $data);
-        $this->load->view('menu_view.php', $data);
-        $this->load->view('welcome_view.php', $data);
-        $this->load->view('footer_view', $data);
+        $this->load->view('main/header_view', $data);
+        $this->load->view("main/main_top_view.php", $data);
+        $this->load->view('main/menu_view.php', $data);
+        $this->load->view('main/welcome_view.php', $data);
+        $this->load->view('main/footer_view', $data);
     }
 
     public function guest($option = '') {
@@ -41,11 +41,11 @@ class User extends CI_Controller {
                 $data['help_message'] = "Wrong password";
             }
         }
-        $this->load->view('header_view', $data);
-        $this->load->view("main_top_view.php", $data);
-        $this->load->view("menu_view.php", $data);
-        $this->load->view("main_content_view.php", $data);
-        $this->load->view('footer_view', $data);
+        $this->load->view('main/header_view', $data);
+        $this->load->view("main/main_top_view.php", $data);
+        $this->load->view("main/menu_view.php", $data);
+        $this->load->view("main/main_content_view.php", $data);
+        $this->load->view('main/footer_view', $data);
     }
 
     public function login() {
@@ -74,10 +74,10 @@ class User extends CI_Controller {
     public function thanks() {
         $data['title'] = 'Thanks';
         $data['head_menu'] = Elements::getMenu();
-        $this->load->view('header_view', $data);
-        $this->load->view('menu_view', $data);
-        $this->load->view('thanks_view.php', $data);
-        $this->load->view('footer_view', $data);
+        $this->load->view('main/header_view', $data);
+        $this->load->view('main/menu_view', $data);
+        $this->load->view('main/thanks_view.php', $data);
+        $this->load->view('main/footer_view', $data);
     }
 
     function is_username($str) {
@@ -126,24 +126,24 @@ class User extends CI_Controller {
         $this->index();
     }
 
+    public function action() {
+        $data['title'] = 'Home';
+        $data['head_menu'] = Elements::getMenu();
+        $this->load->view('main/header_view', $data);
+        $this->load->view('main/action_top_view', $data);
+        $this->load->view('main/menu_view', $data);
+        $this->load->view('main/action_view.php', $data);
+        $this->load->view('main/footer_view', $data);
+    }
+
     public function profile() {
         Elements::isLoggedIn();
         $data['title'] = 'User page';
         $data['head_menu'] = Elements::getMenu();
         $data['activeItem'] = 'profileItem';
-        $this->load->view('user_head_view', $data);
-        $this->load->view('user_panel_view', $data);
-        $this->load->view('user_home_view', $data);
-    }
-
-    public function action() {
-        $data['title'] = 'Home';
-        $data['head_menu'] = Elements::getMenu();
-        $this->load->view('header_view', $data);
-        $this->load->view('action_top_view', $data);
-        $this->load->view('menu_view', $data);
-        $this->load->view('action_view.php', $data);
-        $this->load->view('footer_view', $data);
+        $this->load->view('user/head_view', $data);
+        $this->load->view('user/panel_view', $data);
+        $this->load->view('user/home_view', $data);
     }
 
     public function person() {
@@ -152,9 +152,9 @@ class User extends CI_Controller {
         $data['head_menu'] = Elements::getMenu();
         $data['activeItem'] = 'personItem';
         $data['personData'] = $this->person_model->getPerson($this->session->userdata('user_id'));
-        $this->load->view('user_head_view', $data);
-        $this->load->view('user_panel_view', $data);
-        $this->load->view('user_person_view', $data);
+        $this->load->view('user/head_view', $data);
+        $this->load->view('user/panel_view', $data);
+        $this->load->view('user/person_view', $data);
     }
 
     public function savePerson() {
@@ -168,9 +168,9 @@ class User extends CI_Controller {
         $data['title'] = 'Galary';
         $data['head_menu'] = Elements::getMenu();
         $data['activeItem'] = 'galleryItem';
-        $this->load->view('user_head_view', $data);
-        $this->load->view('user_panel_view', $data);
-        $this->load->view('user_gallery_view', $data);
+        $this->load->view('user/head_view', $data);
+        $this->load->view('user/panel_view', $data);
+        $this->load->view('user/gallery_view', $data);
     }
 
     public function messages() {
@@ -178,9 +178,9 @@ class User extends CI_Controller {
         $data['title'] = 'Messages';
         $data['head_menu'] = Elements::getMenu();
         $data['activeItem'] = 'messagesItem';
-        $this->load->view('user_head_view', $data);
-        $this->load->view('user_panel_view', $data);
-        $this->load->view('user_messages_view', $data);
+        $this->load->view('user/head_view', $data);
+        $this->load->view('user/panel_view', $data);
+        $this->load->view('user/messages_view', $data);
     }
 
     public function calendar() {
@@ -188,9 +188,9 @@ class User extends CI_Controller {
         $data['title'] = 'Calendar';
         $data['head_menu'] = Elements::getMenu();
         $data['activeItem'] = 'calendarItem';
-        $this->load->view('user_head_view', $data);
-        $this->load->view('user_panel_view', $data);
-        $this->load->view('user_calendar_view', $data);
+        $this->load->view('user/head_view', $data);
+        $this->load->view('user/panel_view', $data);
+        $this->load->view('user/calendar_view', $data);
     }
 
     public function achiev() {
@@ -199,9 +199,9 @@ class User extends CI_Controller {
         $data['head_menu'] = Elements::getMenu();
         $data['achievs'] = $this->achiev_model->getUserAchievs($this->session->userdata('user_id'));
         $data['activeItem'] = 'achievItem';
-        $this->load->view('user_head_view', $data);
-        $this->load->view('user_panel_view', $data);
-        $this->load->view('user_achiev_view', $data);
+        $this->load->view('user/head_view', $data);
+        $this->load->view('user/panel_view', $data);
+        $this->load->view('user/achiev_view', $data);
     }
 
 }

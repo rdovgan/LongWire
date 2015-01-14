@@ -15,22 +15,24 @@ class Post extends CI_Controller {
 
     public function formPost() {
         Elements::isLoggedIn();
+        $data['head_menu'] = Elements::getMenu();
         $data['title'] = 'Create new post';
         $data['head_menu'] = Elements::getMenu();
         //add activeItem
-        $this->load->view('user_head_view', $data);
-        $this->load->view('user_panel_view', $data);
-        $this->load->view('form_post_view', $data);
+        $this->load->view('user/head_view', $data);
+        $this->load->view('user/panel_view', $data);
+        $this->load->view('user/form_post_view', $data);
     }
 
     public function viewPost($postId) {
         Elements::isLoggedIn();
+        $data['head_menu'] = Elements::getMenu();
         $data['title'] = 'View post';
         $data['activeItem'] = 'postsItem';
         $data['postData'] = $this->post_model->getPost($postId);
-        $this->load->view('user_head_view', $data);
-        $this->load->view('user_panel_view', $data);
-        $this->load->view('user_post_view', $data);
+        $this->load->view('user/head_view', $data);
+        $this->load->view('user/panel_view', $data);
+        $this->load->view('user/post_view', $data);
     }
 
     public function addPost() {
@@ -54,19 +56,21 @@ class Post extends CI_Controller {
 
     public function lastPost() {
         Elements::isLoggedIn();
+        $data['head_menu'] = Elements::getMenu();
         $postId = $this->post_model->getLastPostId($this->session->userdata('user_id'));
-        $this->viewPost($postId);
+        $this->viewPost($postId, $data);
     }
 
     public function postsList() {
         Elements::isLoggedIn();
+        $data['head_menu'] = Elements::getMenu();
         $data['title'] = 'Posts';
         $data['head_menu'] = Elements::getMenu();
         $data['activeItem'] = 'postsItem';
         $data['postsList'] = $this->post_model->getAllPostsFromUser($this->session->userdata('user_id'));
-        $this->load->view('user_head_view', $data);
-        $this->load->view('user_panel_view', $data);
-        $this->load->view('user_posts_list_view', $data);
+        $this->load->view('user/head_view', $data);
+        $this->load->view('user/panel_view', $data);
+        $this->load->view('user/posts_list_view', $data);
     }
 
 }

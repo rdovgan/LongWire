@@ -13,20 +13,25 @@
     </head>
     <body>
         <div id="userTop">
-            <div id="userTopInfo"><div id="avatar"></div><div id="userName"><?php 
-            if($this->session->userdata('user_name')){
-                echo $this->session->userdata('user_name');
-            }else{
-                echo $this->session->userdata('user_login');
-            }
-            ?></div></div>
+            <div id="userTopInfo"><div id="avatar"></div><div id="userName"><?php
+                    if ($this->session->userdata('user_name')) {
+                        echo $this->session->userdata('user_name');
+                    } else {
+                        echo $this->session->userdata('user_login');
+                    }
+                    ?></div></div>
             <div id="userTopBlock">
-                <?php echo anchor('user/index','<div id="siteLogo">
+                <?php echo anchor('user/index', '<div id="siteLogo">
                     <div id="companyLogo">
                         <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
                     </div>
                     <h5 id="siteName">Long Wire Company</h5>
                 </div>'); ?>
-            </div>                
+                <div id="userMenu">
+                    <?php foreach ($head_menu as $item): ?>
+                        <?php echo $item; ?>
+                    <?php endforeach; ?>
+                </div>
+            </div>
         </div>
 
