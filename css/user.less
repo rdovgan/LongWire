@@ -115,6 +115,13 @@ a{
     width: 100%;
 }
 
+.rotate {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+}
+
 #userTop{
     margin: 0;
     padding: 0;
@@ -129,7 +136,7 @@ a{
     top: 0px;
     position: fixed;
     line-height: 75px;
-    z-index: 1053;
+    z-index: 1013;
 }
 
 #avatar{
@@ -157,7 +164,7 @@ a{
     top: 0px;
     position: fixed;
     color: @color-white;
-    z-index: 1050;
+    z-index: 1010;
     box-shadow: -2px 3px 3px #888888;
 }
 
@@ -183,7 +190,7 @@ a{
     position: fixed;
     background-color: @color-base;
     display: inline;
-    z-index: 1052;
+    z-index: 1012;
 }
 
 #data{
@@ -215,6 +222,7 @@ a{
 
 #btnCreatePost:hover{
     color: @color-danger;
+    background-color: @color-blue;
 }
 
 #modalContentPost{
@@ -226,4 +234,12 @@ a{
     margin-right: @width-panel;
     margin-top: -10px;
     float: right;
+}
+
+#btnPersonForm{
+    padding: 1px 7px;
+    font-size: 28px;
+    width: 42px;
+    height: 42px;
+    color: @color-back;
 }

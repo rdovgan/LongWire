@@ -163,16 +163,6 @@ class User extends CI_Controller {
         $this->person();
     }
 
-    public function gallery() {
-        Elements::isLoggedIn();
-        $data['title'] = 'Galary';
-        $data['head_menu'] = Elements::getMenu();
-        $data['activeItem'] = 'galleryItem';
-        $this->load->view('user/head_view', $data);
-        $this->load->view('user/panel_view', $data);
-        $this->load->view('user/gallery_view', $data);
-    }
-
     public function messages() {
         Elements::isLoggedIn();
         $data['title'] = 'Messages';

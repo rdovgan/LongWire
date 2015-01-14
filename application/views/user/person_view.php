@@ -1,42 +1,49 @@
 <div id="data" class='content'>
 
-    <div class="bigText">Your personal info</div>
+    <?php if (isset($personData) && $personData != false) { ?>
 
-    <div id="personData" class="col-md-4">
-        <table class="table table-striped">
-            <tr>
-                <td>Name</td>
-                <td><?php echo $personData['person_name']; ?></td>
-            </tr>
-            <tr>
-                <td>Surname</td>
-                <td><?php echo $personData['person_surname']; ?></td>
-            </tr>
-            <tr>
-                <td>Date of birth</td>
-                <td><?php echo $personData['person_birth']; ?></td>
-            </tr>
-            <tr>
-                <td>Gender</td>
-                <td><?php
-                    if ($personData['person_gender'] == '1') {
-                        echo 'Male';
-                    } else if ($personData['person_gender'] == '2') {
-                        echo 'Female';
-                    } else {
-                        echo 'Unknown';
-                    }
-                    ?></td>
-            </tr>
-        </table>
-    </div>
+        <div id="personData" class="col-md-6">
+            <div class="bigText">Your personal info</div>
+            <table class="table table-striped">
+                <tr>
+                    <td>Name</td>
+                    <td><?php echo $personData['person_name']; ?></td>
+                </tr>
+                <tr>
+                    <td>Surname</td>
+                    <td><?php echo $personData['person_surname']; ?></td>
+                </tr>
+                <tr>
+                    <td>Date of birth</td>
+                    <td><?php echo $personData['person_birth']; ?></td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td><?php
+                        if ($personData['person_gender'] == '1') {
+                            echo 'Male';
+                        } else if ($personData['person_gender'] == '2') {
+                            echo 'Female';
+                        } else {
+                            echo 'Unknown';
+                        }
+                        ?></td>
+                </tr>
+            </table>
+            <button id="btnPersonForm" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
+        </div>
+    <?php } ?>
 
-    <div class="br"></div>
-
-    <div class="bigText">Fill in personal info</div>
 
     <?php echo form_open("user/savePerson"); ?>
-    <div id="personForm" class="col-md-4 panel">
+    <div id="personFormBlock" class="col-md-4 panel" hidden="false">
+
+        <?php if (isset($personData) && $personData != false) { ?>
+            <div class="bigText">Update your personal info</div>
+        <?php } else { ?>
+            <div class="bigText">Fill in personal info</div>
+        <?php } ?>
+
         <div class="input-group input-group-sm col-md-12">
             <input id="person_name" name="person_name" class="form-control col-md-8" type="text" placeholder="Name" value="<?php echo $personData['person_name']; ?>"> </div>
         <div class="br"></div>
