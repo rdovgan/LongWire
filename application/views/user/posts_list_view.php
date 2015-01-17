@@ -1,6 +1,6 @@
 <div id="data" class='content'>
     <?php
-    if (isset($postsList)) {
+    if (isset($postsList) && $postsList !=false) {
         foreach ($postsList as $item):
             ?>    
             <div class="post">
