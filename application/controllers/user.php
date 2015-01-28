@@ -193,6 +193,102 @@ class User extends CI_Controller {
         $this->load->view('user/panel_view', $data);
         $this->load->view('user/achiev_view', $data);
     }
+    
+    public function gallery($errors = '') {
+        Elements::isLoggedIn();
+        $data['title'] = 'Galary';
+        $data['head_menu'] = Elements::getMenu();
+        $data['activeItem'] = 'galleryItem';
+        $data['error'] = $errors;
+        $this->load->view('user/head_view', $data);
+        $this->load->view('user/panel_view', $data);
+        $this->load->view('user/gallery_view', $data);
+    }
+
+    public function uploadAvatar() {
+        $config['upload_path'] = './img/avatars/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['file_name'] = ''.$this->session->userdata('user_login').'_full.png';
+        $config['overwrite'] = TRUE;
+        $config['max_size'] = '0';
+        $config['max_width'] = '0';
+        $config['max_height'] = '0';
+
+        $this->load->library('upload', $config);
+
+        if (!is_dir($config['upload_path'])) {
+            mkdir($config['upload_path'], 0755, TRUE);
+        }
+
+        if (!$this->upload->do_upload()) { //Upload file
+            $errors = array('error' => $this->upload->display_errors());
+            $this->gallery($errors);
+        } else {
+            $upload_data = $this->upload->data();
+            $this->cropAvatar($upload_data);
+        }
+    }
+
+    private function getAvatarConf($upload_data){
+        $image_config['image_library'] = 'gd2';
+        $image_config['source_image'] = $upload_data["file_path"] . $this->session->userdata('user_login').'_full.png';
+        $image_config['new_image'] = $upload_data["file_path"] . $this->session->userdata('user_login').'.png';
+        $image_config['quality'] = "100%";
+        $image_config['maintain_ratio'] = FALSE;
+        return $image_config;
+    }
+    
+    private function cropAvatar($upload_data) {
+        //get min length and center crop'
+        $length = min($upload_data['image_width'], $upload_data['image_height']);
+        $x_axis = $y_axis = 0;
+
+        if ($upload_data['image_width'] > $upload_data['image_height']) {
+            $x_axis = ($upload_data['image_width'] / 2) - ($upload_data['image_height'] / 2);
+        } else {
+            $y_axis = ($upload_data['image_height'] / 2) - ($upload_data['image_width'] / 2);
+        }
+        
+        $image_config = $this->getAvatarConf($upload_data);
+        $image_config['width'] = $length;
+        $image_config['height'] = $length;
+        $image_config['x_axis'] = $x_axis;
+        $image_config['y_axis'] = $y_axis;
+
+        $this->load->library('image_lib');
+        $this->image_lib->initialize($image_config);
+
+        if (!$this->image_lib->crop()) {
+            $errors = array('error' => $this->image_lib->display_errors());
+            $this->gallery($errors);
+        } else {
+            $upload_data = $this->upload->data();
+            $this->resizeAvatar($upload_data);
+        }
+    }
+
+    private function resizeAvatar($upload_data) {
+        $image_config["image_library"] = "gd2";
+        $image_config["source_image"] = $upload_data["file_path"] . $this->session->userdata('user_login').'.png';
+        $image_config['create_thumb'] = TRUE;
+        $image_config['maintain_ratio'] = TRUE;
+        $image_config['new_image'] = $upload_data["file_path"] . $this->session->userdata('user_login').'.png';
+        $image_config['quality'] = "100%";
+        $image_config['width'] = 96;
+        $image_config['height'] = 96;
+        $dim = (intval($upload_data["image_width"]) / intval($upload_data["image_height"])) - ($image_config['width'] / $image_config['height']);
+        $image_config['master_dim'] = ($dim > 0) ? "height" : "width";
+
+        $this->image_lib->clear();
+        $this->image_lib->initialize($image_config);
+
+        if (!$this->image_lib->resize()) { //Resize image
+            $errors = array('error' => $this->image_lib->display_errors());
+            $this->gallery($errors);
+        } else {
+            $this->gallery();
+        }
+    }
 
 }
 

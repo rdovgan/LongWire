@@ -13,13 +13,17 @@
     </head>
     <body>
         <div id="userTop">
-            <div id="userTopInfo"><div id="avatar"></div><div id="userName"><?php
+            <div id="userTopInfo"><img id="avatar" src="/img/avatars/<?php echo $this->session->userdata('user_login') ?>.png" 
+                                       width="48" height="48" border="0" onerror="this.src='/img/avatars/q.png'">
+                <div id="userName">
+                    <?php
                     if ($this->session->userdata('user_name')) {
                         echo $this->session->userdata('user_name');
                     } else {
                         echo $this->session->userdata('user_login');
                     }
-                    ?></div></div>
+                    ?></div>
+            </div>
             <div id="userTopBlock">
                 <?php echo anchor('user/index', '<div id="siteLogo">
                     <div id="companyLogo">
