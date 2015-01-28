@@ -18,7 +18,19 @@ class News {
             );
             array_push($feed, $item);
         }
+        return $feed;
     }
 
+    public function getWPnews($limit, $page=0) {
+        if (!isset($limit) || $limit <= 0) {
+            return false;
+        }
+        $feed = News::getWP();
+        if (!isset($page) || $page <= 0) {
+            return array_slice($feed, 0, $limit);
+        } else {
+            return array_slice($feed, ($page - 1) * $limit, $limit * $page);
+        }
+    }
 }
 ?>

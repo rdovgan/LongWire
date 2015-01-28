@@ -141,6 +141,7 @@ class User extends CI_Controller {
         $data['title'] = 'User page';
         $data['head_menu'] = Elements::getMenu();
         $data['activeItem'] = 'profileItem';
+        $data['wp_news'] = News::getWPNews(10);
         $this->load->view('user/head_view', $data);
         $this->load->view('user/panel_view', $data);
         $this->load->view('user/home_view', $data);
