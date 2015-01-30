@@ -3,9 +3,9 @@
     <ul class="nav nav-pills nav-stacked">
         <li id="profileItem"><?php echo anchor('user/profile', '<span class="glyphicon glyphicon-home" aria-hidden="true"></span>Dashboard') ?></li>
         <li id="messagesItem"><?php echo anchor('user/messages', '<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>Messages') ?></li>
-        <button id="btnCreatePost" class="btn btn-sm" onclick="createPostDialog();">
+        <?php echo anchor('post/formPost', '<button id="btnCreatePost" class="btn btn-sm">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-        </button>
+        </button>'); ?>
         <li id="postsItem" style='width: 247px;'><?php echo anchor('post/postsList', '<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>Posts') ?></li>
         <li id="calendarItem"><?php echo anchor('user/calendar', '<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>Calendar') ?></li>
         <li id="galleryItem"><?php echo anchor('user/gallery', '<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>Gallery') ?></li>

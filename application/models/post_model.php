@@ -70,6 +70,10 @@ class Post_model extends CI_Model {
 
     /*
      * $order - can be by time, popularity, top rated, most favoutites
+     *  - 'time'
+     *  - 'pop'
+     *  - 'top'
+     *  - 'fav'
      * $limit - count of posts on page
      */
 
@@ -77,8 +81,18 @@ class Post_model extends CI_Model {
         
     }
 
-    public function updatePost($postId, $name, $desc, $body, $tags) {
-        
+    //need to add public key
+    public function updatePost() {
+        $data = array(
+            'post_name' => $this->input->post('post_name'),
+            'post_desc' => $this->input->post('post_desc'),
+            'post_body' => $this->input->post('post_body'),
+            'post_tags' => $this->input->post('post_tags')
+        );
+        $postId = $this->input->post('post_id');
+        $this->db->where('post_id', $postId);
+        $this->db->update('posts', $data);
+        return $postId;
     }
 
 }

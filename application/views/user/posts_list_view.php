@@ -5,6 +5,7 @@
             ?>    
             <div class="post">
                 <div class="col-md-12 postName" onclick="description(event);"><?php echo $item['post_name']; ?>
+                    <?php echo anchor('post/editPost/'.$item['post_id'],'#'); ?>
                     <div class="col-md-12 postDescription" hidden="true"><?php echo $item['post_desc']; ?></div></div>
                 <pre><div class="col-md-12 postBody"><?php echo $item['post_body']; ?></div></pre>
             </div>

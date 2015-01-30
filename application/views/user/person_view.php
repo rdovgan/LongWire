@@ -37,8 +37,7 @@
 
 
         <?php echo form_open("user/savePerson"); ?>
-        <div id="personFormBlock" class="col-md-4 panel" <?php if($isPerson) echo 'hidden="false"'; ?>>
-
+        <div id="personFormBlock" class="col-md-4 panel" <?php if($isPerson){ echo 'hidden="false"';} ?>>
             <?php if ($isPerson) { ?>
                 <div class="bigText">Update your personal info</div>
             <?php } else { ?>

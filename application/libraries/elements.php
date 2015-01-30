@@ -3,16 +3,17 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Elements {
-    
+
     public function isLoggedIn() {
-        if(! $this->session->userdata('logged_in')){
+        if (!$this->session->userdata('logged_in')) {
             redirect('user/guest');
         }
     }
-    
+
     public function getMenu() {
         $data = array();
         if ($this->session->userdata('logged_in')) {
+            $createPost = '<a href="#" class="" onclick="createPostDialog();"><h4><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></h4></a>';
             $userLink = anchor(
                     "user/profile", '<h4><span class="glyphicon glyphicon-user" aria-hidden="true"></span></h4><h6 hidden><span class="glyphicon glyphicon-info-sign badgeInfo" aria-hidden="true"></span></h6>', array('id' => 'userLink', 'class' => 'invlink')
             );
@@ -20,6 +21,7 @@ class Elements {
                     "user/logout", '<h4><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></h4>', array('id' => 'logoutLink', 'class' => 'invlink')
             );
             $data = array(
+                '<div class="headerElement">', $createPost, '</div>',
                 '<div class="headerElement">', $userLink, '</div>',
                 '<div class="headerElement">', $logoutLink, '</div>'
             );
