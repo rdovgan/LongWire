@@ -106,10 +106,11 @@ class User extends CI_Controller {
         if ($this->form_validation->run() == FALSE) {
             $this->guest('register');
         } else {
-            $this->user_model->add_user();
+            $userId = $this->user_model->add_user();
+            $this->achList = $this->achiev_model->getUserAchId($this->session->userdata('user_id'));
             $result = Events::trigger('register_event', 'system_events', 'string'); //TODO:give result to $this->thank()
+            if($result){$this->achiev_model->gotAchiev(1, $userId); }
             //call modal with message
-            $this->achiev_model->gotAchiev(1, $this->session->userdata('user_id'));
             $this->thanks();
         }
     }
@@ -194,7 +195,7 @@ class User extends CI_Controller {
         $this->load->view('user/panel_view', $data);
         $this->load->view('user/achiev_view', $data);
     }
-    
+
     public function gallery($errors = '') {
         Elements::isLoggedIn();
         $data['title'] = 'Galary';
@@ -209,7 +210,7 @@ class User extends CI_Controller {
     public function uploadAvatar() {
         $config['upload_path'] = './img/avatars/';
         $config['allowed_types'] = 'gif|jpg|png';
-        $config['file_name'] = ''.$this->session->userdata('user_login').'_full.png';
+        $config['file_name'] = '' . $this->session->userdata('user_login') . '_full.png';
         $config['overwrite'] = TRUE;
         $config['max_size'] = '0';
         $config['max_width'] = '0';
@@ -230,15 +231,15 @@ class User extends CI_Controller {
         }
     }
 
-    private function getAvatarConf($upload_data){
+    private function getAvatarConf($upload_data) {
         $image_config['image_library'] = 'gd2';
-        $image_config['source_image'] = $upload_data["file_path"] . $this->session->userdata('user_login').'_full.png';
-        $image_config['new_image'] = $upload_data["file_path"] . $this->session->userdata('user_login').'.png';
+        $image_config['source_image'] = $upload_data["file_path"] . $this->session->userdata('user_login') . '_full.png';
+        $image_config['new_image'] = $upload_data["file_path"] . $this->session->userdata('user_login') . '.png';
         $image_config['quality'] = "100%";
         $image_config['maintain_ratio'] = FALSE;
         return $image_config;
     }
-    
+
     private function cropAvatar($upload_data) {
         //get min length and center crop'
         $length = min($upload_data['image_width'], $upload_data['image_height']);
@@ -249,7 +250,7 @@ class User extends CI_Controller {
         } else {
             $y_axis = ($upload_data['image_height'] / 2) - ($upload_data['image_width'] / 2);
         }
-        
+
         $image_config = $this->getAvatarConf($upload_data);
         $image_config['width'] = $length;
         $image_config['height'] = $length;
@@ -270,10 +271,10 @@ class User extends CI_Controller {
 
     private function resizeAvatar($upload_data) {
         $image_config["image_library"] = "gd2";
-        $image_config["source_image"] = $upload_data["file_path"] . $this->session->userdata('user_login').'.png';
+        $image_config["source_image"] = $upload_data["file_path"] . $this->session->userdata('user_login') . '.png';
         $image_config['create_thumb'] = TRUE;
         $image_config['maintain_ratio'] = TRUE;
-        $image_config['new_image'] = $upload_data["file_path"] . $this->session->userdata('user_login').'.png';
+        $image_config['new_image'] = $upload_data["file_path"] . $this->session->userdata('user_login') . '.png';
         $image_config['quality'] = "100%";
         $image_config['width'] = 96;
         $image_config['height'] = 96;
