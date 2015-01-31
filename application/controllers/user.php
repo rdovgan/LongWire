@@ -142,17 +142,17 @@ class User extends CI_Controller {
         $data['title'] = 'User page';
         $data['head_menu'] = Elements::getMenu();
         $data['activeItem'] = 'profileItem';
-        $data['wp_news'] = News::getWPNews(10);
         $this->load->view('user/head_view', $data);
         $this->load->view('user/panel_view', $data);
         $this->load->view('user/home_view', $data);
     }
 
-    public function person() {
+    public function person($errors = '') {
         Elements::isLoggedIn();
         $data['title'] = 'Personal information';
         $data['head_menu'] = Elements::getMenu();
         $data['activeItem'] = 'personItem';
+        $data['error'] = $errors;
         $data['personData'] = $this->person_model->getPerson($this->session->userdata('user_id'));
         $this->load->view('user/head_view', $data);
         $this->load->view('user/panel_view', $data);
@@ -170,6 +170,7 @@ class User extends CI_Controller {
         $data['title'] = 'Messages';
         $data['head_menu'] = Elements::getMenu();
         $data['activeItem'] = 'messagesItem';
+        $data['wp_news'] = News::getWPNews(10);
         $this->load->view('user/head_view', $data);
         $this->load->view('user/panel_view', $data);
         $this->load->view('user/messages_view', $data);
@@ -196,12 +197,11 @@ class User extends CI_Controller {
         $this->load->view('user/achiev_view', $data);
     }
 
-    public function gallery($errors = '') {
+    public function gallery() {
         Elements::isLoggedIn();
         $data['title'] = 'Galary';
         $data['head_menu'] = Elements::getMenu();
         $data['activeItem'] = 'galleryItem';
-        $data['error'] = $errors;
         $this->load->view('user/head_view', $data);
         $this->load->view('user/panel_view', $data);
         $this->load->view('user/gallery_view', $data);
@@ -224,7 +224,7 @@ class User extends CI_Controller {
 
         if (!$this->upload->do_upload()) { //Upload file
             $errors = array('error' => $this->upload->display_errors());
-            $this->gallery($errors);
+            $this->person($errors);
         } else {
             $upload_data = $this->upload->data();
             $this->cropAvatar($upload_data);
@@ -262,7 +262,7 @@ class User extends CI_Controller {
 
         if (!$this->image_lib->crop()) {
             $errors = array('error' => $this->image_lib->display_errors());
-            $this->gallery($errors);
+            $this->person($errors);
         } else {
             $upload_data = $this->upload->data();
             $this->resizeAvatar($upload_data);
@@ -286,9 +286,9 @@ class User extends CI_Controller {
 
         if (!$this->image_lib->resize()) { //Resize image
             $errors = array('error' => $this->image_lib->display_errors());
-            $this->gallery($errors);
+            $this->person($errors);
         } else {
-            $this->gallery();
+            $this->person();
         }
     }
 

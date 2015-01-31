@@ -37,8 +37,12 @@
 
 
         <?php echo form_open("user/savePerson"); ?>
-        <div id="personFormBlock" class="col-md-4 panel" <?php if($isPerson){ echo 'hidden="false"';} ?>>
-            <?php if ($isPerson) { ?>
+        <div id="personFormBlock" class="col-md-4 panel" <?php
+        if ($isPerson) {
+            echo 'hidden="false"';
+        }
+        ?>>
+                 <?php if ($isPerson) { ?>
                 <div class="bigText">Update your personal info</div>
             <?php } else { ?>
                 <div class="bigText">Fill in personal info</div>
@@ -81,6 +85,28 @@
             </div>
         </div>
         <?php echo form_close(); ?>
+    </div>    
+    <div id="imgGalary" class="col-md-12">
+        <?php
+        $imgLink = $this->session->userdata('user_login');
+        if (isset($imgLink)) {
+            ?>
+            <div class="avatarBig">
+                <img src="/img/avatars/<?php echo $imgLink; ?>.png" 
+                     width="96" height="96" border="0">
+            </div>
+        <?php } ?>
+        <div class="col-md-6">
+            <?php
+            if (isset($error) && isset($error['error'])) {
+                echo $error . ' ' . $error['error'];
+            }
+            ?>
+            <?php echo form_open_multipart('user/uploadAvatar'); ?>
+            <?php echo "<input class='file' type='file' name='userfile' value='Choose' size='20' />"; ?>
+            <?php echo "<input class='btn btn-sm btn-info col-md-3' style='margin-top: 20px;' type='submit' name='submit' value='Upload' /> "; ?>
+            <?php echo "</form>" ?>
+        </div>
     </div>
 </div>
 </body>

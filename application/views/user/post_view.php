@@ -5,7 +5,8 @@
         <div class = "post">
             <div class = "col-md-12 postName" onclick = "description(event);"><?php echo $postData['post_name'];
         ?>
-                <?php echo anchor('post/editPost/' . $postData['post_id'], '#'); ?>
+                <?php echo anchor('post/editPost/' . $postData['post_id'], 
+                        '<span class="glyphicon glyphicon-info-sign" style="float: right;" aria-hidden="true"></span>'); ?>
                 <div class="col-md-12 postDescription" hidden="true"><?php echo $postData['post_desc']; ?></div></div>
             <pre><div class="col-md-12 postBody"><?php echo $postData['post_body']; ?></div></pre>
             </div>

@@ -27,9 +27,6 @@ $(document).ready(function () {
     $(".btnRegister").click(function () {
         $("#modalRegister").modal('show');
     });
-    $("#btnCreatePost").click(function(){
-        $("#modalPost").modal('show');
-    });
     /* Close message block */
     $("button.close").click(function () {
         $(this).parent().prop("hidden", true);
@@ -51,7 +48,7 @@ function printInfo(time, left, top, width, height) {
     $("#messageBlock").css("min-width", width + 'px');
     $("#messageBlock").css("min-height", height + 'px');
     $("#messageBlock").prop("hidden", false);
-    $('#messageBlock').fadeIn().delay(time).fadeOut('slow'); 
+    $('#messageBlock').fadeIn().delay(time).fadeOut('slow');
 //    setTimeout(function () {
 //        messageClear();
 //    }, time+5000);
@@ -78,3 +75,7 @@ function showModalOption() {
 $(function () {
     $("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
 });
+
+function createPostDialog() {
+    $("#modalPost").modal('show');
+}
