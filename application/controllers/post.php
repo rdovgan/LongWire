@@ -52,8 +52,8 @@ class Post extends CI_Controller {
             $this->viewPost($postId);
         }
     }
-    
-    public function updatePost(){
+
+    public function updatePost() {
         $this->load->library('form_validation');
         $this->form_validation->set_rules('post_name', 'Post name', 'trim|required|min_length[1]|max_length[120]');
         $this->form_validation->set_rules('post_desc', 'Description of post', 'trim|max_length[160]');
@@ -67,16 +67,20 @@ class Post extends CI_Controller {
             $this->viewPost($postId);
         }
     }
-    
-    public function editPost($postId){
+
+    public function editPost($postId) {
         Elements::isLoggedIn();
-        $postData = $this->post_model->getPost($postId);
-        $data['head_menu'] = Elements::getMenu();
-        $data['title'] = 'Posts';
-        $data['postData'] = $postData;
-        $this->load->view('user/head_view', $data);
-        $this->load->view('user/panel_view', $data);
-        $this->load->view('user/post_form_view', $data);
+        if (!$this->post_model->checkBeforeEdit($postId, $this->session->userdata('user_login'))) {
+            $this->postsList();
+        } else {
+            $postData = $this->post_model->getPost($postId);
+            $data['head_menu'] = Elements::getMenu();
+            $data['title'] = 'Posts';
+            $data['postData'] = $postData;
+            $this->load->view('user/head_view', $data);
+            $this->load->view('user/panel_view', $data);
+            $this->load->view('user/post_form_view', $data);
+        }
     }
 
     public function lastPost() {
@@ -96,8 +100,9 @@ class Post extends CI_Controller {
         $this->load->view('user/panel_view', $data);
         $this->load->view('user/posts_list_view', $data);
     }
-    
-    public function allPosts(){        
+
+    public function allPosts() {
+        Elements::isLoggedIn();
         $data['title'] = 'Dashboard';
         $data['head_menu'] = Elements::getMenu();
         $data['activeItem'] = 'profileItem';
@@ -106,6 +111,7 @@ class Post extends CI_Controller {
         $this->load->view('user/panel_view', $data);
         $this->load->view('user/home_view', $data);
     }
+
 }
 
 ?>

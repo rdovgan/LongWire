@@ -42,7 +42,7 @@ class Post_model extends CI_Model {
             'post_tags' => $this->input->post('post_tags')
         );
         return $this->db->insert('posts', $data);
-        //return postId //if postId doesn't return - get last post by data
+//return postId //if postId doesn't return - get last post by data
     }
 
     public function getPost($postId) {
@@ -67,15 +67,25 @@ class Post_model extends CI_Model {
         }
         return false;
     }
-    
-    
-    //Don't use this function in future
-    public function getAllPosts(){
+
+    public function getUserName($userId) {
+        $this->db->where('user_id', $userId);
+        $query = $this->db->get('users');
+        if ($query->num_rows() > 0) {
+            return $query->row()->user_login;
+        }
+        return 'unknown';
+    }
+
+//Don't use this function in future
+    public function getAllPosts() {
         $query = $this->db->get('posts');
         if ($query->num_rows() > 0) {
             $posts = array();
             foreach ($query->result() as $rows) {
-                array_push($posts, (array) $rows);
+                $rows = (array) $rows;
+                $rows['post_user'] = $this->getUserName($rows['post_user_id']);
+                array_push($posts, $rows);
             }
             return $posts;
         }
@@ -95,7 +105,7 @@ class Post_model extends CI_Model {
         
     }
 
-    //need to add public key
+//need to add public key
     public function updatePost() {
         $data = array(
             'post_name' => $this->input->post('post_name'),
@@ -107,6 +117,14 @@ class Post_model extends CI_Model {
         $this->db->where('post_id', $postId);
         $this->db->update('posts', $data);
         return $postId;
+    }
+
+    public function checkBeforeEdit($postId, $login) {
+        $post = (array) $this->getPost($postId);
+        if ($this->getUserName($post['post_user_id']) != $login) {
+            return false;
+        }
+        return true;
     }
 
 }

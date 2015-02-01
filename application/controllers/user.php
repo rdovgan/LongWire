@@ -138,8 +138,8 @@ class User extends CI_Controller {
     }
 
     public function profile() {
-        redirect('post/allPosts');
         Elements::isLoggedIn();
+        redirect('post/allPosts');
     }
 
     public function person($errors = '') {

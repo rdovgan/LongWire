@@ -15,7 +15,7 @@
         <div class="br"></div>
         <div class="input-group input-group-sm col-md-12">
             <textarea id="post_body" name="post_body" class="form-control col-md-12" 
-                   rows="10" style="height: 280px;" placeholder="Your post is here"><?php if($isPost){echo $postData['post_body'];} ?> </textarea> </div>
+                   rows="10" style="height: 280px;" placeholder="Your post is here"><?php if($isPost){echo $postData['post_body'];} ?></textarea> </div>
         <div class="br"></div>
         <div class="input-group input-group-sm col-md-12">
             <input id="post_tags" name="post_tags" class="form-control col-md-12" 
