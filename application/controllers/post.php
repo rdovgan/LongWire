@@ -96,6 +96,16 @@ class Post extends CI_Controller {
         $this->load->view('user/panel_view', $data);
         $this->load->view('user/posts_list_view', $data);
     }
+    
+    public function allPosts(){        
+        $data['title'] = 'Dashboard';
+        $data['head_menu'] = Elements::getMenu();
+        $data['activeItem'] = 'profileItem';
+        $data['postsList'] = $this->post_model->getAllPosts();
+        $this->load->view('user/head_view', $data);
+        $this->load->view('user/panel_view', $data);
+        $this->load->view('user/home_view', $data);
+    }
 }
 
 ?>

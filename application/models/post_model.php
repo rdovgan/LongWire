@@ -67,6 +67,20 @@ class Post_model extends CI_Model {
         }
         return false;
     }
+    
+    
+    //Don't use this function in future
+    public function getAllPosts(){
+        $query = $this->db->get('posts');
+        if ($query->num_rows() > 0) {
+            $posts = array();
+            foreach ($query->result() as $rows) {
+                array_push($posts, (array) $rows);
+            }
+            return $posts;
+        }
+        return false;
+    }
 
     /*
      * $order - can be by time, popularity, top rated, most favoutites

@@ -138,13 +138,8 @@ class User extends CI_Controller {
     }
 
     public function profile() {
+        redirect('post/allPosts');
         Elements::isLoggedIn();
-        $data['title'] = 'User page';
-        $data['head_menu'] = Elements::getMenu();
-        $data['activeItem'] = 'profileItem';
-        $this->load->view('user/head_view', $data);
-        $this->load->view('user/panel_view', $data);
-        $this->load->view('user/home_view', $data);
     }
 
     public function person($errors = '') {
