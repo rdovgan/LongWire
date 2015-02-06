@@ -70,6 +70,22 @@ class User_model extends CI_Model {
         }
         return false;
     }
+    
+    //set limit
+    public function getUsers(){
+        $query = $this->db->get('users');
+        if($query->num_rows() > 0){
+            $users = array();
+            foreach ($query->result() as $rows) {
+                $rows = (array) $rows;
+                $person = Person_model::getPerson($rows['user_id']);
+                $rows['person'] = $person;
+                array_push($users, $rows);
+            }
+            return $users;
+        }
+        return false;
+    }
 
 }
 

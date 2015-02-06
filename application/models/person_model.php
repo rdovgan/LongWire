@@ -51,7 +51,7 @@ class Person_model extends CI_Model {
             $this->db->insert('persons', $data);
         }
         $this->session->set_userdata(array('user_name' => $this->input->post('person_name') . ' ' . $this->input->post('person_surname')));
-    }
+    } 
 
 }
 

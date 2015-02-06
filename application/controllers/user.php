@@ -182,16 +182,6 @@ class User extends CI_Controller {
         $this->load->view('user/messages_view', $data);
     }
 
-    public function calendar() {
-        Elements::isLoggedIn();
-        $data['title'] = 'Calendar';
-        $data['head_menu'] = Elements::getMenu();
-        $data['activeItem'] = 'calendarItem';
-        $this->load->view('user/head_view', $data);
-        $this->load->view('user/panel_view', $data);
-        $this->load->view('user/calendar_view', $data);
-    }
-
     public function achiev() {
         Elements::isLoggedIn();
         $data['title'] = 'Calendar';
@@ -201,16 +191,6 @@ class User extends CI_Controller {
         $this->load->view('user/head_view', $data);
         $this->load->view('user/panel_view', $data);
         $this->load->view('user/achiev_view', $data);
-    }
-
-    public function gallery() {
-        Elements::isLoggedIn();
-        $data['title'] = 'Galary';
-        $data['head_menu'] = Elements::getMenu();
-        $data['activeItem'] = 'galleryItem';
-        $this->load->view('user/head_view', $data);
-        $this->load->view('user/panel_view', $data);
-        $this->load->view('user/gallery_view', $data);
     }
 
     public function uploadAvatar() {

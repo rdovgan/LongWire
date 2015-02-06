@@ -44,7 +44,7 @@
                         }
                         ?>
                         <div class="col-md-12 postDescription" hidden="true"><?php echo $item['post_desc']; ?></div></div>
-                    <pre><div class="col-md-12 postBody"><?php echo $item['post_body']; ?></div></pre>
+                            <pre><div class="col-md-12 postBody"><?php echo $item['post_body']; ?></div></pre>
                         </div>
                         <div class="postUsername <?php if($isAuthor){echo 'tiny';} ?>" ><?php echo $personLogin; ?></div>                        
                                             <div class="divider"></div>

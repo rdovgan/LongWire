@@ -8,9 +8,9 @@
         </button>'); ?>
         <li id="postsItem" style='width: 247px;'><?php echo anchor('post/postsList', '<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>Posts') ?></li>
         <li id="calendarItem"><?php echo anchor('user/calendar', '<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>Calendar') ?></li>
-        <li id="galleryItem"><?php echo anchor('user/gallery', '<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>Gallery') ?></li>
-        <li id="personItem"><?php echo anchor('user/person', '<span class="glyphicon glyphicon-user" aria-hidden="true"></span>Person') ?></li>
-        <li id="achievItem"><?php echo anchor('user/achiev', '<span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>Achievements') ?></li>
+        <li id="userItem"><?php echo anchor('profile/search', '<span class="glyphicon glyphicon-user" aria-hidden="true"></span>People') ?></li>
+        <li id="personItem"><?php echo anchor('user/person', '<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>Person') ?></li>
+        <li id="achievItem"><?php echo anchor('user/achiev', '<span class="glyphicon glyphicon-star" aria-hidden="true"></span>Achievements') ?></li>
     </ul>
     <div class="panelTitle">ELEMENTS</div>
     <ul class="nav nav-pills nav-stacked">

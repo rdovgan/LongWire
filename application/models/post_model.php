@@ -77,8 +77,9 @@ class Post_model extends CI_Model {
         return 'unknown';
     }
 
-//Don't use this function in future
+    //Don't use this function in future
     public function getAllPosts() {
+        $this->db->order_by('post_date','desc');
         $query = $this->db->get('posts');
         if ($query->num_rows() > 0) {
             $posts = array();

@@ -15,8 +15,8 @@
                         <div class="col-md-12 postDescription" hidden="true"><?php echo $item['post_desc']; ?></div></div>
                     <pre><div class="col-md-12 postBody"><?php echo $item['post_body']; ?></div></pre>
                         </div>
-                        <div class="postUsername <?php if($isAuthor){echo 'tiny';} ?>" ><?php echo $item['post_user']; ?></div>                        
-                                            <div class="divider"></div>
+                        <div class="postUsername <?php if($isAuthor){echo 'tiny';} ?>" ><?php echo anchor('profile/user/'.$item['post_user'], $item['post_user']); ?></div>                        
+                        <div class="divider"></div>
                 <?php
             endforeach;
         }
