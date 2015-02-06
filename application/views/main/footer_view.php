@@ -19,7 +19,7 @@
                     </div>                    
                     <div class="input-group input-group-sm" style="margin-top:10px; margin-left: -12px;">
                         <span class="input-group-addon" style="background-color: transparent;">Remember me</span>
-                        <label unselectable="on" onselectstart="return false;"><input type="checkbox" name="attach_ip" class="switch ios-switch tinyswitch" checked />
+                        <label unselectable="on" onselectstart="return false;"><input type="checkbox" name="remember_me" class="switch ios-switch tinyswitch" checked />
                             <div style="margin: 0px; margin-top: 8px;"><div></div></div></label>
                     </div>
                     <?php echo validation_errors('<p class="error">'); ?>
@@ -49,13 +49,13 @@
                 </div>
                 <div class="modal-body control-group">
                     <div class="input-group input-group-sm col-md-12">
-                        <input id="registerName" name="user_name" type="text" minlength="4" required
+                        <input id="registerName" name="user_name" type="text" minlength="4" maxlength="30" required
                                data-validation-required-message="Username is required"
                                value="<?php echo set_value('user_name'); ?>" class="form-control col-md-8" placeholder="Username">
                     </div>
                     <div class="br"></div>
                     <div class="input-group input-group-sm col-md-12">
-                        <input name="password" type="password" minlength="4" required="true"
+                        <input name="password" type="password" minlength="4" maxlength="32" required="true"
                                data-validation-required-message="Password is required"
                                value="<?php echo set_value('password'); ?>" class="form-control col-md-8" placeholder="Password">
                     </div> 
@@ -88,16 +88,19 @@
                 <div class="modal-body control-group" style="min-height: 300px;">
                     <div id="personForm" class="col-md-12" style="padding-top: 0; font-family: Consolas;">
                         <div class="input-group input-group-sm col-md-12 wide">
-                            <input id="post_name" name="post_name" class="form-control col-md-12" type="text" placeholder="Name of post"> </div>
+                            <input id="post_name" name="post_name" class="form-control col-md-12" type="text" minlength="4" maxlength="120" required
+                               data-validation-required-message="Post name is required" placeholder="Name of post"> </div>
                         <div class="br"></div>
                         <div class="input-group input-group-sm col-md-12 wide">
-                            <input id="post_desc" name="post_desc" class="form-control col-md-12" type="text" placeholder="Add some description, if needed"> </div>
+                            <input id="post_desc" name="post_desc" class="form-control col-md-12" type="text" maxlength="160" placeholder="Add some description, if needed"> </div>
                         <div class="br"></div>
                         <div class="input-group input-group-sm col-md-12 wide">
-                            <textarea id="post_body" name="post_body" class="form-control col-md-12" rows="10" style="min-height: 155px;" placeholder="Your post is here"></textarea> </div>
+                            <textarea id="post_body" name="post_body" class="form-control col-md-12" rows="10" style="min-height: 155px;" minlength="4" maxlength="1200" required
+                               data-validation-required-message="Post body is required" placeholder="Your post is here"></textarea> </div>
                         <div class="br"></div>
                         <div class="input-group input-group-sm col-md-12 wide">
-                            <input id="post_tags" name="post_tags" class="form-control col-md-12" type="text" placeholder="Tags"> </div>
+                            <input id="post_tags" name="post_tags" class="form-control col-md-12" type="text" minlength="2" maxlength="120" required
+                                   data-validation-required-message="At least 1 tag is required" placeholder="Tags"> </div>
                         <div class="br"></div>
 
                     </div>

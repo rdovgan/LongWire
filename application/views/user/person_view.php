@@ -87,15 +87,14 @@
         <div class="bigText">Show your face</div>
         <div class="br"></div>
         <?php
-        $imgLink = $this->session->userdata('user_login');
-        if (file_exists($imgLink)) {
+        $imgLink = FCPATH.'/img/avatars/'.$this->session->userdata('user_login').'.png';
+        if (is_file($imgLink)) {
             ?>
             <div class="avatarBig">
-                <img src="/img/avatars/<?php echo $imgLink; ?>.png" 
+                <img src="/img/avatars/<?php echo $this->session->userdata('user_login') ?>.png"
                      width="96" height="96" border="0">
             </div>
         <?php } ?>
-        <div class="col-md-6">
             <?php
             if (isset($error) && isset($error['error'])) {
                 echo $error . ' ' . $error['error'];
@@ -105,7 +104,6 @@
             <?php echo "<input class='file' type='file' name='userfile' value='Choose' size='20' />"; ?>
             <?php echo "<input class='btn btn-sm btn-info col-md-3' style='margin-top: 20px;' type='submit' name='submit' value='Upload' /> "; ?>
             <?php echo "</form>" ?>
-        </div>
     </div>
 </div>
 </body>

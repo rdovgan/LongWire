@@ -61,6 +61,15 @@ class User_model extends CI_Model {
         }
         return false;
     }
+    
+    public function getIdByLogin($login){
+        $this->db->where("user_login", $login);
+        $query = $this->db->get("users");
+        if($query->num_rows() > 0){
+            return $query->row()->user_id;
+        }
+        return false;
+    }
 
 }
 

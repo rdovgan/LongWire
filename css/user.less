@@ -103,7 +103,6 @@ a{
     padding: 0px;
     border-bottom: 1px solid @color-grey;
     height: 15px;
-    clear: both;
 }
 
 .headerElement{
@@ -124,6 +123,7 @@ a{
 }
 
 .avatarBig{
+    margin-right: 20px;
     padding: 0;
     width: 96px;
     height: 96px;
@@ -134,13 +134,20 @@ a{
 
 .postUsername{
     margin-left: 10px;
-    font-size: 10px;
+    padding: 2px;
+    border: 1px solid @color-light-grey;
+    border-radius: 3px;
+    font-size: 12px;
     float: left;
+}
+
+.tiny{
+    border: 1px solid lighten(@color-blue, 50%);
+    background-color: lighten(@color-blue, 55%);
 }
 
 .personBlock{
     padding: 20px;
-    clear: both;
 }
 
 .btnSimple{

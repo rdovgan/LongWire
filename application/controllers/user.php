@@ -48,15 +48,24 @@ class User extends CI_Controller {
         $this->load->view('main/footer_view', $data);
     }
 
+    public function remember($remember) {
+        if (!$remember) {
+            $this->session->sess_expire_on_close = TRUE;
+        } else {
+            $this->session->sess_expire_on_close = FALSE;
+        }
+    }
+
     public function login() {
         $this->load->library('form_validation');
         $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[4]|max_length[30]|xss_clean|callback_is_username');
-
         if ($this->form_validation->run() == FALSE) {
             $this->guest('login');
         }
+
         $username = $this->input->post('username');
         $password = md5($this->input->post('pass'));
+        $this->remember($this->input->post('remember_me'));
 
         $result = $this->user_model->login($username, $password);
         $this->achList = $this->achiev_model->getUserAchId($this->session->userdata('user_id'));
@@ -109,7 +118,9 @@ class User extends CI_Controller {
             $userId = $this->user_model->add_user();
             $this->achList = $this->achiev_model->getUserAchId($this->session->userdata('user_id'));
             $result = Events::trigger('register_event', 'system_events', 'string'); //TODO:give result to $this->thank()
-            if($result){$this->achiev_model->gotAchiev(1, $userId); }
+            if ($result) {
+                $this->achiev_model->gotAchiev(1, $userId);
+            }
             //call modal with message
             $this->thanks();
         }

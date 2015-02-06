@@ -40,16 +40,19 @@
                 <div class="modal-body control-group" style="min-height: 320px;">
                     <div id="personForm" class="col-md-12" style="padding-top: 0; font-family: Consolas;">
                         <div class="input-group input-group-sm col-md-12 wide">
-                            <input id="post_name" name="post_name" class="form-control col-md-12" type="text" placeholder="Name of post"> </div>
+                            <input id="post_name" name="post_name" class="form-control col-md-12" type="text" minlength="4" maxlength="120" required
+                                   data-validation-required-message="Post name is required" placeholder="Name of post"> </div>
                         <div class="br"></div>
                         <div class="input-group input-group-sm col-md-12 wide">
-                            <input id="post_desc" name="post_desc" class="form-control col-md-12" type="text" placeholder="Add some description, if needed"> </div>
+                            <input id="post_desc" name="post_desc" class="form-control col-md-12" type="text" maxlength="160" placeholder="Add some description, if needed"> </div>
                         <div class="br"></div>
                         <div class="input-group input-group-sm col-md-12 wide">
-                            <textarea id="post_body" name="post_body" class="form-control col-md-12" rows="10" style="min-height: 155px;" placeholder="Your post is here"></textarea> </div>
+                            <textarea id="post_body" name="post_body" class="form-control col-md-12" rows="10" style="min-height: 155px;" minlength="4" maxlength="1200" required
+                                      data-validation-required-message="Post body is required" placeholder="Your post is here"></textarea> </div>
                         <div class="br"></div>
                         <div class="input-group input-group-sm col-md-12 wide">
-                            <input id="post_tags" name="post_tags" class="form-control col-md-12" type="text" placeholder="Tags"> </div>
+                            <input id="post_tags" name="post_tags" class="form-control col-md-12" type="text" minlength="2" maxlength="120" required
+                                   data-validation-required-message="At least 1 tag is required" placeholder="Tags"> </div>
                         <div class="br"></div>
                     </div>
                 </div>
