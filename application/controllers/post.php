@@ -111,21 +111,15 @@ class Post extends CI_Controller {
         $this->load->view('user/panel_view', $data);
         $this->load->view('user/home_view', $data);
     }
-    
-    public function publicUser($userLogin){
+
+    public function deletePost($postId) {
         Elements::isLoggedIn();
-        $this->load->model('person_model');
-        $data['title'] = 'User information';
-        $data['head_menu'] = Elements::getMenu();
-        $data['activeItem'] = 'someItem';//TODO: add new item
-        $data['personLogin'] = $userLogin;
-        $userId = $this->user_model->getIdByLogin($userLogin);
-        $data['personData'] = $this->person_model->getPerson($userId);
-        $data['postsData'] = $this->post_model->getAllPostsFromUser($userId);
-        $this->load->view('user/head_view', $data);
-        $this->load->view('user/panel_view', $data);
-        $this->load->view('user/user_view', $data);
+        if ($this->post_model->checkBeforeEdit($postId, $this->session->userdata('user_login'))) {
+            $this->post_model->deletePost($postId);
+        }
+        $this->postsList();
     }
 
 }
+
 ?>

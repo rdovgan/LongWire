@@ -8,12 +8,13 @@
         } else {
             echo 'Update this post';
         }
-        ?></div>
-
+        ?>
+    </div>
     <?php
     if (!$isPost) {
         echo form_open("post/addPost");
-    } else {
+    } else {    
+        echo anchor('post/deletePost/' . $postData['post_id'], '<span class="glyphicon glyphicon-trash badgeDelete" aria-hidden="true"></span>');
         echo form_open("post/updatePost");
     }
     ?>

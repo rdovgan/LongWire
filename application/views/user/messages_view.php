@@ -4,7 +4,6 @@
     
     <div class="br"></div>
     <?php
-    echo 'openssl: ', extension_loaded('openssl') ? 'yes' : 'no', "\n";
     if (!isset($wp_news) || $wp_news == false) {
         echo "Can't load news for you";
     } else {

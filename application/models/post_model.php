@@ -52,11 +52,13 @@ class Post_model extends CI_Model {
     }
 
     public function deletePost($postId) {
-        
+        $this->db->where('post_id', $postId);
+        $this->db->delete('posts');
     }
 
     public function getAllPostsFromUser($userId) {
         $this->db->where('post_user_id', $userId);
+        $this->db->order_by('post_date','desc');
         $query = $this->db->get('posts');
         if ($query->num_rows() > 0) {
             $posts = array();
