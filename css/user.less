@@ -17,6 +17,9 @@
 a{
     color: @color-dark-grey;
 }
+a:hover{    
+    text-decoration: none;
+}
 .nav > li > a:hover{
     color: @color-light-grey;
     background-color: @color-blue;
@@ -93,16 +96,16 @@ a{
     margin: 0;
     padding: 0;
     height: 10px;
+    clear: both;
 }
 
 .divider{
     margin: 0px;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 50%;
+    margin-right: 5%;
     padding: 0px;
     border-bottom: 1px solid @color-grey;
     height: 15px;
-    clear: both;
 }
 
 .headerElement{
@@ -120,6 +123,50 @@ a{
     -moz-transform: rotate(-45deg);
     -ms-transform: rotate(-45deg);
     -o-transform: rotate(-45deg);
+}
+
+.avatarBig{
+    margin-right: 20px;
+    padding: 0;
+    width: 96px;
+    height: 96px;
+    border: 1px;
+    box-shadow: -2px 3px 3px #888888;
+    float: left;
+}
+
+.postSign{
+    margin-left: 10px;
+    padding: 2px;
+    border: 1px solid @color-light-grey;
+    border-radius: 3px;
+    font-size: 12px;
+    float: left;
+}
+
+.tiny{
+    border: 1px solid lighten(@color-blue, 50%);
+    background-color: lighten(@color-blue, 55%);
+}
+
+.personBlock{
+    padding: 20px;
+}
+
+.btnSimple{
+    margin: 0;
+    color: black;
+}
+
+.userItem{
+    padding: 20px;
+    box-shadow: -1px -1px 3px #888888;
+}
+
+.badgeDelete{
+    margin-top: 20px;
+    float: right; 
+    font-size: 28px;
 }
 
 #userTop{
@@ -200,16 +247,6 @@ a{
     margin-top: @height-menu;
     margin-left: @width-panel;
     min-height: 500px;
-}
-
-#personForm{
-    padding: 20px;  
-    clear: both;
-}
-
-#personData{
-    padding: 20px;
-    clear: both;
 }
 
 #btnCreatePost{

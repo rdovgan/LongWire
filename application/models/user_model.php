@@ -4,7 +4,6 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 class User_model extends CI_Model {
-
     /*
      * USERS
      * user_id
@@ -13,20 +12,20 @@ class User_model extends CI_Model {
      * user_hash
      * user_ip
      */
-    
+
     public function __construct() {
         parent::__construct();
     }
-    
-    function checkLogin($username){
+
+    function checkLogin($username) {
         $this->db->where("user_login", $username);
         $query = $this->db->get("users");
-        if($query->num_rows() > 0){
+        if ($query->num_rows() > 0) {
             return true;
         }
         return false;
     }
-    
+
     function login($username, $password) {
         $this->db->where("user_login", $username);
         $this->db->where("user_pass", $password);
@@ -48,13 +47,46 @@ class User_model extends CI_Model {
     }
 
     public function add_user() {
+        $username = $this->input->post('user_name');
         $data = array(
-            'user_login' => $this->input->post('user_name'),
+            'user_login' => $username,
             'user_pass' => md5($this->input->post('password'))
         );
         $this->db->insert('users', $data);
         
+        $this->db->where("user_login", $username);
+        $query = $this->db->get("users");
+        if ($query->num_rows() > 0) {
+            return $query->row()->user_id;
+        }
+        return false;
+    }
+    
+    public function getIdByLogin($login){
+        $this->db->where("user_login", $login);
+        $query = $this->db->get("users");
+        if($query->num_rows() > 0){
+            return $query->row()->user_id;
+        }
+        return false;
+    }
+    
+    //set limit
+    public function getUsers(){
+        $query = $this->db->get('users');
+        if($query->num_rows() > 0){
+            $users = array();
+            foreach ($query->result() as $rows) {
+                $rows = (array) $rows;
+                $person = Person_model::getPerson($rows['user_id']);
+                $rows['person'] = $person;
+                array_push($users, $rows);
+            }
+            return $users;
+        }
+        return false;
     }
 
 }
+
 ?>

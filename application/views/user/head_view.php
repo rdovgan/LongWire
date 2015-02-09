@@ -18,9 +18,9 @@
                 <div id="userName">
                     <?php
                     if ($this->session->userdata('user_name')) {
-                        echo $this->session->userdata('user_name');
+                        echo anchor('/profile',$this->session->userdata('user_name'));
                     } else {
-                        echo $this->session->userdata('user_login');
+                        echo anchor('/ptofile',$this->session->userdata('user_login'));
                     }
                     ?></div>
             </div>
