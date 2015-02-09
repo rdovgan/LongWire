@@ -36,13 +36,13 @@ class Elements {
     
     public function getSign($post, $isAuthor){
         $tiny = ($isAuthor)?'tiny':'';
-        $likes = anchor('post/like/'.$post['post_id'],'<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>');
-        $dislikes = anchor('post/dislike/'.$post['post_id'],'<span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>');
-        $favs = anchor('post/fav/'.$post['post_id'],'<span class="glyphicon glyphicon-star" aria-hidden="true"></span>');
+        $likes = '<button class="btn-none"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span><i>'.$post["post_likes"].'</i></button>';
+        $dislikes = '<button class="btn-none"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span><i>'.$post["post_dislikes"].'</i></button>';
+        $favs = '<button class="btn-none"><span class="glyphicon glyphicon-star" aria-hidden="true"></span><i>'.$post["post_fav"].'</i></button>';
         $user = anchor('profile/user/'.$post['post_user'], '<span class="glyphicon glyphicon-user" aria-hidden="true"></span>'.$post["post_user"]);
-        $data = array('<div class="postSign">'.$likes.$post["post_likes"].'</div>',
-            '<div class="postSign">'.$dislikes.$post["post_dislikes"].'</div>',
-            '<div class="postSign">'.$favs.$post["post_fav"].'</div>',
+        $data = array('<div class="postSign like">'.$likes.'</div>',
+            '<div class="postSign dislike">'.$dislikes.'</div>',
+            '<div class="postSign fav">'.$favs.'</div>',
             '<div class="postSign '.$tiny.'">',$user,'</div><div class="divider"></div>');
         return $data;
     }

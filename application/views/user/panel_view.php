@@ -20,7 +20,9 @@
         <li><?php echo anchor('#', '<span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>Buttons') ?></li>
         <li><a href="#"><span class="glyphicon glyphicon-phone" aria-hidden="true"></span>Mobile</a></li>
     </ul>
-    <script>var activeItem = "<?php echo $activeItem; ?>"</script>
+    <script>var activeItem = "<?php echo $activeItem; ?>";
+        var upUrl = '<?php echo anchor("post/up"); ?>';
+    </script>
 </div>
 
 

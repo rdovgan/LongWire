@@ -4,7 +4,7 @@
         if (isset($postsList) && $postsList != false) {
             foreach ($postsList as $item):
                 ?>    
-                <div class="post">
+                <div id="<?php echo $item['post_id']; ?>" class="post">
                     <div class="col-md-12 postName" onclick="description(event);"><?php echo $item['post_name']; ?>
                         <?php
                         $isAuthor = $item['post_user'] == $this->session->userdata('user_login');
@@ -14,13 +14,12 @@
                         ?>
                         <div class="col-md-12 postDescription" hidden="true"><?php echo $item['post_desc']; ?></div></div>
                     <pre><div class="col-md-12 postBody"><?php echo $item['post_body']; ?></div></pre>
-                </div>
                 <?php
                 $postSign = Elements::getSign($item, $isAuthor);
                 foreach ($postSign as $signItem):
                     echo $signItem;
                 endforeach;
-
+                ?></div><?php
             endforeach;
         }
         ?>

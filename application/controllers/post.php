@@ -11,6 +11,7 @@ class Post extends CI_Controller {
         $this->load->model('user_model');
         $this->load->model('achiev_model');
         $this->load->model('post_model');
+        $this->load->model('likes_model');
     }
 
     public function formPost() {
@@ -118,6 +119,14 @@ class Post extends CI_Controller {
             $this->post_model->deletePost($postId);
         }
         $this->postsList();
+    }
+
+    public function up($postId) {
+        echo $this->likes_model->up($postId);
+    }
+    
+    public function down($postId){
+        echo $this->likes_model->down($postId);
     }
 
 }
