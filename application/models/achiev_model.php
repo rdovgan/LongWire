@@ -9,6 +9,7 @@ class Achiev_model extends CI_Model {
      * USER_ACH
      * user_ach_id
      * ach_id
+     * user_id
      * got
      * 
      * ACHIEVS

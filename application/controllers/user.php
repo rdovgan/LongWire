@@ -12,18 +12,28 @@ class User extends CI_Controller {
         $this->load->model('achiev_model');
         $this->load->model('person_model');
     }
+    
+    public function setMessage($message) {
+        if (isset($message) && $message != '') {
+            $this->session->set_flashdata('message', $message);
+        }
+    }
+
+    public function getMessage() {
+        $message = $this->session->flashdata('message');
+        if ((isset($message)) && ($message != '')) {
+            return $message;
+        }
+    }
 
     public function index() {
         Elements::isLoggedIn();
         $this->welcome();
     }
 
-    public function welcome($message = '') {
+    public function welcome() {
         $data['title'] = 'Welcome';
         $data['head_menu'] = Elements::getMenu();
-        if ((isset($message)) && ($message != '')) {
-            $data['messageText'] = $message;
-        }
         $this->load->view('main/header_view', $data);
         $this->load->view("main/main_top_view.php", $data);
         $this->load->view('main/menu_view.php', $data);
@@ -74,7 +84,8 @@ class User extends CI_Controller {
             if ($person) {
                 $this->session->set_userdata(array('user_name' => $person['person_name'] . ' ' . $person['person_surname']));
             }
-            $this->welcome('Login succesful');
+            $this->setMessage('Login successful');
+            $this->welcome();
         } else {
             $this->guest('wrong_pass');
         }
@@ -121,7 +132,6 @@ class User extends CI_Controller {
             if ($result) {
                 $this->achiev_model->gotAchiev(1, $userId);
             }
-            //call modal with message
             $this->thanks();
         }
     }

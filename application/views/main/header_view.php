@@ -5,8 +5,9 @@
         <title>LongWire</title>
         <meta name="author" content="LongWireComp" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/css/darkly.css">
-        <link rel="stylesheet/less" type="text/css" href="<?php echo base_url(); ?>/fonts/fonts.css">  
-        <link rel="stylesheet/less" type="text/css" href="<?php echo base_url(); ?>/css/style.less">  
+        <link rel="stylesheet/less" type="text/css" href="<?php echo base_url(); ?>/fonts/fonts.css">
+        <link rel="stylesheet/less" type="text/css" href="<?php echo base_url(); ?>/css/fonts.less">
+        <link rel="stylesheet/less" type="text/css" href="<?php echo base_url(); ?>/css/style.less">
         <script type="text/javascript" src="<?php echo base_url(); ?>/js/less.min.js"></script> 
         <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>/js/jquery-2.1.1.js"></script>
         <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>/js/bootstrap.js"></script>
@@ -53,8 +54,9 @@
         </div>
         <?php
         $this->session->userdata('user_id') . "<br>" . $this->session->userdata('user_name') . "<br>" . $this->session->userdata('user_login') . "<br>" . $this->session->userdata('logged_in');
-        ?> 
+        ?>
         <div id="messageBlock" class="alert alert-warning alert-dismissible" hidden>
             <button type="button" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <p id="messageText"><?php echo $messageText ?></p>
+            <p id="messageText"><?php echo $this->session->flashdata('message'); ?></p>
         </div>
+		

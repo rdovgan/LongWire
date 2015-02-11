@@ -12,15 +12,19 @@
         <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>/js/user.js"></script>
     </head>
     <body>
+        <div id="messageBlock" class="alert alert-warning alert-dismissible" hidden>
+            <button type="button" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <p id="messageText"><?php echo $messageText; ?></p>
+        </div>
         <div id="userTop">
             <div id="userTopInfo"><img id="avatar" src="/img/avatars/<?php echo $this->session->userdata('user_login') ?>.png" 
                                        width="48" height="48" border="0" onerror="this.src='/img/avatars/q.png'">
                 <div id="userName">
                     <?php
                     if ($this->session->userdata('user_name')) {
-                        echo anchor('/profile',$this->session->userdata('user_name'));
+                        echo anchor('/profile', $this->session->userdata('user_name'));
                     } else {
-                        echo anchor('/ptofile',$this->session->userdata('user_login'));
+                        echo anchor('/ptofile', $this->session->userdata('user_login'));
                     }
                     ?></div>
             </div>

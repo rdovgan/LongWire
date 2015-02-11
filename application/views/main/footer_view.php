@@ -1,5 +1,24 @@
 <div id="footer">
-
+    <div class="col-md-3">
+        <div class="footerItem"><a href="#" class="invlink">About Us</a></button></div>
+        <div class="footerItem"><a href="#" class="invlink">Help & Support</a></div>            
+    </div>
+    <div class="col-md-3">
+        <div class="footerItem"><a href="#" class="invlink">Terms of Service</a></div>
+        <div class="footerItem"><a href="#" class="invlink">Mobile</a></div>
+    </div>
+    <div class="socialLinks col-md-3" class="col-md-3">
+        <div class="gplus"><a href="https://plus.google.com/110089529979358850005/" class="symbol" title="circlegoogleplus">
+            </a></div>
+        <div class="twitter"><a href="https://twitter.com/RomaDovgan" class="symbol" title="circletwitterbird">
+            </a></div>
+        <div class="linkedin"><a href="https://www.linkedin.com/in/rdovgan" class="symbol" title="circlelinkedin">
+            </a></div>
+        <div class="facebook"><a href="https://www.facebook.com/romadovg" class="symbol" title="circlefacebook">
+            </a></div>
+        <div class="youtube"><a href="https://www.youtube.com/user/oDeskCorporation" class="symbol" title="circleyoutube">
+            </a></div>
+    </div>
 </div>
 <div id="modalLogin" class="modal fade right">
     <div id="modalDialogLogin" class="modal-dialog">
@@ -89,14 +108,14 @@
                     <div id="personForm" class="col-md-12" style="padding-top: 0; font-family: Consolas;">
                         <div class="input-group input-group-sm col-md-12 wide">
                             <input id="post_name" name="post_name" class="form-control col-md-12" type="text" minlength="4" maxlength="120" required
-                               data-validation-required-message="Post name is required" placeholder="Name of post"> </div>
+                                   data-validation-required-message="Post name is required" placeholder="Name of post"> </div>
                         <div class="br"></div>
                         <div class="input-group input-group-sm col-md-12 wide">
                             <input id="post_desc" name="post_desc" class="form-control col-md-12" type="text" maxlength="160" placeholder="Add some description, if needed"> </div>
                         <div class="br"></div>
                         <div class="input-group input-group-sm col-md-12 wide">
                             <textarea id="post_body" name="post_body" class="form-control col-md-12" rows="10" style="min-height: 155px;" minlength="4" maxlength="1200" required
-                               data-validation-required-message="Post body is required" placeholder="Your post is here"></textarea> </div>
+                                      data-validation-required-message="Post body is required" placeholder="Your post is here"></textarea> </div>
                         <div class="br"></div>
                         <div class="input-group input-group-sm col-md-12 wide">
                             <input id="post_tags" name="post_tags" class="form-control col-md-12" type="text" minlength="2" maxlength="120" required
