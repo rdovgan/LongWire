@@ -63,8 +63,8 @@ function markActiveItem() {
     $("#" + activeItem).addClass("active");
 }
 
-function description(event) {
-    obj = $(event.target).children(".postDescription");
+function showPost(event) {
+    obj = $(event.target).parent().find("pre");
     if (obj.attr('hidden'))
         obj.attr('hidden', false);
     else

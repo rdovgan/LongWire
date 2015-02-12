@@ -8,6 +8,7 @@
         <link rel="stylesheet/less" type="text/css" href="<?php echo base_url(); ?>/fonts/fonts.css">
         <link rel="stylesheet/less" type="text/css" href="<?php echo base_url(); ?>/css/fonts.less">
         <link rel="stylesheet/less" type="text/css" href="<?php echo base_url(); ?>/css/style.less">
+        <link href='http://fonts.googleapis.com/css?family=Bad+Script|Lobster&subset=cyrillic' rel='stylesheet' type='text/css'>
         <script type="text/javascript" src="<?php echo base_url(); ?>/js/less.min.js"></script> 
         <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>/js/jquery-2.1.1.js"></script>
         <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>/js/bootstrap.js"></script>

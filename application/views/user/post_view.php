@@ -3,7 +3,7 @@
     if (isset($postData) && $postData != false) {
         ?>    
         <div class = "post">
-            <div class = "col-md-12 postName" onclick = "description(event);"><?php echo $postData['post_name'];
+            <div class = "col-md-12 postName" onclick = "showPost(event);"><?php echo $postData['post_name'];
         ?>
                 <?php
                         if($postData['post_user_id']==$this->session->userdata('user_id')) {

@@ -67,29 +67,43 @@ a:hover{
     font-size: 18px;
 }
 
-.postDescription{
-    font-family: Consolas;
-    font-size: 18px;
-    color: @color-white;
-    background-color: @color-blue;
-    border: 2px solid @color-blue;
-    border-radius: 3px;
-}
-
-.postBody{
-    font-size: 14px;
-    clear: both;
+.post{
+    margin-left: -10px;
+    margin-right: 10px;
 }
 
 .postName{
-    margin: 0;
-    padding: 10px 5px;
-    font-size: 28px;
+    margin: 10px;
+    padding: 0;
+    padding-left: 15px;
+    font-size: 20px;
     color: @color-base;
     float: left;
     font-family: Trebuchet MS;
     clear: both;
     cursor: url;
+}
+
+.postDescription{
+    margin: 0;
+    margin-left: -15px;
+    padding: 0;
+    padding-left: 5px;
+    font-family: Consolas;
+    font-size: 13px;
+    color: @color-dark-grey;
+    border: 1px solid @color-dark-grey;
+    border-radius: 3px;
+}
+
+.postBody{
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    clear: both;
+}
+.post > pre {
+    margin-left: 10px;
 }
 
 .br{
@@ -167,6 +181,10 @@ a:hover{
     margin-top: 20px;
     float: right; 
     font-size: 28px;
+}
+
+.badgeEdit{
+    float: right;
 }
 
 .btn-none{    
@@ -251,7 +269,9 @@ a:hover{
 }
 
 #data{
-    padding: 20px;
+    margin: 0;
+    padding: 0;
+    padding-left: 20px;
     margin-top: @height-menu;
     margin-left: @width-panel;
     min-height: 500px;

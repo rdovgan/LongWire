@@ -43,7 +43,7 @@ class Elements {
         $data = array('<div class="postSign like">'.$likes.'</div>',
             '<div class="postSign dislike">'.$dislikes.'</div>',
             '<div class="postSign fav">'.$favs.'</div>',
-            '<div class="postSign '.$tiny.'">',$user,'</div><div class="divider"></div>');
+            '<div class="postSign '.$tiny.'">',$user,'</div>');
         return $data;
     }
 
