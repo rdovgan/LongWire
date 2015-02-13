@@ -52,6 +52,17 @@ class Elements {
         $headElements .= "<link rel='stylesheet/less' type='text/css' href='".base_url()."css/jquery.Jcrop.css'>  ";
         return $headElements;
     }
+    
+    public function qToArray($query){
+        if ($query->num_rows() > 0) {
+            $items = array();
+            foreach ($query->result() as $item) {
+                array_push($items, (array) $item);
+            }
+            return $items;
+        }
+        return false;
+    }
 }
 
 ?>

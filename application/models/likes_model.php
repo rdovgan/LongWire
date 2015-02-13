@@ -137,6 +137,18 @@ class Likes_model extends CI_Model {
             return 'dec';
         }
     }
+    
+    public function getLikesOfUser($user){
+        $this->db->where('post_up_user', $user);
+        $query = $this->db->get('post_ups');
+        return Elements::qToArray($query);
+    }
+    
+    public function getDislikesOfUser($user){
+        $this->db->where('post_down_user', $user);
+        $query = $this->db->get('post_downs');
+        return Elements::qToArray($query);
+    }
 
 }
 

@@ -57,6 +57,25 @@ $(document).ready(function () {
         req.open('GET', 'down/' + id, true);
         req.send(null);
     });
+    $('.fav').click(function () {
+        id = $(this).parent().attr('id');
+        var req = getXmlHttp();
+        var objFav = $(this).children('button').children('i');
+        var oldFav = objFav.text();
+        req.onreadystatechange = function () {
+            if (req.readyState === 4) {
+                if (req.status === 200) {
+                    if (req.responseText === 'inc') {
+                        objFav.text(parseInt(oldFav) + 1);
+                    } else if (req.responseText === 'dec') {
+                        objFav.text(parseInt(oldFav) - 1);
+                    }
+                }
+            }
+        }
+        req.open('GET', 'fav/' + id, true);
+        req.send(null);
+    });
 });
 
 function markActiveItem() {

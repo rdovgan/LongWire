@@ -12,6 +12,7 @@ class Post extends CI_Controller {
         $this->load->model('achiev_model');
         $this->load->model('post_model');
         $this->load->model('likes_model');
+        $this->load->model('favorite_model');
     }
 
     public function formPost() {
@@ -108,6 +109,7 @@ class Post extends CI_Controller {
         $data['head_menu'] = Elements::getMenu();
         $data['activeItem'] = 'profileItem';
         $data['postsList'] = $this->post_model->getAllPosts();
+//        $data['likes'] = $this->
         $this->load->view('user/head_view', $data);
         $this->load->view('user/panel_view', $data);
         $this->load->view('user/home_view', $data);
@@ -127,6 +129,10 @@ class Post extends CI_Controller {
     
     public function down($postId){
         echo $this->likes_model->down($postId);
+    }
+    
+    public function fav($postId){
+        echo $this->favorite_model->fav($postId);
     }
 
 }
