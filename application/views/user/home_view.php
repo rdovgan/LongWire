@@ -1,4 +1,6 @@
 <div id="data" class="content">
+    <img data-src="http://app.resrc.it/c=w500,h312,xof76p,yof12p/http://www.your-site.co/image-control.jpg" 
+         alt="An awesome dogs head" class="resrc"/>
     <div class="posts">
         <?php
         if (isset($postsList) && $postsList != false) {

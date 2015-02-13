@@ -47,6 +47,11 @@ class Elements {
         return $data;
     }
 
+    public function getCropLibrary(){
+        $headElements = "<script src='".base_url()."js/jquery.Jcrop.js'></script>";
+        $headElements .= "<link rel='stylesheet/less' type='text/css' href='".base_url()."css/jquery.Jcrop.css'>  ";
+        return $headElements;
+    }
 }
 
 ?>

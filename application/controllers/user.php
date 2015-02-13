@@ -168,6 +168,7 @@ class User extends CI_Controller {
         $data['title'] = 'Personal information';
         $data['head_menu'] = Elements::getMenu();
         $data['activeItem'] = 'personItem';
+        $data['headElements'] = Elements::getCropLibrary();
         $data['error'] = $errors;
         $data['personData'] = $this->person_model->getPerson($this->session->userdata('user_id'));
         $this->load->view('user/head_view', $data);
@@ -218,7 +219,7 @@ class User extends CI_Controller {
             mkdir($config['upload_path'], 0755, TRUE);
         }
 
-        if (!$this->upload->do_upload()) { //Upload file
+        if (!$this->upload->do_upload()) {
             $errors = array('error' => $this->upload->display_errors());
             $this->person($errors);
         } else {
