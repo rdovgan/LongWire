@@ -63,6 +63,23 @@ class Elements {
         }
         return false;
     }
+    
+    public function postToHtml($item, $likes, $dislikes, $favs){
+        $isAuthor = ($item['post_user'] == $this->session->userdata('user_login'));
+        $result = '<div id="'.$item['post_id'].'" class="post">';
+        $result .= '<div class="col-md-12 postName" onclick="showPost(event);">'.$item['post_name'].anchor('post/editPost/' . $item['post_id'], '<span class="glyphicon glyphicon-pencil badgeEdit" aria-hidden="true"></span>');
+        $result .= '<div class="col-md-12 postDescription"'.($item['post_desc'] != '' ? '' : 'hidden').'>'.$item['post_desc'].'</div></div>';
+        $result .= '<pre><div class="col-md-12 postBody">'.$item['post_body'].'</div></pre>';
+        $tiny = ($isAuthor) ? 'tiny' : '';
+        $isLiked = (in_array($item['post_id'], $likes)); $liked = $isLiked ? 'glyphicon-arrow-up' : 'glyphicon-chevron-up';
+        $isDisliked = (in_array($item['post_id'], $dislikes)); $disliked = $isDisliked ? 'glyphicon-arrow-down' : 'glyphicon-chevron-down';
+        $isFav = (in_array($item['post_id'], $favs)); $fav = $isFav ? '' : '-empty';
+        $result .= '<div class="postSign like '.($isLiked ? 'fill':'').'"><button class="btn-none"><span class="glyphicon '.$liked.'" aria-hidden="true"></span><i>'.$item["post_likes"].'</i></button></div>';
+        $result .= '<div class="postSign dislike '.($isDisliked?'fill':'').'"><button class="btn-none"><span class="glyphicon '.$disliked.'" aria-hidden="true"></span><i>'.$item["post_dislikes"].'</i></button></div>';
+        $result .= '<div class="postSign fav '.($isFav?'fill':'').'"><button class="btn-none"><span class="glyphicon glyphicon-star'.$fav.'" aria-hidden="true"></span><i>'.$item["post_fav"].'</i></button></div>';
+        $result .= '<div class="postSign '.$tiny.'">'.anchor('profile/user/' . $item['post_user'], '<span class="glyphicon glyphicon-user" aria-hidden="true"></span>' . $item["post_user"] . '</div>').'</div>';
+        echo $result;
+    }
 }
 
 ?>

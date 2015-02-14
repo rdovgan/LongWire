@@ -94,10 +94,14 @@ class Post extends CI_Controller {
 
     public function postsList() {
         Elements::isLoggedIn();
+        $userId = $this->session->userdata('user_id');
         $data['title'] = 'Posts';
         $data['head_menu'] = Elements::getMenu();
         $data['activeItem'] = 'postsItem';
-        $data['postsList'] = $this->post_model->getAllPostsFromUser($this->session->userdata('user_id'));
+        $data['postsList'] = $this->post_model->getAllPostsFromUser($userId);
+        $data['likes'] = $this->likes_model->getLikesOfUser($userId);
+        $data['dislikes'] = $this->likes_model->getDislikesOfUser($userId);
+        $data['favs'] = $this->favorite_model->getFavsOfUser($userId);
         $this->load->view('user/head_view', $data);
         $this->load->view('user/panel_view', $data);
         $this->load->view('user/posts_list_view', $data);

@@ -60,7 +60,16 @@ class Post_model extends CI_Model {
         $this->db->where('post_user_id', $userId);
         $this->db->order_by('post_date','desc');
         $query = $this->db->get('posts');
-        return Elements::qToArray($query);
+        if ($query->num_rows() > 0) {
+            $posts = array();
+            foreach ($query->result() as $rows) {
+                $rows = (array) $rows;
+                $rows['post_user'] = $this->session->userdata['user_login'];
+                array_push($posts, $rows);
+            }
+            return $posts;
+        }
+        return false;
     }
 
     public function getUserName($userId) {
