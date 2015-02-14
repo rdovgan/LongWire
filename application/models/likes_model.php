@@ -131,23 +131,35 @@ class Likes_model extends CI_Model {
                 $this->deleteUp($postId);
                 return 'other';
             }
-        }else{
+        } else {
             $this->removeDislike($postId);
             $this->deleteDown($postId);
             return 'dec';
         }
     }
-    
-    public function getLikesOfUser($user){
+
+    public function getLikesOfUser($user) {
         $this->db->where('post_up_user', $user);
         $query = $this->db->get('post_ups');
-        return Elements::qToArray($query);
+        $items = array();
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $item) {
+                array_push($items, $item->post_up_post);
+            }
+        }
+        return $items;
     }
-    
-    public function getDislikesOfUser($user){
+
+    public function getDislikesOfUser($user) {
         $this->db->where('post_down_user', $user);
         $query = $this->db->get('post_downs');
-        return Elements::qToArray($query);
+        $items = array();
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $item) {
+                array_push($items, $item->post_down_post);
+            }
+        }
+        return $items;
     }
 
 }
