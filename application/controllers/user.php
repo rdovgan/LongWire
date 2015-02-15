@@ -27,13 +27,13 @@ class User extends CI_Controller {
     }
 
     public function index() {
-        Elements::isLoggedIn();
+        Elements::isLoggedIn($this->session->userdata('logged_in'));
         $this->welcome();
     }
 
     public function welcome() {
         $data['title'] = 'Welcome';
-        $data['head_menu'] = Elements::getMenu();
+        $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $this->load->view('main/header_view', $data);
         $this->load->view("main/main_top_view.php", $data);
         $this->load->view('main/menu_view.php', $data);
@@ -43,7 +43,7 @@ class User extends CI_Controller {
 
     public function guest($option = '') {
         $data['title'] = 'Home';
-        $data['head_menu'] = Elements::getMenu();
+        $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         if ((isset($option)) && ($option != '')) {
             $data['option'] = $option;
             if ($option == "wrong_pass") {
@@ -93,7 +93,7 @@ class User extends CI_Controller {
 
     public function thanks() {
         $data['title'] = 'Thanks';
-        $data['head_menu'] = Elements::getMenu();
+        $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $this->load->view('main/header_view', $data);
         $this->load->view('main/menu_view', $data);
         $this->load->view('main/thanks_view.php', $data);
@@ -150,7 +150,7 @@ class User extends CI_Controller {
 
     public function action() {
         $data['title'] = 'Home';
-        $data['head_menu'] = Elements::getMenu();
+        $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $this->load->view('main/header_view', $data);
         $this->load->view('main/action_top_view', $data);
         $this->load->view('main/menu_view', $data);
@@ -159,14 +159,14 @@ class User extends CI_Controller {
     }
 
     public function profile() {
-        Elements::isLoggedIn();
+        Elements::isLoggedIn($this->session->userdata('logged_in'));
         redirect('post/allPosts');
     }
 
     public function person($errors = '') {
-        Elements::isLoggedIn();
+        Elements::isLoggedIn($this->session->userdata('logged_in'));
         $data['title'] = 'Personal information';
-        $data['head_menu'] = Elements::getMenu();
+        $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $data['activeItem'] = 'personItem';
         $data['headElements'] = Elements::getCropLibrary();
         $data['error'] = $errors;
@@ -183,9 +183,9 @@ class User extends CI_Controller {
     }
 
     public function messages() {
-        Elements::isLoggedIn();
+        Elements::isLoggedIn($this->session->userdata('logged_in'));
         $data['title'] = 'Messages';
-        $data['head_menu'] = Elements::getMenu();
+        $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $data['activeItem'] = 'messagesItem';
         $data['wp_news'] = News::getWPNews(10);
         $this->load->view('user/head_view', $data);
@@ -194,9 +194,9 @@ class User extends CI_Controller {
     }
 
     public function achiev() {
-        Elements::isLoggedIn();
+        Elements::isLoggedIn($this->session->userdata('logged_in'));
         $data['title'] = 'Calendar';
-        $data['head_menu'] = Elements::getMenu();
+        $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $data['achievs'] = $this->achiev_model->getUserAchievs($this->session->userdata('user_id'));
         $data['activeItem'] = 'achievItem';
         $this->load->view('user/head_view', $data);

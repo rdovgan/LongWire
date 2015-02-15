@@ -4,15 +4,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Elements {
 
-    public function isLoggedIn() {
-        if (!$this->session->userdata('logged_in')) {
+    public static function isLoggedIn($isLoggedIn) {
+        if (!$isLoggedIn) {
             redirect('user/guest');
         }
     }
 
-    public function getMenu() {
+    public static function getMenu($isLoggedIn) {
         $data = array();
-        if ($this->session->userdata('logged_in')) {
+        if ($isLoggedIn) {
             $createPost = '<a href="#" onclick="createPostDialog();"><h4><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></h4></a>';
             $userLink = anchor(
                     "user/profile", '<h4><span class="glyphicon glyphicon-user" aria-hidden="true"></span></h4><h6 hidden><span class="glyphicon glyphicon-info-sign badgeInfo" aria-hidden="true"></span></h6>', array('id' => 'userLink', 'class' => 'invlink')
@@ -47,13 +47,13 @@ class Elements {
         return $data;
     }
 
-    public function getCropLibrary(){
+    public static function getCropLibrary(){
         $headElements = "<script src='".base_url()."js/jquery.Jcrop.js'></script>";
         $headElements .= "<link rel='stylesheet/less' type='text/css' href='".base_url()."css/jquery.Jcrop.css'>  ";
         return $headElements;
     }
     
-    public function qToArray($query){
+    public static function qToArray($query){
         if ($query->num_rows() > 0) {
             $items = array();
             foreach ($query->result() as $item) {
@@ -64,8 +64,7 @@ class Elements {
         return false;
     }
     
-    public function postToHtml($item, $likes, $dislikes, $favs){
-        $isAuthor = ($item['post_user'] == $this->session->userdata('user_login'));
+    public static function postToHtml($item, $likes, $dislikes, $favs, $isAuthor = false){
         $result = '<div id="'.$item['post_id'].'" class="post">';
         $result .= '<div class="col-md-12 postName" onclick="showPost(event);">'.$item['post_name'].anchor('post/editPost/' . $item['post_id'], '<span class="glyphicon glyphicon-pencil badgeEdit" aria-hidden="true"></span>');
         $result .= '<div class="col-md-12 postDescription"'.($item['post_desc'] != '' ? '' : 'hidden').'>'.$item['post_desc'].'</div></div>';

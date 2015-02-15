@@ -1,5 +1,5 @@
 <div id="postListLine" class="col-md-12 postListLine">
-    <div id="postsOwn" class="col-md-3 postListButton active">
+    <div id="postsOwn" class="col-md-3 postListButton current">
         <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
         <z>Own</z>
     </div>
@@ -19,8 +19,10 @@
 <div id="data" class='content'>
     <?php
     if (isset($postsList) && $postsList != false) {
-        foreach ($postsList as $item):
-            Elements::postToHtml($item, $likes, $dislikes, $favs);
+        foreach ($postsList as $item):{
+                $isAuthor = ($item['post_user'] == $this->session->userdata('user_login'));
+                Elements::postToHtml($item, $likes, $dislikes, $favs, $isAuthor);
+            }
         endforeach;
     } else {
         ?>

@@ -115,6 +115,9 @@ a:hover{
     margin: 0;
     padding: 0;
     font-size: 13px;
+    text-align: left;
+    float: left;
+    word-wrap: break-word;
     clear: both;
 }
 .post > pre {
@@ -147,6 +150,7 @@ a:hover{
 
 .avatarBig{
     margin-right: 20px;
+    margin-bottom: 20px;
     padding: 0;
     width: 96px;
     height: 96px;
@@ -224,7 +228,7 @@ a:hover{
     border: 1px solid @color-blue;
     border-radius: 3px;
 }
-.active{
+.current{
     box-shadow: inset 0px 0px 20px 2px #888888;
     border-radius: 3px;
 }
@@ -312,7 +316,7 @@ a:hover{
     margin-bottom: 100px;
     padding: 0;
     padding-left: 20px;
-    min-height: 500px;
+    min-height: 100%;
 }
 
 #btnCreatePost{
