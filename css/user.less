@@ -221,16 +221,19 @@ a:hover{
 .postListButton{
     margin-left: 5px;
     padding-top: 3px;
-    min-height: 36px;
+    height: 32px;
     width: 23.5%;
 }
 .postListButton:hover{
-    border: 1px solid @color-blue;
     border-radius: 3px;
+    background-color: @color-grey;
+    box-shadow:inset 0px 0px 0px 1px @color-blue;
+    color: @color-base;
 }
 .current{
-    box-shadow: inset 0px 0px 20px 2px #888888;
     border-radius: 3px;
+    background-color: @color-blue;
+    color: @color-white;
 }
 
 #userTop{
