@@ -30,7 +30,7 @@ $(document).ready(function () {
                     }
                 }
             }
-        }
+        };
         req.open('GET', 'up/' + id, true);
         req.send(null);
     });
@@ -53,7 +53,7 @@ $(document).ready(function () {
                     }
                 }
             }
-        }
+        };
         req.open('GET', 'down/' + id, true);
         req.send(null);
     });
@@ -86,7 +86,7 @@ function getXmlHttp() {
             xmlhttp = false;
         }
     }
-    if (!xmlhttp && typeof XMLHttpRequest != 'undefined') {
+    if (!xmlhttp && typeof XMLHttpRequest !== 'undefined') {
         xmlhttp = new XMLHttpRequest();
     }
     return xmlhttp;
