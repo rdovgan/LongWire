@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class News {
 
-    public function getWP() {
+    public static function getWP() {
         $rss = new DOMDocument();
         $rss->load('http://wordpress.org/news/feed/');
 
@@ -21,7 +21,7 @@ class News {
         return $feed;
     }
 
-    public function getWPnews($limit, $page=0) {
+    public static function getWPnews($limit, $page=0) {
         if (!isset($limit) || $limit <= 0) {
             return false;
         }

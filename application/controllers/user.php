@@ -12,18 +12,28 @@ class User extends CI_Controller {
         $this->load->model('achiev_model');
         $this->load->model('person_model');
     }
+    
+    public function setMessage($message) {
+        if (isset($message) && $message != '') {
+            $this->session->set_flashdata('message', $message);
+        }
+    }
+
+    public function getMessage() {
+        $message = $this->session->flashdata('message');
+        if ((isset($message)) && ($message != '')) {
+            return $message;
+        }
+    }
 
     public function index() {
-        Elements::isLoggedIn();
+        Elements::isLoggedIn($this->session->userdata('logged_in'));
         $this->welcome();
     }
 
-    public function welcome($message = '') {
+    public function welcome() {
         $data['title'] = 'Welcome';
-        $data['head_menu'] = Elements::getMenu();
-        if ((isset($message)) && ($message != '')) {
-            $data['messageText'] = $message;
-        }
+        $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $this->load->view('main/header_view', $data);
         $this->load->view("main/main_top_view.php", $data);
         $this->load->view('main/menu_view.php', $data);
@@ -33,7 +43,7 @@ class User extends CI_Controller {
 
     public function guest($option = '') {
         $data['title'] = 'Home';
-        $data['head_menu'] = Elements::getMenu();
+        $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         if ((isset($option)) && ($option != '')) {
             $data['option'] = $option;
             if ($option == "wrong_pass") {
@@ -74,7 +84,8 @@ class User extends CI_Controller {
             if ($person) {
                 $this->session->set_userdata(array('user_name' => $person['person_name'] . ' ' . $person['person_surname']));
             }
-            $this->welcome('Login succesful');
+            $this->setMessage('Login successful');
+            $this->welcome();
         } else {
             $this->guest('wrong_pass');
         }
@@ -82,7 +93,7 @@ class User extends CI_Controller {
 
     public function thanks() {
         $data['title'] = 'Thanks';
-        $data['head_menu'] = Elements::getMenu();
+        $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $this->load->view('main/header_view', $data);
         $this->load->view('main/menu_view', $data);
         $this->load->view('main/thanks_view.php', $data);
@@ -121,7 +132,6 @@ class User extends CI_Controller {
             if ($result) {
                 $this->achiev_model->gotAchiev(1, $userId);
             }
-            //call modal with message
             $this->thanks();
         }
     }
@@ -140,7 +150,7 @@ class User extends CI_Controller {
 
     public function action() {
         $data['title'] = 'Home';
-        $data['head_menu'] = Elements::getMenu();
+        $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $this->load->view('main/header_view', $data);
         $this->load->view('main/action_top_view', $data);
         $this->load->view('main/menu_view', $data);
@@ -149,15 +159,16 @@ class User extends CI_Controller {
     }
 
     public function profile() {
-        Elements::isLoggedIn();
+        Elements::isLoggedIn($this->session->userdata('logged_in'));
         redirect('post/allPosts');
     }
 
     public function person($errors = '') {
-        Elements::isLoggedIn();
+        Elements::isLoggedIn($this->session->userdata('logged_in'));
         $data['title'] = 'Personal information';
-        $data['head_menu'] = Elements::getMenu();
+        $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $data['activeItem'] = 'personItem';
+        $data['headElements'] = Elements::getCropLibrary();
         $data['error'] = $errors;
         $data['personData'] = $this->person_model->getPerson($this->session->userdata('user_id'));
         $this->load->view('user/head_view', $data);
@@ -172,9 +183,9 @@ class User extends CI_Controller {
     }
 
     public function messages() {
-        Elements::isLoggedIn();
+        Elements::isLoggedIn($this->session->userdata('logged_in'));
         $data['title'] = 'Messages';
-        $data['head_menu'] = Elements::getMenu();
+        $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $data['activeItem'] = 'messagesItem';
         $data['wp_news'] = News::getWPNews(10);
         $this->load->view('user/head_view', $data);
@@ -183,9 +194,9 @@ class User extends CI_Controller {
     }
 
     public function achiev() {
-        Elements::isLoggedIn();
+        Elements::isLoggedIn($this->session->userdata('logged_in'));
         $data['title'] = 'Calendar';
-        $data['head_menu'] = Elements::getMenu();
+        $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $data['achievs'] = $this->achiev_model->getUserAchievs($this->session->userdata('user_id'));
         $data['activeItem'] = 'achievItem';
         $this->load->view('user/head_view', $data);
@@ -208,7 +219,7 @@ class User extends CI_Controller {
             mkdir($config['upload_path'], 0755, TRUE);
         }
 
-        if (!$this->upload->do_upload()) { //Upload file
+        if (!$this->upload->do_upload()) {
             $errors = array('error' => $this->upload->display_errors());
             $this->person($errors);
         } else {

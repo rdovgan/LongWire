@@ -12,11 +12,12 @@ class Post extends CI_Controller {
         $this->load->model('achiev_model');
         $this->load->model('post_model');
         $this->load->model('likes_model');
+        $this->load->model('favorite_model');
     }
 
     public function formPost() {
-        Elements::isLoggedIn();
-        $data['head_menu'] = Elements::getMenu();
+        Elements::isLoggedIn($this->session->userdata('logged_in'));
+        $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $data['title'] = 'Create new post';
         //add activeItem
         $this->load->view('user/head_view', $data);
@@ -25,8 +26,8 @@ class Post extends CI_Controller {
     }
 
     public function viewPost($postId) {
-        Elements::isLoggedIn();
-        $data['head_menu'] = Elements::getMenu();
+        Elements::isLoggedIn($this->session->userdata('logged_in'));
+        $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $data['title'] = 'View post';
         $data['activeItem'] = 'postsItem';
         $data['postData'] = $this->post_model->getPost($postId);
@@ -70,12 +71,12 @@ class Post extends CI_Controller {
     }
 
     public function editPost($postId) {
-        Elements::isLoggedIn();
+        Elements::isLoggedIn($this->session->userdata('logged_in'));
         if (!$this->post_model->checkBeforeEdit($postId, $this->session->userdata('user_login'))) {
             $this->postsList();
         } else {
             $postData = $this->post_model->getPost($postId);
-            $data['head_menu'] = Elements::getMenu();
+            $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
             $data['title'] = 'Posts';
             $data['postData'] = $postData;
             $this->load->view('user/head_view', $data);
@@ -85,36 +86,44 @@ class Post extends CI_Controller {
     }
 
     public function lastPost() {
-        Elements::isLoggedIn();
-        $data['head_menu'] = Elements::getMenu();
+        Elements::isLoggedIn($this->session->userdata('logged_in'));
+        $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $postId = $this->post_model->getLastPostId($this->session->userdata('user_id'));
         $this->viewPost($postId, $data);
     }
 
     public function postsList() {
-        Elements::isLoggedIn();
+        Elements::isLoggedIn($this->session->userdata('logged_in'));
+        $userId = $this->session->userdata('user_id');
         $data['title'] = 'Posts';
-        $data['head_menu'] = Elements::getMenu();
+        $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $data['activeItem'] = 'postsItem';
-        $data['postsList'] = $this->post_model->getAllPostsFromUser($this->session->userdata('user_id'));
+        $data['postsList'] = $this->post_model->getAllPostsFromUser($userId);
+        $data['likes'] = $this->likes_model->getLikesOfUser($userId);
+        $data['dislikes'] = $this->likes_model->getDislikesOfUser($userId);
+        $data['favs'] = $this->favorite_model->getFavsOfUser($userId);
         $this->load->view('user/head_view', $data);
         $this->load->view('user/panel_view', $data);
         $this->load->view('user/posts_list_view', $data);
     }
 
     public function allPosts() {
-        Elements::isLoggedIn();
+        Elements::isLoggedIn($this->session->userdata('logged_in'));
+        $userId = $this->session->userdata('user_id');
         $data['title'] = 'Dashboard';
-        $data['head_menu'] = Elements::getMenu();
+        $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $data['activeItem'] = 'profileItem';
         $data['postsList'] = $this->post_model->getAllPosts();
+        $data['likes'] = $this->likes_model->getLikesOfUser($userId);
+        $data['dislikes'] = $this->likes_model->getDislikesOfUser($userId);
+        $data['favs'] = $this->favorite_model->getFavsOfUser($userId);
         $this->load->view('user/head_view', $data);
         $this->load->view('user/panel_view', $data);
         $this->load->view('user/home_view', $data);
     }
 
     public function deletePost($postId) {
-        Elements::isLoggedIn();
+        Elements::isLoggedIn($this->session->userdata('logged_in'));
         if ($this->post_model->checkBeforeEdit($postId, $this->session->userdata('user_login'))) {
             $this->post_model->deletePost($postId);
         }
@@ -127,6 +136,10 @@ class Post extends CI_Controller {
     
     public function down($postId){
         echo $this->likes_model->down($postId);
+    }
+    
+    public function fav($postId){
+        echo $this->favorite_model->fav($postId);
     }
 
 }

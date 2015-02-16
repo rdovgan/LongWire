@@ -18,6 +18,7 @@
 @color-danger: #E74C3C;
 @color-danger-hover: #d62c1a;
 @color-shad: lighten(@color-base, 20%);//#4F5052
+@color-light-text: #F5F5F5;
 
 
 body{
@@ -210,6 +211,7 @@ input[type="checkbox"].green.ios-switch:checked + div > div {
 }
 .invlink:hover{
     color: @color-surf;
+    text-decoration: none;
 }
 .input-group-sm{
     height: 20px;
@@ -290,6 +292,27 @@ input[type="checkbox"].green.ios-switch:checked + div > div {
     width: 100%;
 }
 
+.socialLinks{
+    margin: 0;
+    padding: 0; 
+    margin-top: -10px;
+    font-size: 32px;
+}
+.socialLinks > div > a{
+    margin: 0;
+    margin-right: -15px;
+    padding: 0;
+    color: @color-light-text;
+    text-decoration: none;
+}
+.socialLinks > div > a:hover{
+    color: @color-surf;
+    text-decoration: none;
+}
+.socialLinks > div{
+    display: inline;
+}
+
 #logo{
     margin: 0;
     padding: 0;
@@ -300,7 +323,7 @@ input[type="checkbox"].green.ios-switch:checked + div > div {
 
 #logoText, #logoPic{        
     display:inline-block;
-    line-height: 20px;   
+    line-height: 20px;
 }
 
 #searchInput{
@@ -346,10 +369,15 @@ input[type="checkbox"].green.ios-switch:checked + div > div {
 }
 
 #footer{
+    
     margin: 0;
-    padding: 0;
+    margin-left: @content-space-l;
+    margin-right: @content-space-r;
+    margin-bottom: 50px;
+    padding: 20px;
+    width: auto;
+
     background-color: lighten(@color-base, 2%);
-    height: 50px;
     width: 100%;
 }
 
@@ -368,13 +396,13 @@ input[type="checkbox"].green.ios-switch:checked + div > div {
 #siteName{
     margin: 0;
     margin-left: 25px;
-    padding: 10px;
-    height: 100px;
+    padding: 10px 60px;
+    min-height: 100px;
     min-width: 300px;
     float: left;
     border: 2px solid @color-surf;
     border-radius: 10px;
-    font-family: Trebuchet MS;
+    font-family: 'Lobster', cursive;
     font-size: 48px;
     line-height: 1.6;
     text-align: center;

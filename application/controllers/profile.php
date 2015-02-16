@@ -23,9 +23,9 @@ class Profile extends CI_Controller {
     }
     
     public function currentUser(){        
-        Elements::isLoggedIn();
+        Elements::isLoggedIn($this->session->userdata('logged_in'));
         $data['title'] = 'Your personal profile';
-        $data['head_menu'] = Elements::getMenu();
+        $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $data['personLogin'] = $this->session->userdata('user_login');
         $userId = $this->session->userdata('user_id');
         $data['personData'] = $this->person_model->getPerson($userId);
@@ -36,9 +36,9 @@ class Profile extends CI_Controller {
     }
     
     public function search(){        
-        Elements::isLoggedIn();
+        Elements::isLoggedIn($this->session->userdata('logged_in'));
         $data['title'] = 'Users';
-        $data['head_menu'] = Elements::getMenu();
+        $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $data['activeItem'] = 'userItem';
         $data['usersList'] = $this->user_model->getUsers();
         $this->load->view('user/head_view', $data);
@@ -48,9 +48,9 @@ class Profile extends CI_Controller {
 
 
     public function user($userLogin){
-        Elements::isLoggedIn();
+        Elements::isLoggedIn($this->session->userdata('logged_in'));
         $data['title'] = 'User information';
-        $data['head_menu'] = Elements::getMenu();
+        $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $data['activeItem'] = 'userItem';
         $data['personLogin'] = $userLogin;
         $userId = $this->user_model->getIdByLogin($userLogin);

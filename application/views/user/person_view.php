@@ -97,7 +97,7 @@
         <?php } ?>
             <?php
             if (isset($error) && isset($error['error'])) {
-                echo $error . ' ' . $error['error'];
+                echo $error['error'];
             }
             ?>
             <?php echo form_open_multipart('user/uploadAvatar'); ?>

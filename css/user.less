@@ -10,9 +10,24 @@
 @color-danger-hover: #d62c1a;
 @color-shad: lighten(@color-base, 20%);
 @color-white: #fefefe;
+@color-dark-white: #fafafa;
 @color-dark-grey: #aeaeae;
 @color-grey: #cccccc;
 @color-light-grey: #dfdfdf;
+
+body{
+    margin-top: @height-menu;
+    margin-left: @width-panel;
+}
+
+pre{
+    font-family: 'Marmelad', sans-serif;
+    background-color: @color-dark-white;
+}
+
+.fill{
+    background-color: lighten(@color-blue, 50%);
+}
 
 a{
     color: @color-dark-grey;
@@ -67,24 +82,16 @@ a:hover{
     font-size: 18px;
 }
 
-.postDescription{
-    font-family: Consolas;
-    font-size: 18px;
-    color: @color-white;
-    background-color: @color-blue;
-    border: 2px solid @color-blue;
-    border-radius: 3px;
-}
-
-.postBody{
-    font-size: 14px;
-    clear: both;
+.post{
+    margin-left: -10px;
+    margin-right: 10px;
 }
 
 .postName{
-    margin: 0;
-    padding: 10px 5px;
-    font-size: 28px;
+    margin: 10px;
+    padding: 0;
+    padding-left: 15px;
+    font-size: 20px;
     color: @color-base;
     float: left;
     font-family: Trebuchet MS;
@@ -92,20 +99,36 @@ a:hover{
     cursor: url;
 }
 
+.postDescription{
+    margin: 0;
+    margin-left: -15px;
+    padding: 0;
+    padding-left: 5px;
+    font-family: Consolas;
+    font-size: 13px;
+    color: @color-dark-grey;
+    border: 1px solid @color-dark-grey;
+    border-radius: 3px;
+}
+
+.postBody{
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    text-align: left;
+    float: left;
+    word-wrap: break-word;
+    clear: both;
+}
+.post > pre {
+    margin-left: 10px;
+}
+
 .br{
     margin: 0;
     padding: 0;
     height: 10px;
     clear: both;
-}
-
-.divider{
-    margin: 0px;
-    margin-left: 50%;
-    margin-right: 5%;
-    padding: 0px;
-    border-bottom: 1px solid @color-grey;
-    height: 15px;
 }
 
 .headerElement{
@@ -127,6 +150,7 @@ a:hover{
 
 .avatarBig{
     margin-right: 20px;
+    margin-bottom: 20px;
     padding: 0;
     width: 96px;
     height: 96px;
@@ -169,6 +193,10 @@ a:hover{
     font-size: 28px;
 }
 
+.badgeEdit{
+    float: right;
+}
+
 .btn-none{    
     padding: 0;
     padding-left: 2px;
@@ -177,14 +205,49 @@ a:hover{
     border: none;
 }
 
+.postListLine{
+    margin: 0;
+    padding: 5px;
+    padding-left: 20px;
+    display: inline;
+    float: left;
+    box-shadow: inset 0px -1px 10px 0px #888888;
+}
+
+.postListButton > z{
+    font-family: 'Philosopher';
+    font-size: 20px;
+}
+.postListButton{
+    margin-left: 5px;
+    padding-top: 3px;
+    height: 32px;
+    width: 23.5%;
+    cursor: pointer;
+}
+.postListButton:hover{
+    border-radius: 3px;
+    background-color: @color-grey;
+    box-shadow:inset 0px 0px 0px 1px @color-blue;
+    color: @color-base;
+}
+.current{
+    border-radius: 3px;
+    background-color: @color-blue;
+    color: @color-white;
+}
+
 #userTop{
     margin: 0;
     padding: 0;
     display: inline;
     width: 100%;
+    position: relative;
 }
 
 #userTopInfo{
+    margin: 0;
+    margin-left: -@width-panel;
     background-color: @color-back;
     width: @width-panel;
     height: @height-menu;
@@ -212,8 +275,8 @@ a:hover{
 }
 
 #userTopBlock{
+    margin: 0;
     padding: 20px;
-    margin-left: @width-panel;
     background-color: @color-blue;
     width: 100%;
     height: @height-menu;
@@ -221,7 +284,7 @@ a:hover{
     position: fixed;
     color: @color-white;
     z-index: 1010;
-    box-shadow: -2px 3px 3px #888888;
+    box-shadow: 0px 3px 10px #888888;
 }
 
 #siteName{
@@ -239,6 +302,8 @@ a:hover{
 }
 
 #userPanel{
+    margin: 0;
+    margin-left: -@width-panel;
     padding: 10px;
     top: @height-menu;
     width: @width-panel;
@@ -251,10 +316,11 @@ a:hover{
 }
 
 #data{
-    padding: 20px;
-    margin-top: @height-menu;
-    margin-left: @width-panel;
-    min-height: 500px;
+    margin: 0;
+    margin-bottom: 100px;
+    padding: 0;
+    padding-left: 20px;
+    min-height: 100%;
 }
 
 #btnCreatePost{

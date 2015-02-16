@@ -18,15 +18,26 @@ $(document).ready(function () {
         var objDislikes = $(this).parent().children('.dislike').children('button').children('i');
         var oldLikes = objLikes.text();
         var oldDislikes = objDislikes.text();
+        var iconLike = $(this).children('button').children('span');
+        var iconDislike = $(this).parent().children('.dislike').children('button').children('span');
         req.onreadystatechange = function () {
             if (req.readyState === 4) {
                 if (req.status === 200) {
                     if (req.responseText === 'inc') {
                         objLikes.text(parseInt(oldLikes) + 1);
+                        iconLike.removeClass('glyphicon-chevron-up');
+                        iconLike.addClass('glyphicon-arrow-up');
+                        objLikes.parent().parent().addClass('fill');
                     } else if (req.responseText === 'dec') {
                         objLikes.text(parseInt(oldLikes) - 1);
+                        iconLike.removeClass('glyphicon-arrow-up');
+                        iconLike.addClass('glyphicon-chevron-up');
+                        objLikes.parent().parent().removeClass('fill');
                     } else {
                         objDislikes.text(parseInt(oldDislikes) - 1);
+                        iconDislike.removeClass('glyphicon-arrow-down');
+                        iconDislike.addClass('glyphicon-chevron-down');
+                        objDislikes.parent().parent().removeClass('fill');
                     }
                 }
             }
@@ -41,20 +52,57 @@ $(document).ready(function () {
         var objLikes = $(this).parent().children('.like').children('button').children('i');
         var oldDislikes = objDislikes.text();
         var oldLikes = objLikes.text();
+        var iconDislike = $(this).children('button').children('span');
+        var iconLike = $(this).parent().children('.like').children('button').children('span');
         req.onreadystatechange = function () {
             if (req.readyState === 4) {
                 if (req.status === 200) {
                     if (req.responseText === 'inc') {
                         objDislikes.text(parseInt(oldDislikes) + 1);
+                        iconDislike.removeClass('glyphicon-chevron-down');
+                        iconDislike.addClass('glyphicon-arrow-down');
+                        objDislikes.parent().parent().addClass('fill');
                     } else if (req.responseText === 'dec') {
                         objDislikes.text(parseInt(oldDislikes) - 1);
+                        iconDislike.removeClass('glyphicon-arrow-down');
+                        iconDislike.addClass('glyphicon-chevron-down');
+                        objDislikes.parent().parent().removeClass('fill');
                     } else {
                         objLikes.text(parseInt(oldLikes) - 1);
+                        iconLike.removeClass('glyphicon-arrow-up');
+                        iconLike.addClass('glyphicon-chevron-up');
+                        objLikes.parent().parent().removeClass('fill');
                     }
                 }
             }
         };
         req.open('GET', 'down/' + id, true);
+        req.send(null);
+    });
+    $('.fav').click(function () {
+        id = $(this).parent().attr('id');
+        var req = getXmlHttp();
+        var objFav = $(this).children('button').children('i');
+        var iconFav = $(this).children('button').children('span');
+        var oldFav = objFav.text();
+        req.onreadystatechange = function () {
+            if (req.readyState === 4) {
+                if (req.status === 200) {
+                    if (req.responseText === 'inc') {
+                        objFav.text(parseInt(oldFav) + 1);
+                        iconFav.removeClass('glyphicon-star-empty');
+                        iconFav.addClass('glyphicon-star');
+                        objFav.parent().parent().addClass('fill');
+                    } else if (req.responseText === 'dec') {
+                        objFav.text(parseInt(oldFav) - 1);
+                        iconFav.removeClass('glyphicon-star');
+                        iconFav.addClass('glyphicon-star-empty');
+                        objFav.parent().parent().removeClass('fill');
+                    }
+                }
+            }
+        }
+        req.open('GET', 'fav/' + id, true);
         req.send(null);
     });
 });
@@ -63,8 +111,8 @@ function markActiveItem() {
     $("#" + activeItem).addClass("active");
 }
 
-function description(event) {
-    obj = $(event.target).children(".postDescription");
+function showPost(event) {
+    obj = $(event.target).parent().find("pre");
     if (obj.attr('hidden'))
         obj.attr('hidden', false);
     else

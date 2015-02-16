@@ -78,7 +78,8 @@ class User_model extends CI_Model {
             $users = array();
             foreach ($query->result() as $rows) {
                 $rows = (array) $rows;
-                $person = Person_model::getPerson($rows['user_id']);
+                $this->load->model('person_model');
+                $person = $this->person_model->getPerson($rows['user_id']);
                 $rows['person'] = $person;
                 array_push($users, $rows);
             }

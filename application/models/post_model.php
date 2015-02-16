@@ -63,7 +63,9 @@ class Post_model extends CI_Model {
         if ($query->num_rows() > 0) {
             $posts = array();
             foreach ($query->result() as $rows) {
-                array_push($posts, (array) $rows);
+                $rows = (array) $rows;
+                $rows['post_user'] = $this->session->userdata['user_login'];
+                array_push($posts, $rows);
             }
             return $posts;
         }
