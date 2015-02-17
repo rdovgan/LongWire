@@ -11,6 +11,7 @@ class User extends CI_Controller {
         $this->load->model('user_model');
         $this->load->model('achiev_model');
         $this->load->model('person_model');
+        $this->load->model('mail_model');
     }
     
     public function setMessage($message) {
@@ -171,6 +172,7 @@ class User extends CI_Controller {
         $data['headElements'] = Elements::getCropLibrary();
         $data['error'] = $errors;
         $data['personData'] = $this->person_model->getPerson($this->session->userdata('user_id'));
+        $data['mailsList'] = $this->mail_model->getMailsByUser($this->session->userdata('user_id'));
         $this->load->view('user/head_view', $data);
         $this->load->view('user/panel_view', $data);
         $this->load->view('user/person_view', $data);
@@ -180,6 +182,16 @@ class User extends CI_Controller {
         $this->person_model->addPerson($this->session->userdata('user_id'));
         //show message
         $this->person();
+    }
+    
+    public function addMail(){
+        $this->mail_model->addMail($this->session->userdata('user_id'));
+        //show message
+        $this->person();
+    }
+    
+    public function access($mailId){
+        echo $this->mail_model->changeVisibility($mailId);
     }
 
     public function messages() {

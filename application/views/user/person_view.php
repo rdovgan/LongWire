@@ -3,7 +3,7 @@
     <?php if ($isPerson) { ?>
         <div id="personData" class="col-md-4 personBlock">
             <div class="bigText">Your personal info</div>
-            <table class="table table-striped">
+            <table class="table table-condensed">
                 <tr>
                     <td>Name</td>
                     <td><?php echo $personData['person_name']; ?></td>
@@ -77,7 +77,9 @@
         </div>
         <div class="br"></div>
         <div class="input-group input-group-sm col-md-12">
-            <input name="submit" class="btn btn-danger col-md-4" type="submit" value="Save">
+            <div class="col-md-4">
+                <input name="submit" class="btn btn-danger col-md-12" type="submit" value="Save">
+            </div>
             <a href="#" style="font-size: 32px; float: right;">
                 <span style="margin-right: 0px;" class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
             </a>
@@ -106,6 +108,49 @@
         <?php echo "<input class='btn btn-sm btn-info col-md-5' style='margin-top: 20px;' type='submit' name='submit' value='Upload' /> "; ?>
         <?php echo "</form>" ?>
     </div>
+    <?php if (isset($mailsList) && $mailsList != false) { ?>
+        <div id = "mails" class="col-md-12">
+            <table class = "table-striped col-md-12">
+                <tr>
+                    <th>Mail</th>
+                    <th>Last log in</th>
+                    <th>IP</th>
+                    <th>Visibility</th>
+                    <th>Remove</th>
+                </tr>
+                <?php
+                foreach ($mailsList as $mail): {
+                        ?>
+                        <tr id="<?php echo $mail['mail_id'] ?>">
+                            <td><?php echo $mail['mail_email'] ?></td>
+                            <td><?php echo $mail['mail_last_log_in'] ?></td>
+                            <td><?php echo $mail['mail_ip'] ?></td>
+                            <td><div class="access accessMail<?php echo $mail['mail_access'] ?>"></div></td>
+                            <td><?php echo $mail['mail_id'] ?></td>
+                        </tr>
+                        <?php
+                    }
+                endforeach;
+                ?>
+            </table>
+        </div> <?php }
+            ?>
+    <?php echo form_open("user/addMail"); ?>
+    <div id="addMail" class="col-md-4 personBlock">
+        <div class="bigText">Add email</div>
+        <div class="br"></div>
+        <div class="form-group">
+            <label class="sr-only" for="exampleInputEmail3">Email address</label>
+            <input type="email" class="form-control" id="mail" name="mail_email" placeholder="Enter email">
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" name="mail_access"> Set visible to other
+            </label>
+        </div>
+        <button type="submit" class="btn btn-default">Sign in</button>
+    </div>
+    <?php echo form_close(); ?>
 </div>
 </body>
 </html>

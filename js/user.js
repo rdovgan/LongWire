@@ -105,6 +105,26 @@ $(document).ready(function () {
         req.open('GET', 'fav/' + id, true);
         req.send(null);
     });
+    $('.access').click(function () {
+        $obj = $(this);
+        id = $obj.parent().parent().attr('id');
+        var req = getXmlHttp();
+        req.onreadystatechange = function () {
+            if (req.readyState === 4) {
+                if (req.status === 200) {
+                    if (req.responseText === '1') {
+                        $obj.removeClass('accessMail1');
+                        $obj.addClass('accessMail2');
+                    }else if(req.responseText === '2'){
+                        $obj.removeClass('accessMail2');
+                        $obj.addClass('accessMail1');
+                    }
+                }
+            }
+        }
+        req.open('GET', 'access/' + id, true);
+        req.send(null);
+    });
 });
 
 function markActiveItem() {
