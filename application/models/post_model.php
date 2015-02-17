@@ -48,7 +48,9 @@ class Post_model extends CI_Model {
     public function getPost($postId) {
         $this->db->where('post_id', $postId);
         $query = $this->db->get('posts');
-        return (array) $query->row();
+        $row = (array) $query->row();
+        $row['post_user'] = $this->getUserName($row['post_user_id']);
+        return $row;
     }
 
     public function deletePost($postId) {
@@ -64,7 +66,41 @@ class Post_model extends CI_Model {
             $posts = array();
             foreach ($query->result() as $rows) {
                 $rows = (array) $rows;
-                $rows['post_user'] = $this->session->userdata['user_login'];
+                $rows['post_user'] = $this->getUserName($userId);
+                array_push($posts, $rows);
+            }
+            return $posts;
+        }
+        return false;
+    }
+    
+    public function getAllFavPosts($userId){
+        $this->db->where('fav_user', $userId);
+        $this->db->from('favorites');
+        $this->db->join('posts', 'posts.post_id = favorites.fav_post');
+        $query = $this->db->get();
+        if($query->num_rows() > 0) {
+            $posts = array();            
+            foreach ($query->result() as $rows) {
+                $rows = (array) $rows;
+                $rows['post_user'] = $this->getUserName($rows['post_user_id']);
+                array_push($posts, $rows);
+            }
+            return $posts;
+        }
+        return false;
+    }
+    
+    public function getAllLikedPosts($userId){
+        $this->db->where('post_up_user', $userId);
+        $this->db->from('post_ups');
+        $this->db->join('posts', 'posts.post_id = post_ups.post_up_post');
+        $query = $this->db->get();
+        if($query->num_rows() > 0) {
+            $posts = array();            
+            foreach ($query->result() as $rows) {
+                $rows = (array) $rows;
+                $rows['post_user'] = $this->getUserName($rows['post_user_id']);
                 array_push($posts, $rows);
             }
             return $posts;
@@ -108,6 +144,22 @@ class Post_model extends CI_Model {
 
     public function getAllPostsLimit($order, $limit) {
         
+    }
+    
+    public function getBestPosts(){
+        $this->db->order_by('post_likes','desc');
+        $this->db->limit(25);
+        $query = $this->db->get('posts');
+        if ($query->num_rows() > 0) {
+            $posts = array();
+            foreach ($query->result() as $rows) {
+                $rows = (array) $rows;
+                $rows['post_user'] = $this->getUserName($rows['post_user_id']);
+                array_push($posts, $rows);
+            }
+            return $posts;
+        }
+        return false;
     }
 
 //need to add public key
