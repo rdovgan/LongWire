@@ -1,7 +1,7 @@
-<div id="data" class='content'>
+<div id="data" class='content col-md-12'>
     <?php $isPerson = isset($personData) && $personData != false; ?>
     <?php if ($isPerson) { ?>
-        <div id="personData" class="col-md-6 personBlock">
+        <div id="personData" class="col-md-4 personBlock">
             <div class="bigText">Your personal info</div>
             <table class="table table-striped">
                 <tr>
@@ -45,34 +45,35 @@
         <?php } else { ?>
             <div class="bigText">Fill in personal info</div>
         <?php } ?>
-
-        <div class="input-group input-group-sm col-md-12">
-            <input id="person_name" name="person_name" class="form-control col-md-8" type="text" placeholder="Name" value="<?php echo $personData['person_name']; ?>"> </div>
+        <div class="form-inline">
+            <div class="form-group input-group-sm col-md-5">
+                <input id="person_name" name="person_name" class="form-control" type="text" placeholder="Name" value="<?php echo $personData['person_name']; ?>"> </div>
+            <div class="form-group input-group-sm col-md-5">
+                <input id="person_surname" name="person_surname" class="form-control" type="text" placeholder="Surname" value="<?php echo $personData['person_surname']; ?>"> </div>
+        </div>
         <div class="br"></div>
-        <div class="input-group input-group-sm col-md-12">
-            <input id="person_surname" name="person_surname" class="form-control col-md-8" type="text" placeholder="Surname" value="<?php echo $personData['person_surname']; ?>"> </div>
-        <div class="br"></div>
-        <div class="input-group input-group-sm col-md-12">
-            <input id="person_birth" name="person_birth" class="form-control col-md-8" type="date" placeholder="Birth" value="<?php echo $personData['person_birth']; ?>"> </div>
-        <div class="br"></div>
-        <div class="input-group input-group-sm col-md-12">
-            <select id="person_gender" name="person_gender" class="form-control col-md-8" placeholder="Gender">
-                <option value='' disabled  <?php
-                if ($personData['person_gender'] != '1' && $personData['person_gender'] != '2') {
-                    echo 'selected';
-                }
-                ?>  style='display:none;'>Choose your gender</option>
-                <option value="1" <?php
-                if ($personData['person_gender'] == '1') {
-                    echo 'selected';
-                }
-                ?> >Male</option>
-                <option value="2"  <?php
-                if ($personData['person_gender'] == '2') {
-                    echo 'selected';
-                }
-                ?> >Female</option>
-            </select>
+        <div class="form-inline">
+            <div class="form-group input-group-sm col-md-5">
+                <input id="person_birth" name="person_birth" class="form-control" type="date" placeholder="Birth" value="<?php echo $personData['person_birth']; ?>"> </div>
+            <div class="form-group input-group-sm col-md-5">
+                <select id="person_gender" name="person_gender" class="form-control" style="width: 100%;" placeholder="Gender">
+                    <option value='' disabled  <?php
+                    if ($personData['person_gender'] != '1' && $personData['person_gender'] != '2') {
+                        echo 'selected';
+                    }
+                    ?>  style='display:none;'>Choose your gender</option>
+                    <option value="1" <?php
+                    if ($personData['person_gender'] == '1') {
+                        echo 'selected';
+                    }
+                    ?> >Male</option>
+                    <option value="2"  <?php
+                    if ($personData['person_gender'] == '2') {
+                        echo 'selected';
+                    }
+                    ?> >Female</option>
+                </select>
+            </div>
         </div>
         <div class="br"></div>
         <div class="input-group input-group-sm col-md-12">
@@ -83,11 +84,11 @@
         </div>
     </div>
     <?php echo form_close(); ?>
-    <div id="imgGalary" class="col-md-6 personBlock">
+    <div id="imgGalary" class="col-md-4 personBlock">
         <div class="bigText">Show your face</div>
         <div class="br"></div>
         <?php
-        $imgLink = FCPATH.'/img/avatars/'.$this->session->userdata('user_login').'.png';
+        $imgLink = FCPATH . '/img/avatars/' . $this->session->userdata('user_login') . '.png';
         if (is_file($imgLink)) {
             ?>
             <div class="avatarBig">
@@ -95,15 +96,15 @@
                      width="96" height="96" border="0">
             </div>
         <?php } ?>
-            <?php
-            if (isset($error) && isset($error['error'])) {
-                echo $error['error'];
-            }
-            ?>
-            <?php echo form_open_multipart('user/uploadAvatar'); ?>
-            <?php echo "<input class='file' type='file' name='userfile' value='Choose' size='20' />"; ?>
-            <?php echo "<input class='btn btn-sm btn-info col-md-3' style='margin-top: 20px;' type='submit' name='submit' value='Upload' /> "; ?>
-            <?php echo "</form>" ?>
+        <?php
+        if (isset($error) && isset($error['error'])) {
+            echo $error['error'];
+        }
+        ?>
+        <?php echo form_open_multipart('user/uploadAvatar'); ?>
+        <?php echo "<input class='file' type='file' name='userfile' value='Choose' size='20' />"; ?>
+        <?php echo "<input class='btn btn-sm btn-info col-md-5' style='margin-top: 20px;' type='submit' name='submit' value='Upload' /> "; ?>
+        <?php echo "</form>" ?>
     </div>
 </div>
 </body>

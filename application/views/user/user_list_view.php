@@ -1,11 +1,13 @@
 <div id="data" class='content'>
+    <div class="br"></div>
     <?php
     if (isset($usersList) && $usersList != false) {
         foreach ($usersList as $item):
             $imgLink = FCPATH . '/img/avatars/' . $item['user_login'] . '.png';
             $isPerson = isset($item['person']) && $item['person'] != false;
+            $gender = $item['person']['person_gender'];
             ?>    
-            <div class="userItem col-md-12">
+            <div class="userItem col-md-12 <?php echo 'back'.$gender ?>">
                 <div class="avatarBig col-md-3" style="display: inline;">
                     <img src="/img/avatars/<?php echo (is_file($imgLink)) ? ($item['user_login']) : ('q'); ?>.png"
                          width="96" height="96" border="0">
@@ -21,9 +23,9 @@
                         <?php echo $item['person']['person_birth']; ?>
                         <br>
                         <?php
-                        if ($item['person']['person_gender'] == '1') {
+                        if ($gender == '1') {
                             echo 'Male';
-                        } else if ($item['person']['person_gender'] == '2') {
+                        } else if ($gender == '2') {
                             echo 'Female';
                         } else {
                             echo 'Unknown';

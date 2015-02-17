@@ -68,7 +68,7 @@ class Elements {
         $result = '<div id="'.$item['post_id'].'" class="post">';
         $result .= '<div class="col-md-12 postName" onclick="showPost(event);">'.$item['post_name'].anchor('post/editPost/' . $item['post_id'], '<span class="glyphicon glyphicon-pencil badgeEdit" aria-hidden="true"></span>');
         $result .= '<div class="col-md-12 postDescription"'.($item['post_desc'] != '' ? '' : 'hidden').'>'.$item['post_desc'].'</div></div>';
-        $result .= '<pre><div class="col-md-12 postBody">'.$item['post_body'].'</div></pre>';
+        $result .= '<p><div class="col-md-12 postBody">'.nl2br($item['post_body']).'</div></p>';
         $tiny = ($isAuthor) ? 'tiny' : '';
         $isLiked = (in_array($item['post_id'], $likes)); $liked = $isLiked ? 'glyphicon-arrow-up' : 'glyphicon-chevron-up';
         $isDisliked = (in_array($item['post_id'], $dislikes)); $disliked = $isDisliked ? 'glyphicon-arrow-down' : 'glyphicon-chevron-down';

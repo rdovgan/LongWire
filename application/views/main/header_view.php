@@ -13,6 +13,8 @@
         <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>/js/jquery-2.1.1.js"></script>
         <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>/js/bootstrap.js"></script>
         <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>/js/main.js"></script>
+        <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>/js/social-likes.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/css/social-likes_flat.css">
     </head>
     <body>
         <div id="header">
@@ -34,7 +36,7 @@
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="#" id="btnCreatePost" onclick="createPostDialog();">Create post</a></li>
-                                        <li><?php echo anchor("post/lastPost","Last post"); ?></li>
+                                        <li><?php echo anchor("post/lastPost", "Last post"); ?></li>
                                         <li><a href="#">Something else here</a></li>
                                         <li class="divider"></li>
                                         <li><a href="#">Separated link</a></li>
@@ -60,4 +62,3 @@
             <button type="button" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
             <p id="messageText"><?php echo $this->session->flashdata('message'); ?></p>
         </div>
-		

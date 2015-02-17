@@ -24,12 +24,6 @@
                 <text>Best</text>
             </a>
         </li>
-        <li class="disabled">
-            <a href="#other_posts" data-toggle="tab">
-                <span class="glyphicon glyphicon-link" aria-hidden="true"></span>
-                <text>Other</text>
-            </a>
-        </li>
     </ul>
 </div>
 

@@ -7,22 +7,19 @@
 @color-surf: #0CE3AC;
 @color-surf-hover: #008966;
 @color-danger: #E74C3C;
-@color-danger-hover: #d62c1a;
+@color-danger-hover: #D62C1A;
 @color-shad: lighten(@color-base, 20%);
-@color-white: #fefefe;
-@color-dark-white: #f0f0f0;
-@color-dark-grey: #aeaeae;
-@color-grey: #cccccc;
+@color-white: #FEFEFE;
+@color-dark-white: #F0F0F0;
+@color-dark-grey: #AEAEAE;
+@color-grey: #CCCCCC;
 @color-light-grey: #dfdfdf;
+@color-boy: #C5EFF7;
+@color-girl: #DCC6E0;
 
 body{
     margin-top: @height-menu;
     margin-left: @width-panel;
-}
-
-pre{
-    font-family: 'Marmelad', sans-serif;
-    background-color: @color-dark-white;
 }
 
 .fill{
@@ -107,18 +104,27 @@ a:hover{
     font-family: Consolas;
     font-size: 13px;
     color: @color-dark-grey;
-    border: 1px solid @color-dark-grey;
+    border: 1px solid @color-light-grey;
     border-radius: 3px;
 }
 
 .postBody{
-    margin: 0;
-    padding: 0;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
     font-size: 13px;
+    font-family: 'Marmelad', sans-serif;
     text-align: left;
     float: left;
     word-wrap: break-word;
+    max-width: 99%;
     clear: both;
+    color: darken(@color-dark-grey, 30%);
+    border: 1px solid @color-dark-grey;
+    border-radius: 3px;
+    background-color: @color-dark-white;
+    overflow: hidden;
+    line-height: 1.4;
 }
 .post > pre {
     margin-left: 10px;
@@ -183,8 +189,9 @@ a:hover{
 }
 
 .userItem{
+    width: 99%;
     padding: 20px;
-    box-shadow: -1px -1px 3px #888888;
+    box-shadow: 0px 0px 1px 0px #888888;
 }
 
 .badgeDelete{
@@ -194,6 +201,7 @@ a:hover{
 }
 
 .badgeEdit{
+    right: 10px;
     float: right;
 }
 
@@ -212,6 +220,18 @@ a:hover{
     padding: 0;
     display: inline;
     float: left;
+}
+
+.back{
+    background-color: lighten(@color-light-grey, 5%);
+}
+
+.back1{
+    background-color: lighten(@color-boy, 5%);
+}
+
+.back2{
+    background-color: lighten(@color-girl, 5%);
 }
 
 #userTop{
@@ -294,10 +314,11 @@ a:hover{
 
 #data{
     margin: 0;
-    margin-bottom: 100px;
     padding: 0;
+    padding-bottom: 100px;
     padding-left: 20px;
     min-height: 100%;
+    display: inline-block;
 }
 
 #btnCreatePost{

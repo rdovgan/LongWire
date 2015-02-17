@@ -1,4 +1,4 @@
-<div id="data" class='content'>
+<div id="data" class='content col-md-12'>
     <?php $isPerson = isset($personData) && $personData != false; ?>
     <div id="personData" class="col-md-12 personBlock" style="display: inline;">
         <?php
