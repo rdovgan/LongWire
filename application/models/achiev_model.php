@@ -128,6 +128,7 @@ class Achiev_model extends CI_Model {
             'got' => $date
         );
         $this->db->insert('user_ach', $data);
+        Events::log_message('debug', 'Was written to DB');
         //call dialog 'success'
     }
 

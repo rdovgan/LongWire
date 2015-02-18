@@ -10,7 +10,6 @@ class System_events {
         $achId = 1;
         if ((!isset($this->achList)) || (in_array($achId, $this->achList))) {
             //for other methods
-            return false;
         }
         Events::log_message('debug', 'User registered');
         return 'Cake is a lie';
