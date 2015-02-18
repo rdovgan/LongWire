@@ -13,7 +13,7 @@ class User extends CI_Controller {
         $this->load->model('person_model');
         $this->load->model('mail_model');
     }
-    
+
     public function setMessage($message) {
         if (isset($message) && $message != '') {
             $this->session->set_flashdata('message', $message);
@@ -131,6 +131,7 @@ class User extends CI_Controller {
             $this->achList = $this->achiev_model->getUserAchId($this->session->userdata('user_id'));
             $result = Events::trigger('register_event', 'system_events', 'string'); //TODO:give result to $this->thank()
             if ($result) {
+                Events::log_message('debug', 'Called trigger; Try to write to DB');
                 $this->achiev_model->gotAchiev(1, $userId);
             }
             $this->thanks();
@@ -183,14 +184,14 @@ class User extends CI_Controller {
         //show message
         $this->person();
     }
-    
-    public function addMail(){
+
+    public function addMail() {
         $this->mail_model->addMail($this->session->userdata('user_id'));
         //show message
         $this->person();
     }
-    
-    public function access($mailId){
+
+    public function access($mailId) {
         echo $this->mail_model->changeVisibility($mailId);
     }
 
