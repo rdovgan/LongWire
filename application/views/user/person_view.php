@@ -2,7 +2,7 @@
     <?php $isPerson = isset($personData) && $personData != false; ?>
     <?php if ($isPerson) { ?>
         <div id="personData" class="col-md-4 personBlock">
-            <div class="bigText">Your personal info</div>
+            <div class="medText">Your personal info</div>
             <table class="table table-condensed">
                 <tr>
                     <td>Name</td>
@@ -41,9 +41,9 @@
     }
     ?>>
              <?php if ($isPerson) { ?>
-            <div class="bigText">Update your personal info</div>
+            <div class="medText">Update your personal info</div>
         <?php } else { ?>
-            <div class="bigText">Fill in personal info</div>
+            <div class="medText">Fill in personal info</div>
         <?php } ?>
         <div class="form-inline">
             <div class="form-group input-group-sm col-md-5">
@@ -54,9 +54,7 @@
         <div class="br"></div>
         <div class="form-inline">
             <div class="form-group input-group-sm col-md-5">
-                <input id="person_birth" name="person_birth" class="form-control" type="date" placeholder="Birth" value="<?php echo $personData['person_birth']; ?>"> </div>
-            <div class="form-group input-group-sm col-md-5">
-                <select id="person_gender" name="person_gender" class="form-control" style="width: 100%;" placeholder="Gender">
+                <select id="person_gender" name="person_gender" style="width: 135%;" class="form-control" placeholder="Gender">
                     <option value='' disabled  <?php
                     if ($personData['person_gender'] != '1' && $personData['person_gender'] != '2') {
                         echo 'selected';
@@ -74,6 +72,8 @@
                     ?> >Female</option>
                 </select>
             </div>
+            <div class="form-group input-group-sm col-md-5">
+                <input id="person_birth" name="person_birth" class="form-control" type="date" placeholder="Birth" value="<?php echo $personData['person_birth']; ?>"> </div>
         </div>
         <div class="br"></div>
         <div class="input-group input-group-sm col-md-12">
@@ -87,7 +87,7 @@
     </div>
     <?php echo form_close(); ?>
     <div id="imgGalary" class="col-md-4 personBlock">
-        <div class="bigText">Show your face</div>
+        <div class="medText">Show your face</div>
         <div class="br"></div>
         <?php
         $imgLink = FCPATH . '/img/avatars/' . $this->session->userdata('user_login') . '.png';
@@ -104,8 +104,8 @@
         }
         ?>
         <?php echo form_open_multipart('user/uploadAvatar'); ?>
-        <?php echo "<input class='file' type='file' name='userfile' value='Choose' size='20' />"; ?>
-        <?php echo "<input class='btn btn-sm btn-info col-md-5' style='margin-top: 20px;' type='submit' name='submit' value='Upload' /> "; ?>
+        <input class='file' type='file' name='userfile' value='Choose' size='20' />
+        <input class='btn btn-sm btn-info col-md-5' style='margin-top: 20px;' type='submit' name='submit' value='Upload' />
         <?php echo "</form>" ?>
     </div>
     <?php if (isset($mailsList) && $mailsList != false) { ?>
@@ -121,12 +121,16 @@
                 <?php
                 foreach ($mailsList as $mail): {
                         ?>
-                        <tr id="<?php echo $mail['mail_id'] ?>">
-                            <td><?php echo $mail['mail_email'] ?></td>
+                        <tr id="mailID<?php echo $mail['mail_id'] ?>">
+                            <td><i style="color: #006dcc;">
+                                    <?php
+                                    $pos = strpos($mail['mail_email'], '@');
+                                    echo str_replace(substr($mail['mail_email'], 3, $pos - 2), '**@', $mail['mail_email']);
+                                    ?></i></td>
                             <td><?php echo $mail['mail_last_log_in'] ?></td>
-                            <td><?php echo $mail['mail_ip'] ?></td>
-                            <td><div class="access accessMail<?php echo $mail['mail_access'] ?>"></div></td>
-                            <td><?php echo $mail['mail_id'] ?></td>
+                            <td width="30%;"><?php echo $mail['mail_ip'] ?></td>
+                            <td width="100px;"><div class="access accessMail<?php echo $mail['mail_access'] ?>"></div></td>
+                            <td width="100px;"><div id="mailID<?php echo $mail['mail_id'] ?>" class="deleteMail"></div></td>
                         </tr>
                         <?php
                     }
@@ -137,7 +141,7 @@
             ?>
     <?php echo form_open("user/addMail"); ?>
     <div id="addMail" class="col-md-4 personBlock">
-        <div class="bigText">Add email</div>
+        <div class="medText">Add email</div>
         <div class="br"></div>
         <div class="form-group">
             <label class="sr-only" for="exampleInputEmail3">Email address</label>

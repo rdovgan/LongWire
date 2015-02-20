@@ -45,84 +45,103 @@ $(document).ready(function () {
         req.open('GET', 'up/' + id, true);
         req.send(null);
     });
-    $('.dislike').click(function () {
-        id = $(this).parent().attr('id');
-        var req = getXmlHttp();
-        var objDislikes = $(this).children('button').children('i');
-        var objLikes = $(this).parent().children('.like').children('button').children('i');
-        var oldDislikes = objDislikes.text();
-        var oldLikes = objLikes.text();
-        var iconDislike = $(this).children('button').children('span');
-        var iconLike = $(this).parent().children('.like').children('button').children('span');
-        req.onreadystatechange = function () {
-            if (req.readyState === 4) {
-                if (req.status === 200) {
-                    if (req.responseText === 'inc') {
-                        objDislikes.text(parseInt(oldDislikes) + 1);
-                        iconDislike.removeClass('glyphicon-chevron-down');
-                        iconDislike.addClass('glyphicon-arrow-down');
-                        objDislikes.parent().parent().addClass('fill');
-                    } else if (req.responseText === 'dec') {
-                        objDislikes.text(parseInt(oldDislikes) - 1);
-                        iconDislike.removeClass('glyphicon-arrow-down');
-                        iconDislike.addClass('glyphicon-chevron-down');
-                        objDislikes.parent().parent().removeClass('fill');
-                    } else {
-                        objLikes.text(parseInt(oldLikes) - 1);
-                        iconLike.removeClass('glyphicon-arrow-up');
-                        iconLike.addClass('glyphicon-chevron-up');
-                        objLikes.parent().parent().removeClass('fill');
-                    }
-                }
-            }
-        };
-        req.open('GET', 'down/' + id, true);
-        req.send(null);
-    });
-    $('.fav').click(function () {
-        id = $(this).parent().attr('id');
-        var req = getXmlHttp();
-        var objFav = $(this).children('button').children('i');
-        var iconFav = $(this).children('button').children('span');
-        var oldFav = objFav.text();
-        req.onreadystatechange = function () {
-            if (req.readyState === 4) {
-                if (req.status === 200) {
-                    if (req.responseText === 'inc') {
-                        objFav.text(parseInt(oldFav) + 1);
-                        iconFav.removeClass('glyphicon-star-empty');
-                        iconFav.addClass('glyphicon-star');
-                        objFav.parent().parent().addClass('fill');
-                    } else if (req.responseText === 'dec') {
-                        objFav.text(parseInt(oldFav) - 1);
-                        iconFav.removeClass('glyphicon-star');
-                        iconFav.addClass('glyphicon-star-empty');
-                        objFav.parent().parent().removeClass('fill');
-                    }
+$('.dislike').click(function () {
+    id = $(this).parent().attr('id');
+    var req = getXmlHttp();
+    var objDislikes = $(this).children('button').children('i');
+    var objLikes = $(this).parent().children('.like').children('button').children('i');
+    var oldDislikes = objDislikes.text();
+    var oldLikes = objLikes.text();
+    var iconDislike = $(this).children('button').children('span');
+    var iconLike = $(this).parent().children('.like').children('button').children('span');
+    req.onreadystatechange = function () {
+        if (req.readyState === 4) {
+            if (req.status === 200) {
+                if (req.responseText === 'inc') {
+                    objDislikes.text(parseInt(oldDislikes) + 1);
+                    iconDislike.removeClass('glyphicon-chevron-down');
+                    iconDislike.addClass('glyphicon-arrow-down');
+                    objDislikes.parent().parent().addClass('fill');
+                } else if (req.responseText === 'dec') {
+                    objDislikes.text(parseInt(oldDislikes) - 1);
+                    iconDislike.removeClass('glyphicon-arrow-down');
+                    iconDislike.addClass('glyphicon-chevron-down');
+                    objDislikes.parent().parent().removeClass('fill');
+                } else {
+                    objLikes.text(parseInt(oldLikes) - 1);
+                    iconLike.removeClass('glyphicon-arrow-up');
+                    iconLike.addClass('glyphicon-chevron-up');
+                    objLikes.parent().parent().removeClass('fill');
                 }
             }
         }
-        req.open('GET', 'fav/' + id, true);
-        req.send(null);
-    });
-    $('.access').click(function () {
-        $obj = $(this);
-        id = $obj.parent().parent().attr('id');
-        var req = getXmlHttp();
-        req.onreadystatechange = function () {
-            if (req.readyState === 4) {
-                if (req.status === 200) {
-                    if (req.responseText === '1') {
-                        $obj.removeClass('accessMail1');
-                        $obj.addClass('accessMail2');
-                    }else if(req.responseText === '2'){
-                        $obj.removeClass('accessMail2');
-                        $obj.addClass('accessMail1');
-                    }
+    };
+    req.open('GET', 'down/' + id, true);
+    req.send(null);
+});
+$('.fav').click(function () {
+    id = $(this).parent().attr('id');
+    var req = getXmlHttp();
+    var objFav = $(this).children('button').children('i');
+    var iconFav = $(this).children('button').children('span');
+    var oldFav = objFav.text();
+    req.onreadystatechange = function () {
+        if (req.readyState === 4) {
+            if (req.status === 200) {
+                if (req.responseText === 'inc') {
+                    objFav.text(parseInt(oldFav) + 1);
+                    iconFav.removeClass('glyphicon-star-empty');
+                    iconFav.addClass('glyphicon-star');
+                    objFav.parent().parent().addClass('fill');
+                } else if (req.responseText === 'dec') {
+                    objFav.text(parseInt(oldFav) - 1);
+                    iconFav.removeClass('glyphicon-star');
+                    iconFav.addClass('glyphicon-star-empty');
+                    objFav.parent().parent().removeClass('fill');
                 }
             }
         }
-        req.open('GET', 'access/' + id, true);
+    }
+    req.open('GET', 'fav/' + id, true);
+    req.send(null);
+});
+$('.access').click(function () {
+    $obj = $(this);
+    idStr = $obj.parent().parent().attr('id');
+    id = idStr.substr(6, idStr.length);
+    var req = getXmlHttp();
+    req.onreadystatechange = function () {
+        if (req.readyState === 4) {
+            if (req.status === 200) {
+                if (req.responseText === '1') {
+                    $obj.removeClass('accessMail1');
+                    $obj.addClass('accessMail2');
+                }else if(req.responseText === '2'){
+                    $obj.removeClass('accessMail2');
+                    $obj.addClass('accessMail1');
+                }
+            }
+        }
+    }
+    req.open('GET', 'accessMail/' + id, true);
+    req.send(null);
+});
+$('.deleteMail').click(function () {
+    $obj = $(this);
+    $line = $(this).parent().parent();
+    idStr = $obj.parent().parent().attr('id');
+    id = idStr.substr(6, idStr.length);
+    var req = getXmlHttp();
+    req.onreadystatechange = function () {
+        if (req.readyState === 4) {
+            if (req.status === 200) {
+                if(req.responseText === 'finish'){
+                    $line.css('display','none');
+                }
+            }
+        }
+    };
+        req.open('GET', 'deleteMail/' + id, true);
         req.send(null);
     });
 });

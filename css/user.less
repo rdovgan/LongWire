@@ -13,9 +13,10 @@
 @color-dark-white: #F0F0F0;
 @color-dark-grey: #AEAEAE;
 @color-grey: #CCCCCC;
-@color-light-grey: #dfdfdf;
+@color-light-grey: #DFDFDF;
 @color-boy: #C5EFF7;
 @color-girl: #DCC6E0;
+@color-warning: #CF841B;
 
 body{
     margin-top: @height-menu;
@@ -28,6 +29,11 @@ a{
 a:hover{    
     text-decoration: none;
 }
+
+th{
+    text-align: center;
+}
+
 .nav > li > a:hover{
     color: @color-light-grey;
     background-color: @color-blue;
@@ -70,6 +76,16 @@ a:hover{
     color: @color-base;
     float: left;
     font-family: Trebuchet MS;
+    clear: both;
+}
+
+.medText{
+    margin: 0;
+    padding: 10px;
+    font-size: 24px;
+    color: @color-base;
+    float: left;
+    font-family: Philosopher;
     clear: both;
 }
 
@@ -247,10 +263,26 @@ a:hover{
     color: @color-white;
 }
 .accessMail1:before{
-    content: "\e089";
+    content: "\e105";
 }
 
 .accessMail2{
+    margin: 10px 10px;
+    padding-left: 15px;
+    width: 50px;
+    height: 26px;
+    border-radius: 3px;
+    font-family: 'Glyphicons Halflings';
+    font-size: 19px;
+    background-color: @color-warning;
+    cursor: pointer;
+    color: @color-white;
+}
+.accessMail2:before{
+    content: "\e106";
+}
+
+.deleteMail{
     margin: 10px 10px;
     padding-left: 15px;
     width: 50px;
@@ -262,7 +294,7 @@ a:hover{
     cursor: pointer;
     color: @color-white;
 }
-.accessMail2:before{
+.deleteMail:before{
     content: "\e088";
 }
 

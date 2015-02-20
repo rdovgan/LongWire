@@ -191,8 +191,12 @@ class User extends CI_Controller {
         $this->person();
     }
 
-    public function access($mailId) {
+    public function accessMail($mailId) {
         echo $this->mail_model->changeVisibility($mailId);
+    }
+
+    public function deleteMail($mailId){
+        echo $this->mail_model->deleteMail($mailId);
     }
 
     public function messages() {
@@ -219,7 +223,7 @@ class User extends CI_Controller {
 
     public function uploadAvatar() {
         $config['upload_path'] = './img/avatars/';
-        $config['allowed_types'] = 'gif|jpg|png';
+        $config['allowed_types'] = 'gif|jpg|png|bmp';
         $config['file_name'] = '' . $this->session->userdata('user_login') . '_full.png';
         $config['overwrite'] = TRUE;
         $config['max_size'] = '0';
