@@ -7,26 +7,20 @@
 @color-surf: #0CE3AC;
 @color-surf-hover: #008966;
 @color-danger: #E74C3C;
-@color-danger-hover: #d62c1a;
+@color-danger-hover: #D62C1A;
 @color-shad: lighten(@color-base, 20%);
-@color-white: #fefefe;
-@color-dark-white: #fafafa;
-@color-dark-grey: #aeaeae;
-@color-grey: #cccccc;
-@color-light-grey: #dfdfdf;
+@color-white: #FEFEFE;
+@color-dark-white: #F0F0F0;
+@color-dark-grey: #AEAEAE;
+@color-grey: #CCCCCC;
+@color-light-grey: #DFDFDF;
+@color-boy: #C5EFF7;
+@color-girl: #DCC6E0;
+@color-warning: #CF841B;
 
 body{
     margin-top: @height-menu;
     margin-left: @width-panel;
-}
-
-pre{
-    font-family: 'Marmelad', sans-serif;
-    background-color: @color-dark-white;
-}
-
-.fill{
-    background-color: lighten(@color-blue, 50%);
 }
 
 a{
@@ -35,9 +29,18 @@ a{
 a:hover{    
     text-decoration: none;
 }
+
+th{
+    padding-left: 10px;
+}
+
 .nav > li > a:hover{
     color: @color-light-grey;
     background-color: @color-blue;
+}
+
+.fill{
+    background-color: lighten(@color-blue, 50%);
 }
 
 .nav-pills > li.active > a{
@@ -76,6 +79,16 @@ a:hover{
     clear: both;
 }
 
+.medText{
+    margin: 0;
+    padding: 10px;
+    font-size: 24px;
+    color: @color-base;
+    float: left;
+    font-family: Philosopher;
+    clear: both;
+}
+
 .fineText{
     font-family: Trebuchet MS;
     font-style: italic;
@@ -107,15 +120,27 @@ a:hover{
     font-family: Consolas;
     font-size: 13px;
     color: @color-dark-grey;
-    border: 1px solid @color-dark-grey;
+    border: 1px solid @color-light-grey;
     border-radius: 3px;
 }
 
 .postBody{
-    margin: 0;
-    padding: 0;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
     font-size: 13px;
+    font-family: 'Marmelad', sans-serif;
+    text-align: left;
+    float: left;
+    word-wrap: break-word;
+    max-width: 99%;
     clear: both;
+    color: darken(@color-dark-grey, 30%);
+    border: 1px solid @color-dark-grey;
+    border-radius: 3px;
+    background-color: @color-dark-white;
+    overflow: hidden;
+    line-height: 1.4;
 }
 .post > pre {
     margin-left: 10px;
@@ -147,6 +172,7 @@ a:hover{
 
 .avatarBig{
     margin-right: 20px;
+    margin-bottom: 20px;
     padding: 0;
     width: 96px;
     height: 96px;
@@ -179,8 +205,9 @@ a:hover{
 }
 
 .userItem{
+    width: 99%;
     padding: 20px;
-    box-shadow: -1px -1px 3px #888888;
+    box-shadow: 0px 0px 1px 0px #888888;
 }
 
 .badgeDelete{
@@ -190,6 +217,7 @@ a:hover{
 }
 
 .badgeEdit{
+    right: 10px;
     float: right;
 }
 
@@ -203,30 +231,71 @@ a:hover{
 
 .postListLine{
     margin: 0;
-    padding: 5px;
-    padding-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 0;
     display: inline;
     float: left;
-    box-shadow: inset 0px -1px 10px 0px #888888;
 }
 
-.postListButton > z{
-    font-family: 'Philosopher';
-    font-size: 20px;
+.back{
+    background-color: lighten(@color-light-grey, 5%);
 }
-.postListButton{
-    margin-left: 5px;
-    padding-top: 3px;
-    min-height: 36px;
-    width: 23.5%;
+
+.back1{
+    background-color: lighten(@color-boy, 5%);
 }
-.postListButton:hover{
-    border: 1px solid @color-blue;
+
+.back2{
+    background-color: lighten(@color-girl, 5%);
+}
+
+.accessMail1{
+    margin: 10px 10px;
+    padding-left: 15px;
+    width: 50px;
+    height: 26px;
     border-radius: 3px;
+    font-family: 'Glyphicons Halflings';
+    font-size: 19px;
+    background-color: @color-surf-hover;
+    cursor: pointer;
+    color: @color-white;
 }
-.active{
-    box-shadow: inset 0px 0px 20px 2px #888888;
+.accessMail1:before{
+    content: "\e105";
+}
+
+.accessMail2{
+    margin: 10px 10px;
+    padding-left: 15px;
+    width: 50px;
+    height: 26px;
     border-radius: 3px;
+    font-family: 'Glyphicons Halflings';
+    font-size: 19px;
+    background-color: @color-warning;
+    cursor: pointer;
+    color: @color-white;
+}
+.accessMail2:before{
+    content: "\e106";
+}
+
+.deleteMail{
+    margin: 10px 10px;
+    padding-left: 15px;
+    width: 50px;
+    height: 26px;
+    border-radius: 3px;
+    font-family: 'Glyphicons Halflings';
+    font-size: 19px;
+    background-color: @color-danger-hover;
+    cursor: pointer;
+    color: @color-white;
+}
+.deleteMail:before{
+    content: "\e088";
 }
 
 #userTop{
@@ -309,10 +378,11 @@ a:hover{
 
 #data{
     margin: 0;
-    margin-bottom: 100px;
     padding: 0;
+    padding-bottom: 100px;
     padding-left: 20px;
-    min-height: 500px;
+    min-height: 100%;
+    display: inline-block;
 }
 
 #btnCreatePost{

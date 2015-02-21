@@ -11,8 +11,9 @@ class User extends CI_Controller {
         $this->load->model('user_model');
         $this->load->model('achiev_model');
         $this->load->model('person_model');
+        $this->load->model('mail_model');
     }
-    
+
     public function setMessage($message) {
         if (isset($message) && $message != '') {
             $this->session->set_flashdata('message', $message);
@@ -27,13 +28,13 @@ class User extends CI_Controller {
     }
 
     public function index() {
-        Elements::isLoggedIn();
+        Elements::isLoggedIn($this->session->userdata('logged_in'));
         $this->welcome();
     }
 
     public function welcome() {
         $data['title'] = 'Welcome';
-        $data['head_menu'] = Elements::getMenu();
+        $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $this->load->view('main/header_view', $data);
         $this->load->view("main/main_top_view.php", $data);
         $this->load->view('main/menu_view.php', $data);
@@ -43,7 +44,7 @@ class User extends CI_Controller {
 
     public function guest($option = '') {
         $data['title'] = 'Home';
-        $data['head_menu'] = Elements::getMenu();
+        $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         if ((isset($option)) && ($option != '')) {
             $data['option'] = $option;
             if ($option == "wrong_pass") {
@@ -93,7 +94,7 @@ class User extends CI_Controller {
 
     public function thanks() {
         $data['title'] = 'Thanks';
-        $data['head_menu'] = Elements::getMenu();
+        $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $this->load->view('main/header_view', $data);
         $this->load->view('main/menu_view', $data);
         $this->load->view('main/thanks_view.php', $data);
@@ -130,6 +131,7 @@ class User extends CI_Controller {
             $this->achList = $this->achiev_model->getUserAchId($this->session->userdata('user_id'));
             $result = Events::trigger('register_event', 'system_events', 'string'); //TODO:give result to $this->thank()
             if ($result) {
+                Events::log_message('debug', 'Called trigger; Try to write to DB');
                 $this->achiev_model->gotAchiev(1, $userId);
             }
             $this->thanks();
@@ -150,7 +152,7 @@ class User extends CI_Controller {
 
     public function action() {
         $data['title'] = 'Home';
-        $data['head_menu'] = Elements::getMenu();
+        $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $this->load->view('main/header_view', $data);
         $this->load->view('main/action_top_view', $data);
         $this->load->view('main/menu_view', $data);
@@ -159,18 +161,19 @@ class User extends CI_Controller {
     }
 
     public function profile() {
-        Elements::isLoggedIn();
+        Elements::isLoggedIn($this->session->userdata('logged_in'));
         redirect('post/allPosts');
     }
 
     public function person($errors = '') {
-        Elements::isLoggedIn();
+        Elements::isLoggedIn($this->session->userdata('logged_in'));
         $data['title'] = 'Personal information';
-        $data['head_menu'] = Elements::getMenu();
+        $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $data['activeItem'] = 'personItem';
         $data['headElements'] = Elements::getCropLibrary();
         $data['error'] = $errors;
         $data['personData'] = $this->person_model->getPerson($this->session->userdata('user_id'));
+        $data['mailsList'] = $this->mail_model->getMailsByUser($this->session->userdata('user_id'));
         $this->load->view('user/head_view', $data);
         $this->load->view('user/panel_view', $data);
         $this->load->view('user/person_view', $data);
@@ -182,10 +185,24 @@ class User extends CI_Controller {
         $this->person();
     }
 
+    public function addMail() {
+        $this->mail_model->addMail($this->session->userdata('user_id'));
+        //show message
+        $this->person();
+    }
+
+    public function accessMail($mailId) {
+        echo $this->mail_model->changeVisibility($mailId);
+    }
+
+    public function deleteMail($mailId){
+        echo $this->mail_model->deleteMail($mailId);
+    }
+
     public function messages() {
-        Elements::isLoggedIn();
+        Elements::isLoggedIn($this->session->userdata('logged_in'));
         $data['title'] = 'Messages';
-        $data['head_menu'] = Elements::getMenu();
+        $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $data['activeItem'] = 'messagesItem';
         $data['wp_news'] = News::getWPNews(10);
         $this->load->view('user/head_view', $data);
@@ -194,9 +211,9 @@ class User extends CI_Controller {
     }
 
     public function achiev() {
-        Elements::isLoggedIn();
+        Elements::isLoggedIn($this->session->userdata('logged_in'));
         $data['title'] = 'Calendar';
-        $data['head_menu'] = Elements::getMenu();
+        $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $data['achievs'] = $this->achiev_model->getUserAchievs($this->session->userdata('user_id'));
         $data['activeItem'] = 'achievItem';
         $this->load->view('user/head_view', $data);
@@ -206,7 +223,7 @@ class User extends CI_Controller {
 
     public function uploadAvatar() {
         $config['upload_path'] = './img/avatars/';
-        $config['allowed_types'] = 'gif|jpg|png';
+        $config['allowed_types'] = 'gif|jpg|png|bmp';
         $config['file_name'] = '' . $this->session->userdata('user_login') . '_full.png';
         $config['overwrite'] = TRUE;
         $config['max_size'] = '0';
