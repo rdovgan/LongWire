@@ -22,10 +22,12 @@ class Mail_model extends CI_Model {
     function addMail($userId) {
         $name = $this->input->post('mail_email');
         $date = date("Y-m-d H:i:s");
+        $ip = Elements::getIP();
         $visibility = ($this->input->post('mail_access')) ? 1 : 2;
         $data = array(
             'mail_email' => $name,
             'mail_last_log_in' => $date,
+            'mail_ip' => $ip,
             'mail_access' => $visibility,
             'mail_user_id' => $userId
         );
