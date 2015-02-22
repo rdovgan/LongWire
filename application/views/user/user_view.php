@@ -12,7 +12,7 @@
             <?php echo $personLogin; ?>
             <br>
             <?php if ($isPerson) { ?>
-                <?php echo $personData['person_name']; ?>
+                <div class="userPersonName"><?php echo $personData['person_name']; ?></div>
                 <br>
                 <?php echo $personData['person_surname']; ?>
                 <br>
