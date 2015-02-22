@@ -1,4 +1,4 @@
-<div id="data" class='content'>
+<div id="data" class='content col-md-12'>
 
     <?php $isPost = isset($postData) && $postData != false; ?>
     <div class="bigText">
