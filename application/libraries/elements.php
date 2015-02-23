@@ -66,7 +66,11 @@ class Elements {
 
     public static function postToHtml($item, $likes, $dislikes, $favs, $isAuthor = false) {
         $result = '<div id="' . $item['post_id'] . '" class="post">';
-        $result .= '<div class="col-md-12 postName" onclick="showPost(event);">' . $item['post_name'] . anchor('post/editPost/' . $item['post_id'], '<span class="glyphicon glyphicon-pencil badgeEdit" aria-hidden="true"></span>');
+        $result .= '<div class="col-md-12 postName" onclick="showPost(event);">' . $item['post_name'];
+        $edit = anchor('post/editPost/' . $item['post_id'], '<span class="glyphicon glyphicon-pencil badgeEdit" aria-hidden="true"></span>');
+        if($isAuthor){
+            $result .= $edit;
+        }
         $result .= '<div class="col-md-12 postDescription"' . ($item['post_desc'] != '' ? '' : 'hidden') . '>' . $item['post_desc'] . '</div></div>';
         $result .= '<p><div class="col-md-12 postBody">' . nl2br($item['post_body']) . '</div></p>';
         $tiny = ($isAuthor) ? 'tiny' : '';

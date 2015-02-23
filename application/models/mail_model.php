@@ -12,7 +12,6 @@ class Mail_model extends CI_Model {
      * mail_ip
      * mail_access
      * mail_user_id
-     * 
      */
 
     public function __construct() {

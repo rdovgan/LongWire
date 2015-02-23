@@ -7,7 +7,7 @@ class Post extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-
+        header('Content-Type: text/html; charset=utf-8');
         $this->load->model('user_model');
         $this->load->model('achiev_model');
         $this->load->model('post_model');

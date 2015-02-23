@@ -53,8 +53,10 @@
         </div>
         <div class="br"></div>
         <div class="form-inline">
-            <div class="form-group input-group-sm col-md-5">
-                <select id="person_gender" name="person_gender" style="width: 135%;" class="form-control" placeholder="Gender">
+            <div class="form-group input-group-sm col-md-7">
+                <input id="person_birth" name="person_birth" class="form-control" type="date" placeholder="Birth" value="<?php echo $personData['person_birth']; ?>"> 
+            </div>
+            <div class="col-md-5"><select id="personGender" name="person_gender" style="width: 126%;" class="form-control">
                     <option value='' disabled  <?php
                     if ($personData['person_gender'] != '1' && $personData['person_gender'] != '2') {
                         echo 'selected';
@@ -70,10 +72,7 @@
                         echo 'selected';
                     }
                     ?> >Female</option>
-                </select>
-            </div>
-            <div class="form-group input-group-sm col-md-5">
-                <input id="person_birth" name="person_birth" class="form-control" type="date" placeholder="Birth" value="<?php echo $personData['person_birth']; ?>"> </div>
+                </select></div>
         </div>
         <div class="br"></div>
         <div class="input-group input-group-sm col-md-12">

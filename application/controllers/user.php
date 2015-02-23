@@ -7,7 +7,7 @@ class User extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-
+        header('Content-Type: text/html; charset=utf-8');
         $this->load->model('user_model');
         $this->load->model('achiev_model');
         $this->load->model('person_model');
@@ -195,7 +195,7 @@ class User extends CI_Controller {
         echo $this->mail_model->changeVisibility($mailId);
     }
 
-    public function deleteMail($mailId){
+    public function deleteMail($mailId) {
         echo $this->mail_model->deleteMail($mailId);
     }
 
@@ -223,7 +223,7 @@ class User extends CI_Controller {
 
     public function uploadAvatar() {
         $config['upload_path'] = './img/avatars/';
-        $config['allowed_types'] = 'gif|jpg|png|bmp';
+        $config['allowed_types'] = 'gif|jpg|jpeg|png|bmp';
         $config['file_name'] = '' . $this->session->userdata('user_login') . '_full.png';
         $config['overwrite'] = TRUE;
         $config['max_size'] = '0';

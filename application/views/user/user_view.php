@@ -9,24 +9,21 @@
                  width="96" height="96" border="0">
         </div>
         <div class="col-md-6">
-            <?php echo $personLogin; ?>
-            <br>
+            <div class="userPersonLogin">
+                <?php echo $personLogin; ?>
+            </div>
             <?php if ($isPerson) { ?>
-                <?php echo $personData['person_name']; ?>
-                <br>
-                <?php echo $personData['person_surname']; ?>
-                <br>
-                <?php echo $personData['person_birth']; ?>
-                <br>
-                <?php
-                if ($personData['person_gender'] == '1') {
-                    echo 'Male';
-                } else if ($personData['person_gender'] == '2') {
-                    echo 'Female';
-                } else {
-                    echo 'Unknown';
-                }
-                ?>
+                <div class="userPersonName"><?php echo $personData['person_name']; ?> <?php echo $personData['person_surname']; ?> </div>
+                <div class="userPersonBirth"><?php echo $personData['person_birth']; ?></div>
+                <div class="userPersonGender"><?php
+                    if ($personData['person_gender'] == '1') {
+                        echo 'Male';
+                    } else if ($personData['person_gender'] == '2') {
+                        echo 'Female';
+                    } else {
+                        echo 'Unknown';
+                    }
+                    ?></div>
             <?php } ?>
         </div>
     </div>
@@ -40,7 +37,7 @@
             endforeach;
         } else {
             ?>
-            <div class="fineText">Your haven't any posts</div>
+            <div class="fineText">User didn't create any post</div>
         <?php }
         ?>
     </div>
