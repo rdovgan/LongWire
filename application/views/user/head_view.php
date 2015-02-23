@@ -35,7 +35,7 @@
                     ?></div>
                 <?php
                 if ($this->session->userdata('user_login') == 'admin') {
-                    echo anchor('/admin', '<div id="adminLink"><span class="glyphicon glyphicon-console" aria-hidden="true"></span></div>');
+                    echo anchor('/admin', '<div id="adminLink"><span class="glyphicon glyphicon-plane" aria-hidden="true"></span></div>');
                 }
                 ?>
             </div>

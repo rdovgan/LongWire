@@ -8,8 +8,8 @@
                     <h3 class="panel-title">Achievements</h3>
                 </div>
                 <div class="panel-body">
-                    <p>Some description 
-                        <a id="addAchLink" href="#"><span class="glyphicon glyphicon-flash" aria-hidden="true"></span></a>
+                    <p>In this block you can add or update achievements. If you want to add an achievement - try to click this button 
+                        <a id="addAchLink" href="#"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
                     </p>
                     <div id="addAchBlock" hidden>
                         <div class="form-inline form-group-sm col-md-12">
