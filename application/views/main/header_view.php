@@ -21,9 +21,9 @@
             <div id="headerGroup">
                 <div id="logo">
                     <a class="invlink" href="http://longwire.ua/"><h4 id="logoPic">
-                            <span class="glyphicon glyphicon-flash" aria-hidden="true"></span>
-                            <h3 id="logoText"> LongWire</h3>
-                        </h4></a>
+                            <span class="glyphicon glyphicon-flash" aria-hidden="true"></span></h4>
+                        <h3 id="logoText"> LongWire</h3>
+                    </a>
                 </div>
                 <div id="mainMenu">
                     <div class="navbar navbar-default">

@@ -22,7 +22,17 @@ class Achiev_model extends CI_Model {
         parent::__construct();
     }
 
-    function getAllAchievs() {
+    public function addAchiev($name, $desc, $group){
+        $data = array(
+            'achievs_name' => $name,
+            'achievs_desc' => $desc,
+            'achievs_group' => $group
+        );
+        $this->db->insert('achievs', $data);
+        return "ok";
+    }
+    
+    public function getAllAchievs() {
         $query = $this->db->get("achievs");
         if ($query->num_rows() > 0) {
             $achievs = array();

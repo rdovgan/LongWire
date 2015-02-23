@@ -306,19 +306,6 @@ class User extends CI_Controller {
         }
     }
 
-    public function admin() {
-        Elements::isLoggedIn($this->session->userdata('logged_in'));
-        if ($this->session->userdata('user_login') != 'admin') {
-            redirect('post/allPosts');
-        } else {
-            $data['title'] = 'Admin page';
-            $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
-            $this->load->view('user/head_view', $data);
-            $this->load->view('user/panel_view', $data);
-            $this->load->view('user/admin_view', $data);
-        }
-    }
-
 }
 
 ?>

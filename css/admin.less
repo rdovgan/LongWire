@@ -1,0 +1,179 @@
+@width-panel: 200px;
+@height-menu: 80px;
+
+@color-blue: #575A7F;
+@color-base: #302F2A;
+@color-back: #4F4F51;
+@color-surf: #0CE3AC;
+@color-surf-hover: #008966;
+@color-danger: #E74C3C;
+@color-danger-hover: #D62C1A;
+@color-shad: lighten(@color-base, 20%);
+@color-white: #FEFEFE;
+@color-dark-white: #F0F0F0;
+@color-dark-grey: #AEAEAE;
+@color-grey: #CCCCCC;
+@color-light-grey: #DFDFDF;
+@color-boy: #C5EFF7;
+@color-girl: #DCC6E0;
+@color-warning: #CF841B;
+
+body{
+    margin-top: @height-menu;
+    margin-left: @width-panel;
+}
+
+a{
+    color: @color-dark-grey;
+}
+a:hover{    
+    text-decoration: none;
+}
+
+.glyphicon{
+    margin-right: 10px;
+}
+
+.panelTitle{
+    margin: 20px 15px;
+    color: @color-dark-grey;
+    clear: both;
+    font-size: 14px;
+}
+
+.medText{
+    margin: 0;
+    padding: 10px;
+    font-size: 24px;
+    color: @color-base;
+    float: left;
+    font-family: Philosopher;
+    clear: both;
+}
+
+.fineText{
+    font-family: Trebuchet MS;
+    font-style: italic;
+    font-size: 18px;
+}
+
+.br{
+    margin: 0;
+    padding: 0;
+    height: 10px;
+    clear: both;
+}
+
+.headerElement{
+    float: left; 
+    margin: 10px; 
+    display: inline-block;
+}
+
+.panel-title{
+    cursor: pointer;
+}
+
+#userTop{
+    margin: 0;
+    padding: 0;
+    display: inline;
+    width: 100%;
+    position: relative;
+}
+
+#userTopInfo{
+    margin: 0;
+    margin-left: -@width-panel;
+    background-color: @color-back;
+    width: @width-panel;
+    height: @height-menu;
+    top: 0px;
+    position: fixed;
+    line-height: 75px;
+    z-index: 1013;
+}
+
+#avatar{
+    margin: 16px;
+    border: 2px solid @color-white;
+    border-radius: 3px;
+    background-color: transparent;
+    background-size: 48px 48px;
+    width: 48px;
+    height: 48px;
+    float: left;
+}
+
+#userName{
+    color: @color-white;
+    font-size: 16px;
+    float: left;
+}
+
+#userTopBlock{
+    margin: 0;
+    padding: 20px;
+    background-color: @color-blue;
+    width: 100%;
+    height: @height-menu;
+    top: 0px;
+    position: fixed;
+    color: @color-white;
+    z-index: 1010;
+    box-shadow: 0px 3px 10px #888888;
+}
+
+#siteName{
+    margin-left: 10px;
+    float: left;
+    color: @color-white;
+}
+
+#companyLogo{
+    margin-left: 20px;
+    float: left;
+    font-size: 24px;
+    line-height: 40px;
+    color: @color-white;
+}
+
+#userPanel{
+    margin: 0;
+    margin-left: -@width-panel;
+    padding: 10px;
+    top: @height-menu;
+    width: @width-panel;
+    height: 100%;
+    position: fixed;
+    background-color: @color-base;
+    /*background-image: url(../img/panel.jpg);*/
+    display: inline;
+    z-index: 1012;
+}
+
+#data{
+    margin: 0;
+    padding: 0;
+    padding-bottom: 100px;
+    padding-left: 20px;
+    min-height: 100%;
+    display: inline-block;
+}
+
+#userMenu{
+    margin-right: @width-panel;
+    margin-top: -10px;
+    float: right;
+}
+
+#adminLink{
+    float: right;    
+}
+
+#achName{
+    width: 33%;
+}
+#achDesc{
+    width: 53%;
+}
