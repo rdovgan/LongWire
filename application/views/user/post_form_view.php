@@ -13,8 +13,9 @@
     <?php
     if (!$isPost) {
         echo form_open("post/addPost");
-    } else {    
-        echo anchor('post/deletePost/' . $postData['post_id'], '<span class="glyphicon glyphicon-trash badgeDelete" aria-hidden="true"></span>');
+    } else {
+        echo '<a href="#" data-toggle="modal" data-target="#deleteModal"><span class="glyphicon glyphicon-trash badgeDelete" aria-hidden="true"></span></a>';
+        //echo anchor('post/deletePost/' . $postData['post_id'], '<span class="glyphicon glyphicon-trash badgeDelete" aria-hidden="true"></span>');
         echo form_open("post/updatePost");
     }
     ?>
@@ -72,6 +73,23 @@
         <?php } ?>
     </div>
     <?php echo form_close(); ?>
+</div>
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Warning</h4>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this post: "<?php echo $postData['post_name']; ?>"?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <?php echo anchor('post/deletePost/' . $postData['post_id'], '<button type="button" class="btn btn-primary">Delete</button>'); ?>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

@@ -11,7 +11,11 @@
         <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>/js/jquery-2.1.1.js"></script>
         <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>/js/bootstrap.js"></script>
         <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>/js/user.js"></script>
-        <?php if(isset($headElements)&&$headElements!=false){ echo $headElements;} ?>
+        <?php
+        if (isset($headElements) && $headElements != false) {
+            echo $headElements;
+        }
+        ?>
     </head>
     <body>
         <div id="messageBlock" class="alert alert-warning alert-dismissible" hidden>
@@ -26,9 +30,14 @@
                     if ($this->session->userdata('user_name')) {
                         echo anchor('/profile', $this->session->userdata('user_name'));
                     } else {
-                        echo anchor('/ptofile', $this->session->userdata('user_login'));
+                        echo anchor('/profile', $this->session->userdata('user_login'));
                     }
                     ?></div>
+                <?php
+                if ($this->session->userdata('user_login') == 'admin') {
+                    echo anchor('/user/admin', '<div id="adminLink"><span class="glyphicon glyphicon-tag" aria-hidden="true"></span></div>');
+                }
+                ?>
             </div>
             <div id="userTopBlock">
                 <?php echo anchor('user/index', '<div id="siteLogo">
@@ -36,7 +45,7 @@
                         <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
                     </div>
                     <h5 id="siteName">Long Wire Company</h5>
-                </div>'); ?>
+                </div>'); ?> 
                 <div id="userMenu">
                     <?php foreach ($head_menu as $item): ?>
                         <?php echo $item; ?>
