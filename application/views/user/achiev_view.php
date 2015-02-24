@@ -1,5 +1,21 @@
 <div id="data">
     <div class="bigText">Achievements</div>
+    <div class="br"></div>
+    <ul class="list-group col-md-6">
+        <?php
+        foreach ($globalAch as $ach): {
+            $ach = (array) $ach;
+            ?>
+            <li class="list-group-item">
+                <span class="badge"><?php echo $ach['ach_count']; ?></span>
+                <?php echo $ach['achievs_name']; ?>
+            </li>
+            <?php
+        }
+        endforeach;
+        ?>
+    </ul>
+    <div class="medText">Your achievements</div>
     <?php
     if (isset($achievs) && $achievs != false) {
         ?>

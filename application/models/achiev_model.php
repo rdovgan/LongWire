@@ -44,6 +44,22 @@ class Achiev_model extends CI_Model {
         return false;
     }
 
+    public function getGlobalAchievs(){
+        $query = $this->db->get("achievs");
+        if ($query->num_rows() > 0) {
+            $achievs = array();
+            foreach ($query->result() as $item) {
+                $item = (array) $item;
+                $this->db->where('ach_id', $item['achievs_id']);  
+                $countQ = $this->db->get('user_ach');              
+                $item['ach_count'] = $countQ->num_rows();
+                array_push($achievs, $item);
+            }
+            return $achievs;
+        }
+        return false;
+    }
+
     function isContain($elem, $arr) {
         if (($arr == false) || ($elem == false)) {
             return false;

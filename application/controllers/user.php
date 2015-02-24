@@ -215,6 +215,7 @@ class User extends CI_Controller {
         $data['title'] = 'Calendar';
         $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $data['achievs'] = $this->achiev_model->getUserAchievs($this->session->userdata('user_id'));
+        $data['globalAch'] = $this->achiev_model->getGlobalAchievs();
         $data['activeItem'] = 'achievItem';
         $this->load->view('user/head_view', $data);
         $this->load->view('user/panel_view', $data);
