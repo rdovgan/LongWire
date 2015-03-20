@@ -20,7 +20,7 @@
     <body>
         <div id="messageBlock" class="alert alert-warning alert-dismissible" hidden>
             <button type="button" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <p id="messageText"><?php echo $messageText; ?></p>
+            <p id="messageText"><?php if(isset($messageText) && $messageText != false) {echo $messageText;}; ?></p>
         </div>
         <div id="userTop">
             <div id="userTopInfo"><img id="avatar" src="/img/avatars/<?php echo $this->session->userdata('user_login') ?>.png" 

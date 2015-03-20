@@ -1,1 +1,7 @@
-Deny from all
+AddDefaultCharset utf-8
+RewriteEngine on
+RewriteBase /
+RewriteCond $1 !^(index\.php|favicon\.ico|css|js|themes|user_guide|content|files)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /index.php/$1 [L]

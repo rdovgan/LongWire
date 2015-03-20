@@ -151,7 +151,7 @@ function markActiveItem() {
 }
 
 function showPost(event) {
-    obj = $(event.target).parent().find("pre");
+    obj = $(event.target).parent().find(".postBody");
     if (obj.attr('hidden'))
         obj.attr('hidden', false);
     else

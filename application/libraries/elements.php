@@ -70,9 +70,7 @@ class Elements {
         $edit = anchor('post/editPost/' . $item['post_id'], '<span class="glyphicon glyphicon-pencil badgeEdit" aria-hidden="true"></span>');
         if($isAuthor){
             $result .= $edit;
-        }
-        $result .= '<div class="col-md-12 postDescription"' . ($item['post_desc'] != '' ? '' : 'hidden') . '>' . $item['post_desc'] . '</div></div>';
-        $result .= '<p><div class="col-md-12 postBody">' . nl2br($item['post_body']) . '</div></p>';
+        }        
         $tiny = ($isAuthor) ? 'tiny' : '';
         $isLiked = (in_array($item['post_id'], $likes));
         $liked = $isLiked ? 'glyphicon-arrow-up' : 'glyphicon-chevron-up';
@@ -80,6 +78,9 @@ class Elements {
         $disliked = $isDisliked ? 'glyphicon-arrow-down' : 'glyphicon-chevron-down';
         $isFav = (in_array($item['post_id'], $favs));
         $fav = $isFav ? '' : '-empty';
+        $isHidden = (intval($item["post_likes"]) > 10) ? false : true; //Some option, may be load from session in future
+        $result .= '<div class="col-md-12 postDescription"' . ($item['post_desc'] != '' ? '' : 'hidden') . '>' . $item['post_desc'] . '</div></div>';
+        $result .= '<div class="col-md-12 postBody" '. ($isHidden ? '' : 'hidden') .'>' . nl2br($item['post_body']) . '</div>';
         $result .= '<div class="postSign like ' . ($isLiked ? 'fill' : '') . '"><button class="btn-none"><span class="glyphicon ' . $liked . '" aria-hidden="true"></span><i>' . $item["post_likes"] . '</i></button></div>';
         $result .= '<div class="postSign dislike ' . ($isDisliked ? 'fill' : '') . '"><button class="btn-none"><span class="glyphicon ' . $disliked . '" aria-hidden="true"></span><i>' . $item["post_dislikes"] . '</i></button></div>';
         $result .= '<div class="postSign fav ' . ($isFav ? 'fill' : '') . '"><button class="btn-none"><span class="glyphicon glyphicon-star' . $fav . '" aria-hidden="true"></span><i>' . $item["post_fav"] . '</i></button></div>';
