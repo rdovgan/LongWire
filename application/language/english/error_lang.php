@@ -1,0 +1,1 @@
+$lang['error_page_title'] = "Contact Us";

@@ -3,7 +3,7 @@
     <?php if ($isPerson) { ?>
         <div id="personData" class="col-md-4 personBlock">
             <div class="medText">Your personal info</div>
-            <table class="table table-condensed">
+            <table class="table table-condensed" style="margin-bottom: 10px;">
                 <tr>
                     <td>Name</td>
                     <td><?php echo $personData['person_name']; ?></td>
@@ -46,17 +46,17 @@
             <div class="medText">Fill in personal info</div>
         <?php } ?>
         <div class="form-inline">
-            <div class="form-group input-group-sm col-md-5">
-                <input id="person_name" name="person_name" class="form-control" type="text" placeholder="Name" value="<?php echo $personData['person_name']; ?>"> </div>
-            <div class="form-group input-group-sm col-md-5">
-                <input id="person_surname" name="person_surname" class="form-control" type="text" placeholder="Surname" value="<?php echo $personData['person_surname']; ?>"> </div>
+            <div class="form-group input-group-sm col-md-12">
+                <input id="person_name" name="person_name" style="width: 49%;" class="form-control" type="text" placeholder="Name" value="<?php echo $personData['person_name']; ?>">
+                <input id="person_surname" name="person_surname" style="margin-left: -1%; width: 47%;" class="form-control" type="text" placeholder="Surname" value="<?php echo $personData['person_surname']; ?>"> 
+            </div>
         </div>
         <div class="br"></div>
         <div class="form-inline">
             <div class="form-group input-group-sm col-md-7">
-                <input id="person_birth" name="person_birth" class="form-control" type="date" placeholder="Birth" value="<?php echo $personData['person_birth']; ?>"> 
+                <input id="person_birth" name="person_birth" class="form-control" style="width: 110%;" type="date" placeholder="Birth" value="<?php echo $personData['person_birth']; ?>"> 
             </div>
-            <div class="col-md-5"><select id="personGender" name="person_gender" style="width: 126%;" class="form-control">
+            <div class="col-md-5" style="padding-left: 0px; width: 90px;"><select id="personGender" name="person_gender" style="width: 126%;" class="form-control">
                     <option value='' disabled  <?php
                     if ($personData['person_gender'] != '1' && $personData['person_gender'] != '2') {
                         echo 'selected';
@@ -76,7 +76,7 @@
         </div>
         <div class="br"></div>
         <div class="input-group input-group-sm col-md-12">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <input name="submit" class="btn btn-danger col-md-12" type="submit" value="Save">
             </div>
             <a href="#" style="font-size: 32px; float: right;">
@@ -87,7 +87,6 @@
     <?php echo form_close(); ?>
     <div id="imgGalary" class="col-md-4 personBlock">
         <div class="medText">Show your face</div>
-        <div class="br"></div>
         <?php
         $imgLink = FCPATH . '/img/avatars/' . $this->session->userdata('user_login') . '.png';
         if (is_file($imgLink)) {
@@ -109,7 +108,7 @@
     </div>
     <?php if (isset($mailsList) && $mailsList != false) { ?>
         <div id = "mails" class="col-md-12">
-            <table class = "table-striped col-md-12">
+            <table class="table-striped col-md-12" style="margin-bottom: 10px;">
                 <tr>
                     <th>Mail</th>
                     <th>Last log in</th>
