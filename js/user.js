@@ -12,7 +12,7 @@ $(document).ready(function () {
         }
     });
     $('.like').click(function () {
-        id = $(this).parent().attr('id');
+        id = $(this).parent().parent().attr('id');
         var req = getXmlHttp();
         var objLikes = $(this).children('button').children('i');
         var objDislikes = $(this).parent().children('.dislike').children('button').children('i');
@@ -38,7 +38,7 @@ $(document).ready(function () {
         req.send(null);
     });
     $('.dislike').click(function () {
-        id = $(this).parent().attr('id');
+        id = $(this).parent().parent().attr('id');
         var req = getXmlHttp();
         var objDislikes = $(this).children('button').children('i');
         var objLikes = $(this).parent().children('.like').children('button').children('i');
@@ -64,7 +64,7 @@ $(document).ready(function () {
         req.send(null);
     });
     $('.fav').click(function () {
-        id = $(this).parent().attr('id');
+        id = $(this).parent().parent().attr('id');
         var req = getXmlHttp();
         var objFav = $(this).children('button').children('i');
         var iconFav = $(this).children('button').children('span');
