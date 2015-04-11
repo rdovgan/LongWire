@@ -18,6 +18,10 @@
 @color-girl: #DCC6E0;
 @color-warning: #CF841B;
 
+@color-up: #5cb85c;
+@color-down: #d9534f;
+@color-fav: #f0ad4e;
+
 body{
     margin-top: @height-menu;
     margin-left: @width-panel;
@@ -41,6 +45,18 @@ th{
 
 .fill{
     background-color: lighten(@color-blue, 50%);
+}
+
+.like.fill{
+    background-color: lighten(@color-up, 25%);
+}
+
+.dislike.fill{
+    background-color: lighten(@color-down, 25%);
+}
+
+.fav.fill{
+    background-color: lighten(@color-fav, 25%);
 }
 
 .nav-pills > li.active > a{
@@ -100,6 +116,7 @@ th{
 
 .postName{
     margin: 10px;
+    margin-bottom: 5px;
     padding: 0;
     padding-left: 15px;
     font-size: 20px;
@@ -123,8 +140,9 @@ th{
 }
 
 .postBody{
+    margin-top: 0px;
     margin-left: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     padding: 10px;
     font-size: 13px;
     font-family: 'Marmelad', sans-serif;
@@ -140,6 +158,25 @@ th{
     overflow: hidden;
     line-height: 1.4;
 }
+.btnOpenPost{
+    margin: 0; 
+    margin-left: -10px;
+    margin-right: 10px;
+    padding: 0;
+    padding-top: 5px;
+    position: relative;
+    min-height: 1px;
+    float: left;
+    box-sizing: border-box;
+    width: 20px;
+    font-size: 18px;
+    color: @color-grey;
+}
+
+.btnOpenPost:hover{
+    color: @color-blue;
+}
+
 .post > pre {
     margin-left: 10px;
 }
@@ -441,5 +478,5 @@ th{
 
 #adminLink{
     float: right;
-    
+
 }

@@ -34,7 +34,7 @@ $(document).ready(function () {
                 }
             }
         };
-        req.open('GET', url + 'index.php/post/up/' + id, true);
+        req.open('GET', url + 'index.php/post/up/' + id, true);//TODO: remove index.php when it works
         req.send(null);
     });
     $('.dislike').click(function () {
@@ -60,7 +60,7 @@ $(document).ready(function () {
                 }
             }
         };
-        req.open('GET', url + 'index.php/post/down/' + id, true);
+        req.open('GET', url + 'index.php/post/down/' + id, true);//TODO: remove index.php when it works
         req.send(null);
     });
     $('.fav').click(function () {
@@ -86,7 +86,7 @@ $(document).ready(function () {
                 }
             }
         };
-        req.open('GET', url + 'index.php/post/fav/' + id, true);
+        req.open('GET', url + 'index.php/post/fav/' + id, true);//TODO: remove index.php when it works
         req.send(null);
     });
     $('.access').click(function () {
@@ -127,6 +127,11 @@ $(document).ready(function () {
         };
         req.open('GET', 'deleteMail/' + id, true);
         req.send(null);
+    });
+    $('.btnOpenPost').click(function(){
+        obj = $(this);
+        id = obj.parent().parent().attr('id');
+        window.open(url+'index.php/post/viewPost/'+id,'_blank');//TODO: remove index.php when it works
     });
 });
 

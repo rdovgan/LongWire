@@ -32,11 +32,9 @@ class Post extends CI_Controller {
         $data['activeItem'] = 'postsItem';
         $data['postData'] = $this->post_model->getPost($postId);
         $userId = $data['postData']['post_user_id'];
-        //TODO: change this! not array, one value only
         $data['likes'] = $this->likes_model->getLikesOfUser($userId);
         $data['dislikes'] = $this->likes_model->getDislikesOfUser($userId);
         $data['favs'] = $this->favorite_model->getFavsOfUser($userId);
-        //END of TODO
         $this->load->view('user/head_view', $data);
         $this->load->view('user/panel_view', $data);
         $this->load->view('user/post_view', $data);

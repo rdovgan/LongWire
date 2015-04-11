@@ -65,9 +65,10 @@ class Elements {
         return false;
     }
 
-    public static function postToHtml($item, $likes, $dislikes, $favs, $isAuthor = false) {
+    public static function postToHtml($item, $likes, $dislikes, $favs, $isAuthor = false, $rang = 10) {
         $result = '<div id="' . $item['post_id'] . '" class="post col-md-12">';
-        $result .= '<div class="col-md-12 postName" onclick="showPost(event);">' . $item['post_name'];
+        $result .= '<div class="col-md-12 postName" onclick="showPost(event);">';
+        $result .= '<div class="btnOpenPost"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></div>' . $item['post_name'];
         $edit = anchor('post/editPost/' . $item['post_id'], '<span class="glyphicon glyphicon-pencil badgeEdit" aria-hidden="true"></span>');
         if($isAuthor){
             $result .= $edit;
@@ -77,7 +78,7 @@ class Elements {
         $isDisliked = (in_array($item['post_id'], $dislikes));
         $isFav = (in_array($item['post_id'], $favs));
         $fav = $isFav ? '' : '-empty';
-        $isHidden = (intval($item["post_likes"]) < 10) ? false : true; //Some option, may be load from session in future
+        $isHidden = (intval($item["post_likes"]) < $rang) ? false : true; //Some option, may be load from session in future
         $result .= '<div class="col-md-12 postDescription"' . ($item['post_desc'] != '' ? '' : 'hidden') . '>' . $item['post_desc'] . '</div></div>';
         $result .= '<div class="col-md-12 postBody" '. ($isHidden ? '' : 'hidden') .'>' . nl2br($item['post_body']) . '</div>';
         $result .= '<div class="postSign like ' . ($isLiked ? 'fill' : '') . '"><button class="btn-none"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span><i>' . $item["post_likes"] . '</i></button></div>';

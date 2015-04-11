@@ -2,7 +2,7 @@
     <?php
     if (isset($postData) && $postData != false) {
         $isAuthor = ($postData['post_user'] == $this->session->userdata('user_login'));
-        Elements::postToHtml($postData, $likes, $dislikes, $favs, $isAuthor);
+        Elements::postToHtml($postData, $likes, $dislikes, $favs, $isAuthor, -1000);
     } else {
         ?>
         <div class="fineText" style="text-align: center; margin-left: -20%;">Your haven't any posts</div>

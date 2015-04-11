@@ -163,6 +163,20 @@ class Likes_model extends CI_Model {
         }
         return $items;
     }
+    
+    public function getLikesOfPost($postId){
+        $this->db->select('post_up_id');
+        $this->db->from('post_ups');
+        $this->db->where('post_up_post', $postId);
+        return $this->db->count_all_results();
+    }
+    
+    public function getDislikesOfPost($postId){
+        $this->db->select('post_down_id');
+        $this->db->from('post_downs');
+        $this->db->where('post_down_post', $postId);
+        return $this->db->count_all_results();
+    }
 
 }
 

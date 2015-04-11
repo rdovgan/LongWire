@@ -85,6 +85,13 @@ class Favorite_model extends CI_Model {
         }
         return $items;
     }
+    
+    public function getFavsOfPost($postId){
+        $this->db->select('fav_id');
+        $this->db->from('favorites');
+        $this->db->where('fav_post',$postId);
+        return $this->db->count_all_results();
+    }
 
 }
 
