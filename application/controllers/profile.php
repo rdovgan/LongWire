@@ -24,20 +24,8 @@ class Profile extends CI_Controller {
         }
     }
     
-    public function currentUser(){        
-        Elements::isLoggedIn($this->session->userdata('logged_in'));
-        $data['title'] = 'Your personal profile';
-        $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
-        $data['personLogin'] = $this->session->userdata('user_login');
-        $userId = $this->session->userdata('user_id');
-        $data['personData'] = $this->person_model->getPerson($userId);
-        $data['postsList'] = $this->post_model->getAllPostsFromUser($userId);
-        $data['likes'] = $this->likes_model->getLikesOfUser($userId);
-        $data['dislikes'] = $this->likes_model->getDislikesOfUser($userId);
-        $data['favs'] = $this->favorite_model->getFavsOfUser($userId);
-        $this->load->view('user/head_view', $data);
-        $this->load->view('user/panel_view', $data);
-        $this->load->view('user/user_view', $data);
+    public function currentUser(){
+        $this->user($this->session->userdata('user_login'));
     }
     
     public function search(){        

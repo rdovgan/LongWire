@@ -16,6 +16,9 @@
             echo $headElements;
         }
         ?>
+        <script>
+        var url = '<?php echo base_url(); ?>';
+        </script>
     </head>
     <body>
         <div id="messageBlock" class="alert alert-warning alert-dismissible" hidden>

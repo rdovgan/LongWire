@@ -103,6 +103,7 @@ class Likes_model extends CI_Model {
     }
 
     public function up($postId) {
+        Events::log_message('debug', "Session : USER : ID : ".$this->session->userdata('user_id'));
         if (!$this->hasUp($postId)) {
             if (!$this->hasDown($postId)) {
                 $this->createUp($postId);
@@ -121,6 +122,7 @@ class Likes_model extends CI_Model {
     }
 
     public function down($postId) {
+        Events::log_message("Session : USER : ID : ".$this->session->userdata('user_id'));
         if (!$this->hasDown($postId)) {
             if (!$this->hasUp($postId)) {
                 $this->createDown($postId);

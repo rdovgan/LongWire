@@ -10,6 +10,10 @@ class Elements {
         }
     }
 
+    public static function makeBtn($data){
+        return '<div class="headerElement">'.$data.'</div>';
+    }
+    
     public static function getMenu($isLoggedIn) {
         $data = array();
         if ($isLoggedIn) {
@@ -20,11 +24,8 @@ class Elements {
             $logoutLink = anchor(
                     "user/logout", '<h4><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></h4>', array('id' => 'logoutLink', 'class' => 'invlink')
             );
-            $data = array(
-                '<div class="headerElement">', $createPost, '</div>',
-                '<div class="headerElement">', $userLink, '</div>',
-                '<div class="headerElement">', $logoutLink, '</div>'
-            );
+            $data = array(Elements::makeBtn($createPost),Elements::makeBtn($userLink),Elements::makeBtn($logoutLink));
+            
         } else {
             $data = array(
                 '<button id = "btnRegister" class="btn btn-sm btnRegister">Sign Up</button>',
@@ -65,7 +66,7 @@ class Elements {
     }
 
     public static function postToHtml($item, $likes, $dislikes, $favs, $isAuthor = false) {
-        $result = '<div id="' . $item['post_id'] . '" class="post">';
+        $result = '<div id="' . $item['post_id'] . '" class="post col-md-12">';
         $result .= '<div class="col-md-12 postName" onclick="showPost(event);">' . $item['post_name'];
         $edit = anchor('post/editPost/' . $item['post_id'], '<span class="glyphicon glyphicon-pencil badgeEdit" aria-hidden="true"></span>');
         if($isAuthor){
@@ -73,16 +74,14 @@ class Elements {
         }        
         $tiny = ($isAuthor) ? 'tiny' : '';
         $isLiked = (in_array($item['post_id'], $likes));
-        $liked = $isLiked ? 'glyphicon-arrow-up' : 'glyphicon-chevron-up';
         $isDisliked = (in_array($item['post_id'], $dislikes));
-        $disliked = $isDisliked ? 'glyphicon-arrow-down' : 'glyphicon-chevron-down';
         $isFav = (in_array($item['post_id'], $favs));
         $fav = $isFav ? '' : '-empty';
-        $isHidden = (intval($item["post_likes"]) > 10) ? false : true; //Some option, may be load from session in future
+        $isHidden = (intval($item["post_likes"]) < 10) ? false : true; //Some option, may be load from session in future
         $result .= '<div class="col-md-12 postDescription"' . ($item['post_desc'] != '' ? '' : 'hidden') . '>' . $item['post_desc'] . '</div></div>';
         $result .= '<div class="col-md-12 postBody" '. ($isHidden ? '' : 'hidden') .'>' . nl2br($item['post_body']) . '</div>';
-        $result .= '<div class="postSign like ' . ($isLiked ? 'fill' : '') . '"><button class="btn-none"><span class="glyphicon ' . $liked . '" aria-hidden="true"></span><i>' . $item["post_likes"] . '</i></button></div>';
-        $result .= '<div class="postSign dislike ' . ($isDisliked ? 'fill' : '') . '"><button class="btn-none"><span class="glyphicon ' . $disliked . '" aria-hidden="true"></span><i>' . $item["post_dislikes"] . '</i></button></div>';
+        $result .= '<div class="postSign like ' . ($isLiked ? 'fill' : '') . '"><button class="btn-none"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span><i>' . $item["post_likes"] . '</i></button></div>';
+        $result .= '<div class="postSign dislike ' . ($isDisliked ? 'fill' : '') . '"><button class="btn-none"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span><i>' . $item["post_dislikes"] . '</i></button></div>';
         $result .= '<div class="postSign fav ' . ($isFav ? 'fill' : '') . '"><button class="btn-none"><span class="glyphicon glyphicon-star' . $fav . '" aria-hidden="true"></span><i>' . $item["post_fav"] . '</i></button></div>';
         $result .= '<div class="postSign ' . $tiny . '">' . anchor('profile/user/' . $item['post_user'], '<span class="glyphicon glyphicon-user" aria-hidden="true"></span>' . $item["post_user"] . '</div>') . '</div>';
         echo $result;

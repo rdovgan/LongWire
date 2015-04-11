@@ -140,14 +140,17 @@ class Post extends CI_Controller {
     }
 
     public function up($postId) {
+        Events::log_message('debug', "Got Up!");
         echo $this->likes_model->up($postId);
     }
     
     public function down($postId){
+        Events::log_message('debug', "Got Down!");
         echo $this->likes_model->down($postId);
     }
     
     public function fav($postId){
+        Events::log_message('debug', "Got Fav!");
         echo $this->favorite_model->fav($postId);
     }
 
