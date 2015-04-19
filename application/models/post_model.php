@@ -20,6 +20,7 @@ class Post_model extends CI_Model {
 
     public function __construct() {
         parent::__construct();
+        $this->load->model('tag_model');
     }
 
     public function getLastPostId($userId) {
@@ -41,8 +42,11 @@ class Post_model extends CI_Model {
             'post_body' => $this->input->post('post_body'),
             'post_tags' => $this->input->post('post_tags')
         );
-        return $this->db->insert('posts', $data);
-//return postId //if postId doesn't return - get last post by data
+        $this->db->insert('posts', $data);
+        $id = $this->db->insert_id();
+        $this->tag_model->addTagsWithPost($this->input->post('post_tags'), $id);
+        return $id;
+        //return postId //if postId doesn't return - get last post by data
     }
 
     public function getPost($postId) {
@@ -173,6 +177,7 @@ class Post_model extends CI_Model {
         $postId = $this->input->post('post_id');
         $this->db->where('post_id', $postId);
         $this->db->update('posts', $data);
+        $this->tag_model->addTagsWithPost($this->input->post('post_tags'), $postId);
         return $postId;
     }
 

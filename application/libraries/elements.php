@@ -111,7 +111,9 @@ class Elements {
         $arr = preg_split("[,]", $tags);
         $result = '';
         foreach ($arr as $item) {
-            $result .= '<div class="postTag">' . $item . '</div>';
+            if ($item != '') {
+                $result .= '<div class="postTag">' . $item . '</div>';
+            }
         }
         return $result;
     }
