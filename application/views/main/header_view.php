@@ -4,6 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>LongWire</title>
         <meta name="author" content="LongWireComp" />
+        <meta name="viewport" content="width=480,user-scalable=false" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/css/darkly.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/css/animate.css">
         <link rel="stylesheet/less" type="text/css" href="<?php echo base_url(); ?>/fonts/fonts.css">
@@ -26,9 +27,14 @@
                         <h3 id="logoText"> LongWire</h3>
                     </a>
                 </div>
+                <form class="formSearch navbar-form navbar-right forPad" style="margin-right: 0px;">
+                    <input disabled type="text" class="searchInput form-control col-lg-8">
+                    <span class='glyphicon glyphicon-search'></span>
+                </form>
+                <br class='forPad'>
                 <div id="mainMenu">
-                    <div class="navbar navbar-default">
-                        <div class="navbar-collapse collapse navbar-responsive-collapse">
+                    <div class="navbar navbar-default navbar-left">
+                        <div class="navbar-inner">
                             <ul id="navbarItems" class="nav navbar-nav">
                                 <li class="active under"><a href="#">Active</a></li>
                                 <li><a href="#">Link</a></li>
@@ -36,7 +42,7 @@
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="#" id="btnCreatePost" onclick="createPostDialog();">Create post</a></li>
-                                        <li><?php echo anchor("post/lastPost", "Last post"); ?></li>
+                                        <li> <?php echo anchor("post/lastPost", "Last post"); ?> </li>
                                         <li><a href="#">Something else here</a></li>
                                         <li class="divider"></li>
                                         <li><a href="#">Separated link</a></li>
@@ -46,11 +52,12 @@
                                     <?php echo $item; ?>
                                 <?php endforeach; ?>
                             </ul>
-                            <form id="formSearch" class="navbar-form navbar-left">
-                                <input id="searchInput" disabled type="text" class="form-control col-lg-8" placeholder="Search">
+                            <form class="formSearch navbar-form navbar-left forScreen">
+                                <input disabled type="text" class="searchInput form-control col-lg-8 searchInput" style='width: 50px;'>
+                                <span class='glyphicon glyphicon-search'></span>
                             </form>
-                            <ul id="hiddenHamburger" class="navbar-form navbar-left">
-                                <h4 class="some"><span class="glyphicon glyphicon-home"></span></h4>
+                            <ul id="hiddenHamburger" class="navbar-form navbar-left" style="display: none;">
+                                <h4 id="itemHamburger"><span class="glyphicon glyphicon-align-justify"></span></h4>
                             </ul>
                         </div>
                     </div>
