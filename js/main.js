@@ -6,9 +6,8 @@ $("#header").ready(function () {
 });
 
 $(document).ready(function () {
-    var headerContentHeight = $(".content").offset().top - $("#menu").height();
     var headerMenuHeight = $("#header").height();
-
+    var headerContentHeight = $(".content").offset().top - $("#menu").height();
     $(window).scroll(function () {
         if (($(window).scrollTop() > headerMenuHeight) && (!$("#invBtns").hasClass('fadeInRightBig'))) {
             $("#invBtns").removeClass('fadeOutRightBig');

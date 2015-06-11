@@ -37,7 +37,6 @@ body{
     font-size: 18px;
     background-color: lighten(@color-base, 2%);
 }
-
 @media screen and (min-width: 480px) {/*Mobile */
     #mainBlock{
         padding-left: @mob-space-left;
@@ -49,6 +48,49 @@ body{
     }
     #header{
         padding: 40px @mob-space-left 0 @mob-space-right;
+    }
+    .forMob{
+        display: block;
+    }
+    .forScreen{
+        display: none;
+    }
+    .forPad{
+        display: none;
+    }
+    #navbarItems{
+        display: none;
+    }
+    #mainMenu > div{
+        border-radius: 4px;
+    }
+    #siteName{
+        width: 70%;
+        font-size: 39px;
+        height: 150px;
+    }
+    #companyLogo{
+        margin-top: 20px;
+        font-size: 100px;
+        margin-left: 20px;
+        width: 20%;
+    }
+    .blockInfo{   
+        margin: 0;
+        margin-top: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+        width: 100%;
+    }
+    .blockInfo h1{
+        float: left;
+        margin-left: 20%;
+        line-height: 50px;
+    }
+    .blockInfo h4{
+        float: left;
+        margin-left: 20px;
+        line-height: 50px;
     }
 }
 @media screen and (min-width: 768px)  {/*Pads */
@@ -69,9 +111,14 @@ body{
     .forPad{
         display: block;
     }
+    .forMob{
+        display: none;
+    }
     #companyLogo{
         margin: 0;
         margin-left: 10%;
+        font-size: 80px;
+        width: 102px;
     }
     .blockInfo{   
         margin: 0;
@@ -88,6 +135,14 @@ body{
         float: left;
         margin-left: 20%;
         line-height: 50px;
+    }
+    #navbarItems{
+        display: block;
+    }
+    #siteName{
+        font-size: 48px;
+        height: auto;
+        width: auto;
     }
 }
 @media screen and (min-width: 928px) {/*Computers */
@@ -108,9 +163,14 @@ body{
     .forScreen{
         display: block;
     }
+    .forMob{
+        display: none;
+    }
     #companyLogo{
         margin: 0;
         margin-left: 20%;
+        font-size: 80px;
+        width: 102px;
     }
     .blockInfo{  
         margin: 0 auto;
@@ -121,6 +181,14 @@ body{
         margin: 0 auto;
         float: none;
         line-height: 1.42857143;
+    }
+    #navbarItems{
+        display: block;
+    }
+    #siteName{
+        font-size: 48px;
+        height: auto;
+        width: auto;
     }
 }
 p{
@@ -404,8 +472,7 @@ input[type="checkbox"].green.ios-switch:checked + div > div {
 
 .socialLinks{
     margin: 0;
-    padding: 0; 
-    margin-top: -10px;
+    padding: 0;
     font-size: 32px;
 }
 .socialLinks > div > a{
@@ -467,10 +534,11 @@ input[type="checkbox"].green.ios-switch:checked + div > div {
 
 #hiddenHamburger{
     color: white;
-    width: 48px;
+    width: 68px;
     height: 48px;
 }
 #hiddenHamburger h4{
+    margin-left: 24px;
     font-size: 24px;
 }
 #itemHamburger{
@@ -488,22 +556,19 @@ input[type="checkbox"].green.ios-switch:checked + div > div {
 
 #footer{
     margin: 0;
-    /*margin-left: @content-space-l;*/
-    /*margin-right: @content-space-r;*/
+    margin-left: @content-space-l;
+    margin-right: @content-space-r;
     margin-bottom: 50px;
-    padding: 20px;
-    width: auto;
-
+    padding: 0px;
+    padding-top: 20px;
+    width: 100% - @content-space-l - @content-space-r;
     background-color: lighten(@color-base, 2%);
-    width: 100%;
 }
 
 #companyLogo{
     height: 102px;
-    width: 102px;
     float: left;
     background-color: transparent;
-    font-size: 80px;
     color: @color-surf;
 }
 
@@ -517,7 +582,6 @@ input[type="checkbox"].green.ios-switch:checked + div > div {
     border: 2px solid @color-surf;
     border-radius: 10px;
     font-family: 'Lobster', cursive;
-    font-size: 48px;
     line-height: 1.6;
     text-align: center;
 }
@@ -577,4 +641,10 @@ input[type="checkbox"].green.ios-switch:checked + div > div {
 #logoutLink{
     display: inline;
     content: 'Link';
+}
+.social-likes{
+    margin: 20px;
+}
+.social-likes > div{
+    margin: 0;
 }

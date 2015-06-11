@@ -1,16 +1,16 @@
-<div id="footer">
-    <div class="social-likes social-likes_vertical col-md-3" style="position: absolute; left: 18px;">
-        <div class="facebook" title="Share link on Facebook">Facebook</div>
-        <div class="twitter" data-related="@longwire" title="Share link on Twitter">Twitter</div>
-        <div class="plusone" title="Share link on Google+">Google+</div>
-    </div>
-    <div class="col-md-3">
+<div id="footer" class='col-md-12'>
+    <div class="col-md-3" style="float: left; margin-bottom: 20px;">
         <div class="footerItem"><a href="#" class="invlink">About Us</a></button></div>
         <div class="footerItem"><a href="#" class="invlink">Help & Support</a></div>            
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3" style="float: left; margin-bottom: 20px;">
         <div class="footerItem"><a href="#" class="invlink">Terms of Service</a></div>
         <div class="footerItem"><a href="#" class="invlink">Mobile</a></div>
+    </div>
+    <div class="social-likes social-likes_vertical col-md-3">
+        <div class="facebook" title="Share link on Facebook">Facebook</div>
+        <div class="twitter" data-related="@longwire" title="Share link on Twitter">Twitter</div>
+        <div class="plusone" title="Share link on Google+">Google+</div>
     </div>
     <div class="socialLinks col-md-3">
         <div class="gplus"><a href="https://plus.google.com/110089529979358850005/" class="symbol" title="circlegoogleplus">

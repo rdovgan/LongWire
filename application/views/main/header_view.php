@@ -56,7 +56,7 @@
                                 <input disabled type="text" class="searchInput form-control col-lg-8 searchInput" style='width: 50px;'>
                                 <span class='glyphicon glyphicon-search'></span>
                             </form>
-                            <ul id="hiddenHamburger" class="navbar-form navbar-left" style="display: none;">
+                            <ul id="hiddenHamburger" class="nav navbar-nav navbar-left forMob">
                                 <h4 id="itemHamburger"><span class="glyphicon glyphicon-align-justify"></span></h4>
                             </ul>
                         </div>
