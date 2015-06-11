@@ -1,10 +1,4 @@
-function onResizeWindow() {
-}
-
-$("#header").ready(function () {
-    onResizeWindow();
-});
-
+hamburger = 0;
 $(document).ready(function () {
     var headerMenuHeight = $("#header").height();
     var headerContentHeight = $(".content").offset().top - $("#menu").height();
@@ -42,6 +36,11 @@ $(document).ready(function () {
     });
     $('#modalRegister').on('shown.bs.modal', function () {
         $('#registerName').focus();
+    });
+    $("#hiddenHamburger").click(function () {
+        $("#navbarItems").css("display", "block");
+        $("#hiddenHamburger").css("display", "none");
+        hamburger = 1;
     });
     showMessage();
     showModalOption();
@@ -88,3 +87,13 @@ $(function () {
 function createPostDialog() {
     $("#modalPost").modal('show');
 }
+$(function () {
+    $(document).click(function (event) {
+        if (($(event.target).closest("#mainMenu").length) || (hamburger === 0))
+            return;
+        $("#navbarItems").css("display", "none");
+        $("#hiddenHamburger").css("display", "block");
+        hamburger = 0;
+        event.stopPropagation();
+    });
+});

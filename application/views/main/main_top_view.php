@@ -1,4 +1,4 @@
-<div id="mainBlock">
+ <div id="mainBlock">
     <div id="companyLogo">
         <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
     </div>
