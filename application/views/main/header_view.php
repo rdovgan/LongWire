@@ -5,6 +5,7 @@
         <title>LongWire</title>
         <meta name="author" content="LongWireComp" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/css/darkly.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/css/animate.css">
         <link rel="stylesheet/less" type="text/css" href="<?php echo base_url(); ?>/fonts/fonts.css">
         <link rel="stylesheet/less" type="text/css" href="<?php echo base_url(); ?>/css/fonts.less">
         <link rel="stylesheet/less" type="text/css" href="<?php echo base_url(); ?>/css/style.less">
@@ -28,9 +29,8 @@
                 <div id="mainMenu">
                     <div class="navbar navbar-default">
                         <div class="navbar-collapse collapse navbar-responsive-collapse">
-                            <ul class="nav navbar-nav">
+                            <ul id="navbarItems" class="nav navbar-nav">
                                 <li class="active under"><a href="#">Active</a></li>
-                                <li><a href="#">Link</a></li>
                                 <li><a href="#">Link</a></li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
@@ -46,9 +46,12 @@
                                     <?php echo $item; ?>
                                 <?php endforeach; ?>
                             </ul>
-                            <form class="navbar-form navbar-left">
+                            <form id="formSearch" class="navbar-form navbar-left">
                                 <input id="searchInput" disabled type="text" class="form-control col-lg-8" placeholder="Search">
                             </form>
+                            <ul id="hiddenHamburger" class="navbar-form navbar-left">
+                                <h4 class="some"><span class="glyphicon glyphicon-home"></span></h4>
+                            </ul>
                         </div>
                     </div>
                 </div>

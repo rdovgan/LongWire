@@ -1,16 +1,23 @@
+$(document).load(function(){
+    if($("#mainMenu").width() < 825){
+        $("#formSearch").css("display", 'none');
+        if($("mainMenu").width() < 600){
+            
+        }
+    }
+});
 $(document).ready(function () {
     var headerContentHeight = $(".content").offset().top - $("#menu").height();
     var headerMenuHeight = $("#header").height();
 
     $(window).scroll(function () {
-        if (($(window).scrollTop() > headerMenuHeight) && (!$("#invBtns").hasClass('open'))) {
-            $("#invBtns").animate({
-                left: 0
-            }, 500).addClass('open');
-        } else if (($(window).scrollTop() <= headerMenuHeight) && ($("#invBtns").hasClass('open'))) {
-            $("#invBtns").animate({
-                left: '360px'
-            }, 500).removeClass('open');
+        if (($(window).scrollTop() > headerMenuHeight) && (!$("#invBtns").hasClass('fadeInRightBig'))) {
+            $("#invBtns").removeClass('fadeOutRightBig');
+            $("#invBtns").css("display","block");
+            $("#invBtns").addClass('fadeInRightBig');
+        } else if (($(window).scrollTop() <= headerMenuHeight) && ($("#invBtns").hasClass('fadeInRightBig'))) {
+            $("#invBtns").removeClass('fadeInRightBig');
+            $("#invBtns").addClass('fadeOutRightBig');
         }
         if ($(window).scrollTop() > headerContentHeight) {
             $('#menu').css({position: 'fixed', top: '0px'});

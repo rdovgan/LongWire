@@ -20,6 +20,8 @@
 @color-shad: lighten(@color-base, 20%);//#4F5052
 @color-light-text: #F5F5F5;
 
+@width-min: 400px;
+@width-max: 1400px;
 
 body{
     margin: 0;
@@ -341,15 +343,20 @@ input[type="checkbox"].green.ios-switch:checked + div > div {
     z-index: 1000;
 }
 #header{
-    margin: 0;
-    padding: 0;
-    padding-top: 40px;
-    padding-left: @space-left;
-    padding-right: @space-right;
+    margin: 0 auto;
+    padding: 40px @space-left 0 @space-right;
     background-color: @color-base;
     min-height: @height-header;
-    width: 100%;
+    min-width: @width-min;
+    max-width: @width-max;
     position: relative;
+}
+
+#hiddenHamburger{
+    font-size: 24px;
+    color: white;
+    width: 48px;
+    height: 48px;
 }
 
 #mainMenu{
@@ -457,7 +464,7 @@ input[type="checkbox"].green.ios-switch:checked + div > div {
     margin-top: -12px;
     float: right;
     position: relative;
-    left: 360px;
+    display: none;
 }
 
 #logoutLink{
