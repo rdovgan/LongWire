@@ -1,6 +1,6 @@
 <div id="data" class='content col-md-12'>
     <?php $isPerson = isset($personData) && $personData != false; ?>
-    <div id="personData" class="col-md-12" style="display: inline; margin-left:20px; padding: 20px;">
+    <div id="personData" class="col-md-12" style="display: inline; padding: 20px; padding-left:40px; ">
         <?php
         $imgLink = FCPATH . '/img/avatars/' . $personLogin . '.png';
         ?>

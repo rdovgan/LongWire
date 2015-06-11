@@ -20,7 +20,7 @@
         <div id="header">
             <div id="headerGroup">
                 <div id="logo">
-                    <a class="invlink" href="http://longwire.ua/"><h4 id="logoPic">
+                    <a class="invlink" href="http://longwire.ho.ua/"><h4 id="logoPic">
                             <span class="glyphicon glyphicon-flash" aria-hidden="true"></span></h4>
                         <h3 id="logoText"> LongWire</h3>
                     </a>

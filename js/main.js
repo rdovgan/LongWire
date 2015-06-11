@@ -40,6 +40,10 @@ $(document).ready(function () {
     });
     showMessage();
     showModalOption();
+    //hide ADV
+//    setTimeout(function () {
+//        $("#ho_adv").css("height", "0px");
+//    },1000);
 });
 
 function printInfo(time, left, top, width, height) {

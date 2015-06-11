@@ -51,9 +51,9 @@ if (!defined('BASEPATH'))
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
-$db['default']['password'] = '';
+$db['default']['hostname'] = 's3.ho.ua';
+$db['default']['username'] = 'longwire';
+$db['default']['password'] = 'kakashka09';
 $db['default']['database'] = 'longwire';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';

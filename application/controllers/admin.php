@@ -22,6 +22,7 @@ class Admin extends CI_Controller {
             $data['title'] = 'Admin page';
             $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
             $data['achievs'] = $this->achiev_model->getAllAchievs();
+            $data['activeItem'] = '';
             $this->load->view('admin/head_view', $data);
             $this->load->view('admin/panel_view', $data);
             $this->load->view('admin/admin_view', $data);
