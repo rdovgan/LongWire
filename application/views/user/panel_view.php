@@ -6,19 +6,10 @@
         <?php echo anchor('post/formPost', '<button id="btnCreatePost" class="btn btn-sm">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
         </button>'); ?>
-        <li id="postsItem" style='width: 247px;'><?php echo anchor('post/postsList', '<span class="glyphicon glyphicon-book" aria-hidden="true"></span>Posts') ?></li>
-        <li id="calendarItem"><?php echo anchor('user/calendar', '<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>Calendar') ?></li>
+        <li id="postsItem"><?php echo anchor('post/postsList', '<span class="glyphicon glyphicon-book" aria-hidden="true"></span>Posts') ?></li>
         <li id="userItem"><?php echo anchor('profile/search', '<span class="glyphicon glyphicon-user" aria-hidden="true"></span>People') ?></li>
         <li id="personItem"><?php echo anchor('user/person', '<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>Person') ?></li>
         <li id="achievItem"><?php echo anchor('user/achiev', '<span class="glyphicon glyphicon-star" aria-hidden="true"></span>Achievements') ?></li>
-    </ul>
-    <div class="panelTitle">ELEMENTS</div>
-    <ul class="nav nav-pills nav-stacked">
-        <li><a href="#"><span class="glyphicon glyphicon-text-width" aria-hidden="true"></span>Typography</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Tables</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>Form</a></li>
-        <li><?php echo anchor('#', '<span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>Buttons') ?></li>
-        <li><a href="#"><span class="glyphicon glyphicon-phone" aria-hidden="true"></span>Mobile</a></li>
     </ul>
     <script>var activeItem = "<?php echo $activeItem; ?>";
         var upUrl = '<?php echo anchor("post/up"); ?>';

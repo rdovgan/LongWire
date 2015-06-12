@@ -4,12 +4,13 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/Code/Denver/home/longwire.ua/www/application/libraries/elements.php</file>
+            <file>file:/D:/Code/Denver/home/longwire.ua/www/application/views/main/footer_view.php</file>
+            <file>file:/D:/Code/Denver/home/longwire.ua/www/js/user.js</file>
+            <file>file:/D:/Code/Denver/home/longwire.ua/www/application/views/user/head_view.php</file>
             <file>file:/D:/Code/Denver/home/longwire.ua/www/js/main.js</file>
-            <file>file:/D:/Code/Denver/home/longwire.ua/www/application/views/main/header_view.php</file>
-            <file>file:/D:/Code/Denver/home/longwire.ua/www/application/views/main/main_content_view.php</file>
-            <file>file:/D:/Code/Denver/home/longwire.ua/www/application/views/main/welcome_view.php</file>
-            <file>file:/D:/Code/Denver/home/longwire.ua/www/application/views/main/main_top_view.php</file>
-            <file>file:/D:/Code/Denver/home/longwire.ua/www/application/views/main/menu_view.php</file>
+            <file>file:/D:/Code/Denver/home/longwire.ua/www/css/user.less</file>
+            <file>file:/D:/Code/Denver/home/longwire.ua/www/application/views/user/user_list_view.php</file>
+            <file>file:/D:/Code/Denver/home/longwire.ua/www/application/views/user/person_view.php</file>
             <file>file:/D:/Code/Denver/home/longwire.ua/www/css/style.less</file>
         </group>
     </open-files>

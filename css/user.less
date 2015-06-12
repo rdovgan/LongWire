@@ -27,7 +27,9 @@
 @color-up: #5cb85c;
 @color-down: #d9534f;
 @color-fav: #f0ad4e;
-
+[hidden]{
+    display: none;
+}
 @media screen and (min-width: 480px) {/*Mobile */
     body{
         margin-top: @mob-height-menu;
@@ -57,15 +59,33 @@
         background-size: 40px 40px;
         width: 40px;
         height: 40px;
+        float: right;
     }
     #companyLogo{
         margin-top: -10px;
     }
     #siteName{
-        margin-top: 0px;
+        margin-top: -5px;
+        font-size: 19px;
     }
     .forMob{
         display: block;
+    }
+    #userPanel > ul > li{
+        height: 40px;
+        font-size: 22px;
+    }
+    #btnCreatePost{
+        width: 41px;
+        height: 41px;
+        font-size: 20px;
+    }
+    #postsItem{
+        margin-right: 42px;
+    }
+    .personBlock{
+        margin: 20px 20px 20px 20px;
+        width: 80%;
     }
 }
 @media screen and (min-width: 768px)  {/*Pads */
@@ -103,9 +123,26 @@
     }
     #siteName{
         margin-top: 0px;
+        font-size: 15px;
     }
     .forMob{
         display: none;
+    }
+    #userPanel > ul > li{
+        height: 31px;
+        font-size: 15px;
+    }
+    #btnCreatePost{
+        width: 31px;
+        height: 31px;
+        font-size: 15px;
+    }
+    #postsItem{
+        margin-right: 33px;
+    }
+    .personBlock{
+        margin: 0px 1% 15px 2%;
+        width: 47%;
     }
 }
 @media screen and (min-width: 928px) {/*Computers */
@@ -143,9 +180,26 @@
     }
     #siteName{
         margin-top: 10px;
+        font-size: 15px;
     }
     .forMob{
         display: none;
+    }
+    #userPanel > ul > li{
+        height: 31px;
+        font-size: 15px;
+    }
+    #btnCreatePost{
+        width: 31px;
+        height: 31px;
+        font-size: 15px;
+    }
+    #postsItem{
+        margin-right: 33px;
+    }
+    .personBlock{
+        margin: 0px 20px 15px 20px;
+        width: 300px;
     }
 }
 
@@ -281,7 +335,7 @@ th{
     text-align: left;
     float: left;
     word-wrap: break-word;
-    max-width: 99%;
+    width: 100%;
     clear: both;
     color: darken(@color-dark-grey, 30%);
     border: 1px solid @color-dark-grey;
@@ -385,15 +439,13 @@ th{
 }
 
 .personBlock{
-    margin-top: 20px;
-    margin-left: 1%;
-    margin-bottom: 20px;
-    padding: 20px;
-    padding-top: 0px;
+    padding: 10px;
     background-color: @color-dark-white;
     border-radius: 3px;
-    min-height: 250px;
-    width: 32%;
+    min-width: 200px;
+    height: 240px;
+    display: inline-block;
+    float: left;
 }
 
 .btnSimple{
@@ -402,9 +454,10 @@ th{
 }
 
 .userItem{
-    width: 99%;
     padding: 20px;
     box-shadow: 0px 0px 1px 0px #888888;
+    width: 100%;
+    display: inline-block;
 }
 
 .badgeDelete{
@@ -436,7 +489,7 @@ th{
 }
 
 .back{
-    background-color: lighten(@color-light-grey, 5%);
+    background-color: #fafafa;
 }
 
 .back1{
@@ -446,7 +499,9 @@ th{
 .back2{
     background-color: lighten(@color-girl, 5%);
 }
-
+#mails{
+    display: inline-block;
+}
 .accessMail1{
     margin: 10px 10px;
     padding-left: 15px;
@@ -519,6 +574,7 @@ th{
 }
 
 #avatar{
+    margin-left: 20px;
     border: 2px solid @color-white;
     border-radius: 3px;
     background-color: transparent;
@@ -582,8 +638,6 @@ th{
 #btnCreatePost{
     padding: 5px 9px;
     float: right;
-    width: 31px;
-    height: 31px;
     border-radius: 4px;
     color: @color-blue;
     background-color: @color-back;
@@ -609,6 +663,7 @@ th{
     width: 42px;
     height: 42px;
     color: @color-back;
+    float: right;
 }
 
 #personGender{
@@ -628,11 +683,10 @@ th{
     float: left;
     width: 40px;
     height: 40px;
-    background-color: #fefefe;
+    background-color: @color-danger;
     border-radius: 4px;
     color: @color-blue;
     font-size: 24px;
-    display: inline-block;
     cursor: pointer;
 }
 .hamburger > span{

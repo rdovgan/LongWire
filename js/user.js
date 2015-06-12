@@ -3,10 +3,14 @@ hamburger = 0;
 $(document).ready(function () {
     markActiveItem();
     $("#btnPersonForm").click(function () {
-        hidden = $("#personFormBlock").attr('hidden');
-        $("#personFormBlock").attr('hidden', !hidden);
+        hidden = $("#personFormBlock").css('display');
+        if (hidden === "none") {
+            $("#personFormBlock").css('display', "inline-block");
+        } else {
+            $("#personFormBlock").css('display', "none");
+        }
         span = $(this).children("span");
-        if (hidden) {
+        if (hidden==="none") {
             span.addClass('rotate');
 
         } else {
@@ -142,9 +146,11 @@ $(document).ready(function () {
     $('#panelHamburger').click(function () {
         if (hamburger === 1) {
             $("#userPanel").css("margin-left", "");
+            $("#userTopInfo").css("margin-left", "");
             hamburger = 0;
         } else {
             $('#userPanel').css("margin-left", "0px");
+            $("#userTopInfo").css("margin-left", "0px");
             hamburger = 1;
         }
     });
@@ -155,11 +161,19 @@ $(function () {
         if (($(event.target).closest("#userPanel").length) || ($(event.target).closest("#panelHamburger").length) || (hamburger === 0)) {
             return;
         }
-        $("#userPanel").css("margin-left", "");
-        hamburger = 0;
-        event.stopPropagation();
+        hidePanel(event)
+    });
+    $(window).resize(function (event) {
+        hidePanel(event)
     });
 });
+
+function hidePanel() {
+    $("#userPanel").css("margin-left", "");
+    $("#userTopInfo").css("margin-left", "");
+    hamburger = 0;
+    event.stopPropagation();
+}
 
 function markActiveItem() {
     $("#" + activeItem).addClass("active");
