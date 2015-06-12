@@ -1,5 +1,11 @@
-@width-panel: 300px;
-@height-menu: 80px;
+@med-width-panel: 300px;
+@med-height-menu: 80px;
+
+@pad-width-panel: 200px;
+@pad-height-menu: 50px;
+
+@mob-width-panel: 300px;
+@mob-height-menu: 50px;
 
 @color-blue: #375A7F;
 @color-base: #222222;
@@ -22,9 +28,71 @@
 @color-down: #d9534f;
 @color-fav: #f0ad4e;
 
-body{
-    margin-top: @height-menu;
-    margin-left: @width-panel;
+@media screen and (min-width: 480px) {/*Mobile */
+    body{
+        margin-top: @mob-height-menu;
+        margin-left: 0px;
+    }
+    #userTopInfo{
+        margin-left: -@mob-width-panel;
+        width: @mob-width-panel;
+        height: @mob-height-menu;
+    }
+    #userTopBlock{
+        height: @mob-height-menu;
+    }
+    #userPanel{
+        margin-left: -@pad-width-panel;
+        display: none;
+        width: 300px;
+    }
+    #userMenu{
+        margin-right: @mob-width-panel;
+    }
+}
+@media screen and (min-width: 768px)  {/*Pads */
+    body{
+        margin-top: @pad-height-menu;
+        margin-left: @pad-width-panel;
+    }
+    #userTopInfo{
+        margin-left: -@pad-width-panel;
+        width: @pad-width-panel;
+        height: @pad-height-menu;
+    }
+    #userTopBlock{
+        height: @pad-height-menu;
+    }
+    #userPanel{
+        margin-left: -@pad-width-panel;
+        display: inline;
+        width: @pad-width-panel;
+    }
+    #userMenu{
+        margin-right: @pad-width-panel;
+    }
+}
+@media screen and (min-width: 928px) {/*Computers */
+    body{
+        margin-top: @med-height-menu;
+        margin-left: @med-width-panel;
+    }
+    #userTopInfo{
+        margin-left: -@med-width-panel;
+        width: @med-width-panel;
+        height: @med-height-menu;
+    }
+    #userTopBlock{
+        height: @med-height-menu;
+    }
+    #userPanel{
+        margin-left: -@pad-width-panel;
+        display: inline;
+        width: @med-width-panel;
+    }
+    #userMenu{
+        margin-right: @med-width-panel;
+    }
 }
 
 a{
@@ -118,19 +186,26 @@ th{
 }
 
 .post{
+    margin-bottom: 5px;
+    margin-left: -10px;
+    padding-bottom: 5px;
+    display: inline-block;
+    width: 100%;
+    border: 1px solid @color-light-grey;
+    border-radius: 4px;
 }
 
 .postName{
     margin: 10px;
     margin-bottom: 5px;
-    padding: 0;
-    padding-left: 15px;
+    padding: 0 10px 0 15px;
     font-size: 20px;
     color: @color-base;
     float: left;
     font-family: Trebuchet MS;
     clear: both;
     cursor: pointer;
+    width: 100%;
 }
 
 .postDescription{
@@ -141,8 +216,6 @@ th{
     font-family: Consolas;
     font-size: 13px;
     color: @color-dark-grey;
-    border: 1px solid @color-light-grey;
-    border-radius: 3px;
 }
 
 .postBody{
@@ -385,10 +458,7 @@ th{
 
 #userTopInfo{
     margin: 0;
-    margin-left: -@width-panel;
     background-color: @color-back;
-    width: @width-panel;
-    height: @height-menu;
     top: 0px;
     position: fixed;
     line-height: 75px;
@@ -417,7 +487,6 @@ th{
     padding: 20px;
     background-color: @color-blue;
     width: 100%;
-    height: @height-menu;
     top: 0px;
     position: fixed;
     color: @color-white;
@@ -441,10 +510,7 @@ th{
 
 #userPanel{
     margin: 0;
-    margin-left: -@width-panel;
     padding: 10px;
-    top: @height-menu;
-    width: @width-panel;
     height: 100%;
     position: fixed;
     background-color: @color-base;
@@ -483,7 +549,6 @@ th{
 }
 
 #userMenu{
-    margin-right: @width-panel;
     margin-top: -10px;
     float: right;
 }

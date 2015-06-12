@@ -3,16 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Code/Denver/home/longwire.ua/www/application/views/admin/panel_view.php</file>
-            <file>file:/D:/Code/Denver/home/longwire.ua/www/application/controllers/user.php</file>
-            <file>file:/D:/Code/Denver/home/longwire.ua/www/application/views/user/panel_view.php</file>
-            <file>file:/D:/Code/Denver/home/longwire.ua/www/application/views/admin/admin_view.php</file>
-            <file>file:/D:/Code/Denver/home/longwire.ua/www/css/user.less</file>
+            <file>file:/D:/Code/Denver/home/longwire.ua/www/application/libraries/elements.php</file>
             <file>file:/D:/Code/Denver/home/longwire.ua/www/js/main.js</file>
             <file>file:/D:/Code/Denver/home/longwire.ua/www/application/views/main/header_view.php</file>
-            <file>file:/D:/Code/Denver/home/longwire.ua/www/css/admin.less</file>
-            <file>file:/D:/Code/Denver/home/longwire.ua/www/application/views/admin/head_view.php</file>
-            <file>file:/D:/Code/Denver/home/longwire.ua/www/application/controllers/admin.php</file>
+            <file>file:/D:/Code/Denver/home/longwire.ua/www/application/views/main/main_content_view.php</file>
+            <file>file:/D:/Code/Denver/home/longwire.ua/www/application/views/main/welcome_view.php</file>
+            <file>file:/D:/Code/Denver/home/longwire.ua/www/application/views/main/main_top_view.php</file>
+            <file>file:/D:/Code/Denver/home/longwire.ua/www/application/views/main/menu_view.php</file>
             <file>file:/D:/Code/Denver/home/longwire.ua/www/css/style.less</file>
         </group>
     </open-files>

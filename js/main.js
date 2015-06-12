@@ -91,8 +91,8 @@ $(function () {
     $(document).click(function (event) {
         if (($(event.target).closest("#mainMenu").length) || (hamburger === 0))
             return;
-        $("#navbarItems").css("display", "none");
-        $("#hiddenHamburger").css("display", "block");
+        $("#navbarItems").css("display", "");
+        $("#hiddenHamburger").css("display", "");
         hamburger = 0;
         event.stopPropagation();
     });

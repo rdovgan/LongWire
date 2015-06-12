@@ -122,9 +122,9 @@ class Post_model extends CI_Model {
     }
 
     //Don't use this function in future
-    public function getAllPosts() {
+    public function getAllPosts($page = 0) {
         $this->db->order_by('post_date','desc');
-        $query = $this->db->get('posts');
+        $query = $this->db->get('posts',10, 10*$page);
         if ($query->num_rows() > 0) {
             $posts = array();
             foreach ($query->result() as $rows) {
@@ -166,7 +166,6 @@ class Post_model extends CI_Model {
         return false;
     }
 
-//need to add public key
     public function updatePost() {
         $data = array(
             'post_name' => $this->input->post('post_name'),

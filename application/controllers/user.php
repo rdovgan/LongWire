@@ -10,6 +10,7 @@ class User extends CI_Controller {
         header('Content-Type: text/html; charset=utf-8');
         $this->load->model('user_model');
         $this->load->model('achiev_model');
+        $this->load->model('new_model');
         $this->load->model('person_model');
         $this->load->model('mail_model');
     }
@@ -52,6 +53,7 @@ class User extends CI_Controller {
                 $data['help_message'] = "Wrong password";
             }
         }
+        $data['newsList'] = $this->new_model->getAllNews();
         $this->load->view('main/header_view', $data);
         $this->load->view("main/main_top_view.php", $data);
         $this->load->view("main/menu_view.php", $data);

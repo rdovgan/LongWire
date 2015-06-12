@@ -54,8 +54,8 @@
                     ?>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
-                    <input name="submit" class="btn btn-sm btn-danger" type="submit" value="Enter">
+                    <button type="button" class="btn btn-sm btn-default" data-dismiss="modal" style="float: right;">Close</button>
+                    <input name="submit" class="btn btn-sm btn-danger" type="submit" style="float: left;" value="Enter">
                 </div>
                 <?php echo form_close(); ?>
             </div>
@@ -87,8 +87,8 @@
                     <?php echo validation_errors('<p class="error">'); ?>    
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
-                    <input name="submit" class="btn btn-sm btn-danger" type="submit" value="Register">
+                    <button type="button" class="btn btn-sm btn-default" data-dismiss="modal" style="float: right;">Close</button>
+                    <input name="submit" class="btn btn-sm btn-danger" type="submit" style="float: left;" value="Register">
                 </div>
                 <?php echo form_close(); ?>
             </div>

@@ -64,6 +64,11 @@ body{
     }
     #navbarItems{
         display: none;
+        width: 300px;
+    }
+    #mainMenu{
+        position: absolute;
+        right: 20px;
     }
     #mainMenu > div{
         border-radius: 4px;
@@ -153,6 +158,11 @@ body{
     }
     #navbarItems{
         display: block;
+        width: inherit;
+    }
+    #mainMenu{
+        position: inherit;
+        right: inherit;
     }
     #siteName{
         font-size: 48px;
@@ -207,6 +217,11 @@ body{
     }
     #navbarItems{
         display: block;
+        width: inherit;
+    }
+    #mainMenu{
+        position: inherit;
+        right: inherit;
     }
     #siteName{
         font-size: 48px;
@@ -330,7 +345,7 @@ input[type="checkbox"].green.ios-switch:checked + div > div {
     margin: 0;
     padding: 20px;
     background-color: @color-base;
-    min-height: 1000px;
+    min-height: 500px;
     width: auto;
     border-left: 1px solid @color-back;
     border-right: 1px solid @color-back;
@@ -429,6 +444,7 @@ input[type="checkbox"].green.ios-switch:checked + div > div {
 .headerElement{
     float: left; 
     margin: 10px; 
+    margin-top: 15px;
     display: inline-block;
 }
 
@@ -468,7 +484,8 @@ input[type="checkbox"].green.ios-switch:checked + div > div {
 
 .btnRegister{
     margin-top: 15px;
-    margin-left: 12px;
+    margin-left: 6px;
+    margin-right: 6px;
     color: @color-danger;
     font-weight: bold;
     background-color: transparent;
@@ -572,6 +589,7 @@ input[type="checkbox"].green.ios-switch:checked + div > div {
     float: right;
     display: inline-block;
     font-size: 24px;
+    z-index: 1000;
 }
 #mainMenu > div{
     padding: 0px 15px;
@@ -628,16 +646,16 @@ input[type="checkbox"].green.ios-switch:checked + div > div {
 
 #modalContentLogin{
     top: @height-headerGroup + 10;
-    right: 30%;
+    right: 15%;
     position: fixed;
-    width: 15%;
+    width: 200px;
 }
 
 #modalContentRegister{
     top: @height-headerGroup + 10;
     right: 15%;
     position: fixed;
-    width: 15%;
+    width: 200px;
 }
 
 #modalContentPost{
@@ -670,4 +688,34 @@ input[type="checkbox"].green.ios-switch:checked + div > div {
 }
 .social-likes > div{
     margin: 0;
+}
+.new{
+    padding: 30px 40px 10px 20px;
+    background-color: @color-shad;
+    border-radius: 4px;
+}
+.newName{
+    margin-left: 20px;
+    font-size: 24px;
+    color: @color-surf;
+    font-weight: bold;
+}
+.newBody{
+    margin-bottom: 10px;
+    text-align: justify;
+}
+.newUser{
+    float: left;
+}
+.newUser > a:hover{
+    text-decoration: none;
+}
+.newUser > a > span{
+    margin-right: 5px;
+}
+.newDate{
+    float: right;
+    color: @color-base;
+    text-align: right;
+    font-size: 15px;
 }

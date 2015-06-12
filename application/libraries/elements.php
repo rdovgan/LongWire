@@ -65,7 +65,7 @@ class Elements {
     }
 
     public static function postToHtml($item, $likes, $dislikes, $favs, $isAuthor = false, $rang = 10) {
-        $result = '<div id="' . $item['post_id'] . '" class="post col-md-12">';
+        $result = '<div id="' . $item['post_id'] . '" class="col-md-12 post">';
         $result .= '<div class="col-md-12 postName" onclick="showPost(event);">';
         $result .= '<div class="btnOpenPost"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></div>' . $item['post_name'];
         $edit = anchor('post/editPost/' . $item['post_id'], '<span class="glyphicon glyphicon-pencil badgeEdit" aria-hidden="true"></span>');
@@ -85,6 +85,17 @@ class Elements {
         $result .= '<div class="postSign fav ' . ($isFav ? 'fill' : '') . '"><button class="btn-none"><span class="glyphicon glyphicon-star' . $fav . '" aria-hidden="true"></span><i>' . $item["post_fav"] . '</i></button></div>';
         $result .= '<div class="postSign ' . $tiny . '">' . anchor('profile/user/' . $item['post_user'], '<span class="glyphicon glyphicon-user" aria-hidden="true"></span>' . $item["post_user"] . '</div>') . '</div>';
         $result .= '<div class="col-md-8 postTags">' . Elements::getTags($item['post_tags']) . '</div></div>';
+        echo $result;
+    }
+
+    public static function newToHtml($item) {
+        $result = '<div id="' . $item['new_id'] . '" class="col-md-12 new">';
+        $result .= '<div class="col-md-12 newName">' . $item['new_name'] . '</div>';
+        $result .= '<div class="col-md-12 newBody">' . nl2br($item['new_body']) . '</div>';
+        $result .= '<div class="col-md-6 newDate">' . $item['new_date'] . '</div>';
+        $result .= '<div class="col-md-6 newUser">' . anchor('profile/user/' . $item['new_user'], 
+                '<span class="glyphicon glyphicon-user" aria-hidden="true"></span>' 
+                . $item["new_user"] . '</div>') . '</div><div class="br"></div>';
         echo $result;
     }
 

@@ -4,6 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>LongWire</title>
         <meta name="author" content="LongWireComp" />
+        <meta name="viewport" content="width=480,user-scalable=false" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/css/flatly.css">
         <link rel="stylesheet/less" type="text/css" href="<?php echo base_url(); ?>/css/user.less">
         <link href='http://fonts.googleapis.com/css?family=Philosopher|Marmelad&subset=cyrillic' rel='stylesheet' type='text/css'>
