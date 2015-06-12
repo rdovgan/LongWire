@@ -37,17 +37,35 @@
         margin-left: -@mob-width-panel;
         width: @mob-width-panel;
         height: @mob-height-menu;
+        line-height: @mob-height-menu;
     }
     #userTopBlock{
         height: @mob-height-menu;
     }
     #userPanel{
-        margin-left: -@pad-width-panel;
+        margin: 0;
+        margin-left: -@mob-width-panel;
         display: none;
-        width: 300px;
+        width: @mob-width-panel;
     }
     #userMenu{
-        margin-right: @mob-width-panel;
+        margin-right: 0px;
+        margin-top: -25px;
+    }
+    #avatar{
+        margin: 5px;
+        background-size: 40px 40px;
+        width: 40px;
+        height: 40px;
+    }
+    #companyLogo{
+        margin-top: -10px;
+    }
+    #siteName{
+        margin-top: 0px;
+    }
+    .forMob{
+        display: block;
     }
 }
 @media screen and (min-width: 768px)  {/*Pads */
@@ -59,17 +77,35 @@
         margin-left: -@pad-width-panel;
         width: @pad-width-panel;
         height: @pad-height-menu;
+        line-height: @pad-height-menu;
     }
     #userTopBlock{
         height: @pad-height-menu;
     }
     #userPanel{
+        margin: 0;
         margin-left: -@pad-width-panel;
         display: inline;
         width: @pad-width-panel;
     }
     #userMenu{
         margin-right: @pad-width-panel;
+        margin-top: -25px;
+    }
+    #avatar{
+        margin: 5px;
+        background-size: 40px 40px;
+        width: 40px;
+        height: 40px;
+    }
+    #companyLogo{
+        margin-top: -10px;
+    }
+    #siteName{
+        margin-top: 0px;
+    }
+    .forMob{
+        display: none;
     }
 }
 @media screen and (min-width: 928px) {/*Computers */
@@ -81,17 +117,35 @@
         margin-left: -@med-width-panel;
         width: @med-width-panel;
         height: @med-height-menu;
+        line-height: @med-height-menu;
     }
     #userTopBlock{
         height: @med-height-menu;
     }
     #userPanel{
-        margin-left: -@pad-width-panel;
+        margin: 0;
+        margin-left: -@med-width-panel;
         display: inline;
         width: @med-width-panel;
     }
     #userMenu{
+        margin-top: -10px;
         margin-right: @med-width-panel;
+    }
+    #avatar{
+        margin: 16px;
+        background-size: 48px 48px;
+        width: 48px;
+        height: 48px;
+    }
+    #companyLogo{
+        margin-top: auto;
+    }
+    #siteName{
+        margin-top: 10px;
+    }
+    .forMob{
+        display: none;
     }
 }
 
@@ -221,7 +275,6 @@ th{
 .postBody{
     margin-top: 0px;
     margin-left: 10px;
-    margin-bottom: 5px;
     padding: 10px;
     font-size: 13px;
     font-family: 'Marmelad', sans-serif;
@@ -243,6 +296,7 @@ th{
     float: right;
 }
 .postTag{
+    margin-top: 5px;
     margin-left: 10px;
     padding: 2px;
     font-size: 10px;
@@ -311,6 +365,7 @@ th{
 }
 
 .postSign{
+    margin-top: 5px;
     margin-left: 10px;
     padding: 2px;
     border: 1px solid @color-light-grey;
@@ -457,22 +512,16 @@ th{
 }
 
 #userTopInfo{
-    margin: 0;
     background-color: @color-back;
     top: 0px;
     position: fixed;
-    line-height: 75px;
     z-index: 1013;
 }
 
 #avatar{
-    margin: 16px;
     border: 2px solid @color-white;
     border-radius: 3px;
     background-color: transparent;
-    background-size: 48px 48px;
-    width: 48px;
-    height: 48px;
     float: left;
 }
 
@@ -490,6 +539,7 @@ th{
     top: 0px;
     position: fixed;
     color: @color-white;
+    overflow: hidden;
     z-index: 1010;
     box-shadow: 0px 3px 10px @color-blue;
 }
@@ -498,6 +548,7 @@ th{
     margin-left: 10px;
     float: left;
     color: @color-white;
+    display: inline-block;
 }
 
 #companyLogo{
@@ -506,10 +557,10 @@ th{
     font-size: 24px;
     line-height: 40px;
     color: @color-white;
+    display: inline-block;
 }
 
 #userPanel{
-    margin: 0;
     padding: 10px;
     height: 100%;
     position: fixed;
@@ -549,7 +600,6 @@ th{
 }
 
 #userMenu{
-    margin-top: -10px;
     float: right;
 }
 
@@ -569,4 +619,22 @@ th{
 #adminLink{
     float: right;
 
+}
+.posts{
+    margin-top: 20px;
+}
+.hamburger{
+    margin-top: -15px;
+    float: left;
+    width: 40px;
+    height: 40px;
+    background-color: #fefefe;
+    border-radius: 4px;
+    color: @color-blue;
+    font-size: 24px;
+    display: inline-block;
+    cursor: pointer;
+}
+.hamburger > span{
+    margin: 7px;
 }

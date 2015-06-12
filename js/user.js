@@ -1,3 +1,5 @@
+ho_adv = 1;//remove when disable the ads
+hamburger = 0;
 $(document).ready(function () {
     markActiveItem();
     $("#btnPersonForm").click(function () {
@@ -128,10 +130,34 @@ $(document).ready(function () {
         req.open('GET', 'deleteMail/' + id, true);
         req.send(null);
     });
-    $('.btnOpenPost').click(function(){
+    $('.btnOpenPost').click(function () {
         obj = $(this);
         id = obj.parent().parent().attr('id');
-        window.open(url+'index.php/post/viewPost/'+id,'_blank');//TODO: remove index.php when it works
+        window.open(url + 'index.php/post/viewPost/' + id, '_blank');//TODO: remove index.php when it works
+    });
+    if (ho_adv === 1) {
+        $("#userPanel").css("margin-top", '-20px');
+        $(".posts").css("margin-top", "0px");
+    }
+    $('#panelHamburger').click(function () {
+        if (hamburger === 1) {
+            $("#userPanel").css("margin-left", "");
+            hamburger = 0;
+        } else {
+            $('#userPanel').css("margin-left", "0px");
+            hamburger = 1;
+        }
+    });
+});
+
+$(function () {
+    $(document).click(function (event) {
+        if (($(event.target).closest("#userPanel").length) || ($(event.target).closest("#panelHamburger").length) || (hamburger === 0)) {
+            return;
+        }
+        $("#userPanel").css("margin-left", "");
+        hamburger = 0;
+        event.stopPropagation();
     });
 });
 

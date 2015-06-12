@@ -85,7 +85,13 @@ class User extends CI_Controller {
         if ($result) {
             $person = $this->person_model->getPerson($this->session->userdata('user_id'));
             if ($person) {
-                $this->session->set_userdata(array('user_name' => $person['person_name'] . ' ' . $person['person_surname']));
+                $name = $person['person_name'];
+                $surname = $person['person_surname'];
+                $length = strlen($name) + strlen($surname);
+                if ( $length < 10) {
+                    $name .= ' ' . $person['person_surname'];
+                }
+                $this->session->set_userdata(array('user_name' => $name));
             }
             $this->setMessage('Login successful');
             $this->welcome();

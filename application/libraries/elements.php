@@ -80,11 +80,11 @@ class Elements {
         $isHidden = (intval($item["post_likes"]) < $rang) ? false : true; //Some option, may be load from session in future
         $result .= '<div class="col-md-12 postDescription"' . ($item['post_desc'] != '' ? '' : 'hidden') . '>' . $item['post_desc'] . '</div></div>';
         $result .= '<div class="col-md-12 postBody" ' . ($isHidden ? '' : 'hidden') . '>' . nl2br($item['post_body']) . '</div>';
-        $result .= '<div class="postSignGlob col-md-4"><div class="postSign like ' . ($isLiked ? 'fill' : '') . '"><button class="btn-none"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span><i>' . $item["post_likes"] . '</i></button></div>';
+        $result .= '<div class="postSignGlob"><div class="postSign like ' . ($isLiked ? 'fill' : '') . '"><button class="btn-none"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span><i>' . $item["post_likes"] . '</i></button></div>';
         $result .= '<div class="postSign dislike ' . ($isDisliked ? 'fill' : '') . '"><button class="btn-none"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span><i>' . $item["post_dislikes"] . '</i></button></div>';
         $result .= '<div class="postSign fav ' . ($isFav ? 'fill' : '') . '"><button class="btn-none"><span class="glyphicon glyphicon-star' . $fav . '" aria-hidden="true"></span><i>' . $item["post_fav"] . '</i></button></div>';
         $result .= '<div class="postSign ' . $tiny . '">' . anchor('profile/user/' . $item['post_user'], '<span class="glyphicon glyphicon-user" aria-hidden="true"></span>' . $item["post_user"] . '</div>') . '</div>';
-        $result .= '<div class="col-md-8 postTags">' . Elements::getTags($item['post_tags']) . '</div></div>';
+        $result .= '<div class="postTags">' . Elements::getTags($item['post_tags']) . '</div></div>';
         echo $result;
     }
 

@@ -44,6 +44,7 @@
                 ?>
             </div>
             <div id="userTopBlock">
+                <div id="panelHamburger" class="hamburger forMob"><span class="glyphicon glyphicon-align-justify"></span></div>
                 <?php echo anchor('user/index', '<div id="siteLogo">
                     <div id="companyLogo">
                         <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
