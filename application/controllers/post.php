@@ -16,17 +16,17 @@ class Post extends CI_Controller {
     }
 
     public function formPost() {
-        Elements::isLoggedIn($this->session->userdata('logged_in'));
+//        Elements::isLoggedIn($this->session->userdata('logged_in'));
         $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $data['title'] = 'Create new post';
-        //add activeItem
+        $data['activeItem'] = 'postsItem';
         $this->load->view('user/head_view', $data);
         $this->load->view('user/panel_view', $data);
         $this->load->view('user/post_form_view', $data);
     }
 
     public function viewPost($postId) {
-        Elements::isLoggedIn($this->session->userdata('logged_in'));
+//        Elements::isLoggedIn($this->session->userdata('logged_in'));
         $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $data['title'] = 'View post';
         $data['activeItem'] = 'postsItem';
@@ -41,6 +41,7 @@ class Post extends CI_Controller {
     }
 
     public function addPost() {
+//        Elements::isLoggedIn($this->session->userdata('logged_in'));
         $this->load->library('form_validation');
         $this->form_validation->set_rules('post_name', 'Post name', 'trim|required|min_length[1]|max_length[120]');
         $this->form_validation->set_rules('post_desc', 'Description of post', 'trim|max_length[160]');
@@ -54,7 +55,12 @@ class Post extends CI_Controller {
             //$result = Events::trigger('register_event', 'system_events', 'string'); //TODO:give result to $this->thank()
             //call modal with message
             //$this->achiev_model->gotAchiev(1, $this->session->userdata('user_id'));
-            $postId = $this->post_model->getLastPostId($this->session->userdata('user_id'));
+            if ($this->session->userdata('user_id')) {
+                $userId = $this->session->userdata('user_id');
+            } else {
+                $userId = 35;
+            }
+            $postId = $this->post_model->getLastPostId($userId);
             $this->viewPost($postId);
         }
     }
@@ -90,15 +96,19 @@ class Post extends CI_Controller {
     }
 
     public function lastPost() {
-        Elements::isLoggedIn($this->session->userdata('logged_in'));
+//        Elements::isLoggedIn($this->session->userdata('logged_in'));
         $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $postId = $this->post_model->getLastPostId($this->session->userdata('user_id'));
         $this->viewPost($postId, $data);
     }
 
     public function postsList() {
-        Elements::isLoggedIn($this->session->userdata('logged_in'));
-        $userId = $this->session->userdata('user_id');
+//        Elements::isLoggedIn($this->session->userdata('logged_in'));
+        if ($this->session->userdata('user_id')) {
+            $userId = $this->session->userdata('user_id');
+        } else {
+            $userId = 35;
+        }
         $data['title'] = 'Posts';
         $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $data['activeItem'] = 'postsItem';
@@ -115,7 +125,7 @@ class Post extends CI_Controller {
     }
 
     public function allPosts() {
-        Elements::isLoggedIn($this->session->userdata('logged_in'));
+//        Elements::isLoggedIn($this->session->userdata('logged_in'));
         $userId = $this->session->userdata('user_id');
         $data['title'] = 'Dashboard';
         $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
@@ -138,17 +148,17 @@ class Post extends CI_Controller {
     }
 
     public function up($postId) {
-        Events::log_message('debug', "Got Up!");
+//        Events::log_message('debug', "Got Up!");
         echo $this->likes_model->up($postId);
     }
-    
-    public function down($postId){
-        Events::log_message('debug', "Got Down!");
+
+    public function down($postId) {
+//        Events::log_message('debug', "Got Down!");
         echo $this->likes_model->down($postId);
     }
-    
-    public function fav($postId){
-        Events::log_message('debug', "Got Fav!");
+
+    public function fav($postId) {
+//        Events::log_message('debug', "Got Fav!");
         echo $this->favorite_model->fav($postId);
     }
 

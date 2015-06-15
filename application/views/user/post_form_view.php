@@ -1,4 +1,4 @@
-<div id="data" class='content col-md-12'>
+<div id="data" class='content' style="width: 100%; padding-right: 20px;">
 
     <?php $isPost = isset($postData) && $postData != false; ?>
     <div class="bigText">
@@ -19,9 +19,9 @@
         echo form_open("post/updatePost");
     }
     ?>
-    <div id="personForm" class="col-md-12" style="padding-top: 0; font-family: Consolas;">
-        <div class="input-group input-group-sm col-md-12">
-            <input id="post_name" name="post_name" class="form-control col-md-12" 
+    <div id="personForm" style="padding-top: 0; font-family: Consolas; width: 100%;">
+        <div class="input-group input-group-sm" style="width: 100%;">
+            <input id="post_name" name="post_name" class="form-control" style="width: 100%;" 
             <?php
             if ($isPost) {
                 echo 'value="' . $postData['post_name'] . '"';
@@ -29,16 +29,16 @@
             ?> type="text" minlength="4" maxlength="120" required
                    data-validation-required-message="Post name is required" placeholder="Name of post"> </div>
         <div class="br"></div>
-        <div class="input-group input-group-sm col-md-12">
-            <input id="post_desc" name="post_desc" class="form-control col-md-12" 
+        <div class="input-group input-group-sm" style="width: 100%;">
+            <input id="post_desc" name="post_desc" class="form-control" style="width: 100%;" 
             <?php
             if ($isPost) {
                 echo 'value="' . $postData['post_desc'] . '"';
             }
             ?> type="text" maxlength="160" placeholder="Add some description, if needed"> </div>
         <div class="br"></div>
-        <div class="input-group input-group-sm col-md-12">
-            <textarea id="post_body" name="post_body" class="form-control col-md-12" 
+        <div class="input-group input-group-sm" style="width: 100%;">
+            <textarea id="post_body" name="post_body" class="form-control" style="width: 100%; height: 280px;" 
                       rows="10" style="height: 280px;" minlength="4" maxlength="1200" required
                       data-validation-required-message="Post body is required" placeholder="Your post is here"><?php
                           if ($isPost) {
@@ -46,8 +46,8 @@
                           }
                           ?></textarea> </div>
         <div class="br"></div>
-        <div class="input-group input-group-sm col-md-12">
-            <input id="post_tags" name="post_tags" class="form-control col-md-12" 
+        <div class="input-group input-group-sm" style="width: 100%;">
+            <input id="post_tags" name="post_tags" class="form-control" style="width: 100%;" 
             <?php
             if ($isPost) {
                 echo 'value="' . $postData['post_tags'] . '"';
@@ -55,7 +55,7 @@
             ?> type="text" minlength="2" maxlength="120" required
                    data-validation-required-message="At least 1 tag is required" placeholder="Tags"> </div>
         <div class="br"></div>
-        <div class="input-group input-group-sm col-md-12">
+        <div class="input-group input-group-sm" style="width: 100%;">
             <input name="submit" class="btn btn-danger col-md-2" type="submit" value="
             <?php
             if ($isPost) {

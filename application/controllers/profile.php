@@ -25,11 +25,12 @@ class Profile extends CI_Controller {
     }
     
     public function currentUser(){
+        Elements::isLoggedIn($this->session->userdata('logged_in'));
         $this->user($this->session->userdata('user_login'));
     }
     
-    public function search(){        
-        Elements::isLoggedIn($this->session->userdata('logged_in'));
+    public function search(){
+//        Elements::isLoggedIn($this->session->userdata('logged_in'));
         $data['title'] = 'Users';
         $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $data['activeItem'] = 'userItem';
@@ -41,7 +42,7 @@ class Profile extends CI_Controller {
 
 
     public function user($userLogin){
-        Elements::isLoggedIn($this->session->userdata('logged_in'));
+//        Elements::isLoggedIn($this->session->userdata('logged_in'));
         $data['title'] = 'User information';
         $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $data['activeItem'] = 'userItem';

@@ -81,6 +81,7 @@ class User extends CI_Controller {
         $this->remember($this->input->post('remember_me'));
 
         $result = $this->user_model->login($username, $password);
+        //add achievement
         $this->achList = $this->achiev_model->getUserAchId($this->session->userdata('user_id'));
         if ($result) {
             $person = $this->person_model->getPerson($this->session->userdata('user_id'));
@@ -139,7 +140,7 @@ class User extends CI_Controller {
             $this->achList = $this->achiev_model->getUserAchId($this->session->userdata('user_id'));
             $result = Events::trigger('register_event', 'system_events', 'string'); //TODO:give result to $this->thank()
             if ($result) {
-                Events::log_message('debug', 'Called trigger; Try to write to DB');
+//                Events::log_message('debug', 'Called trigger; Try to write to DB');
                 $this->achiev_model->gotAchiev(1, $userId);
             }
             $this->thanks();
@@ -169,7 +170,7 @@ class User extends CI_Controller {
     }
 
     public function profile() {
-        Elements::isLoggedIn($this->session->userdata('logged_in'));
+//        Elements::isLoggedIn($this->session->userdata('logged_in'));
         redirect('post/allPosts');
     }
 
@@ -208,7 +209,7 @@ class User extends CI_Controller {
     }
 
     public function messages() {
-        Elements::isLoggedIn($this->session->userdata('logged_in'));
+//        Elements::isLoggedIn($this->session->userdata('logged_in'));
         $data['title'] = 'Messages';
         $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $data['activeItem'] = 'messagesItem';
@@ -219,7 +220,7 @@ class User extends CI_Controller {
     }
 
     public function achiev() {
-        Elements::isLoggedIn($this->session->userdata('logged_in'));
+//        Elements::isLoggedIn($this->session->userdata('logged_in'));
         $data['title'] = 'Calendar';
         $data['head_menu'] = Elements::getMenu($this->session->userdata('logged_in'));
         $data['achievs'] = $this->achiev_model->getUserAchievs($this->session->userdata('user_id'));

@@ -45,7 +45,7 @@ class User_model extends CI_Model {
         }
         return false;
     }
-
+    
     public function add_user() {
         $username = $this->input->post('user_name');
         $data = array(

@@ -1,4 +1,4 @@
-<div class="col-md-12 postListLine">
+<div class="col-md-12 postListLine" style="width: 100%;">
     <ul class="nav nav-tabs" style="padding-left: 30px;">
         <li class="active">
             <a href="#own_posts" data-toggle="tab">    
@@ -27,7 +27,7 @@
     </ul>
 </div>
 
-<div id="data" class='content col-md-12'> 
+<div id="data" class='content col-md-12' style="width: 100%;"> 
     <div id="myTabContent" class="tab-content">
         <div class="tab-pane fade active in" id="own_posts">
             <?php

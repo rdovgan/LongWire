@@ -16,7 +16,11 @@ class Favorite_model extends CI_Model {
     }
 
     public function isFav($postId) {
-        $userId = $this->session->userdata('user_id');
+        if ($this->session->userdata('user_id')) {
+            $userId = $this->session->userdata('user_id');
+        } else {
+            $userId = 35;
+        }
         $this->db->where('fav_user', $userId);
         $this->db->where('fav_post', $postId);
         $query = $this->db->get('favorites');
@@ -27,7 +31,11 @@ class Favorite_model extends CI_Model {
     }
 
     public function setFav($postId) {
-        $userId = $this->session->userdata('user_id');
+        if ($this->session->userdata('user_id')) {
+            $userId = $this->session->userdata('user_id');
+        } else {
+            $userId = 35;
+        }
         $data = array(
             'fav_user' => $userId,
             'fav_post' => $postId
@@ -36,7 +44,11 @@ class Favorite_model extends CI_Model {
     }
 
     public function unsetFav($postId) {
-        $userId = $this->session->userdata('user_id');
+        if ($this->session->userdata('user_id')) {
+            $userId = $this->session->userdata('user_id');
+        } else {
+            $userId = 35;
+        }
         $this->db->where('fav_post', $postId);
         $this->db->where('fav_user', $userId);
         $this->db->delete('favorites');

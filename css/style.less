@@ -89,7 +89,6 @@ body{
         margin-top: 20px;
         margin-left: 20px;
         margin-right: 20px;
-        width: 100%;
     }
     .blockInfo h1{
         float: left;
@@ -101,12 +100,18 @@ body{
         margin-left: 20px;
         line-height: 50px;
     }
-    .btnLogin{
-        font-size:15px;
-    }
     #menuContainer{      
         margin-left: @mob-space-left;
         margin-right: @mob-space-right;
+    }
+    .nav > li{
+        font-size: 15px;
+    }
+    .btnLogin{
+        margin-top: 25px;
+    }
+    .btnRegister{
+        margin-top: 25px;
     }
 }
 @media screen and (min-width: 768px)  {/*Pads */
@@ -173,6 +178,12 @@ body{
         margin-left: @pad-space-left;
         margin-right: @pad-space-right;
     }
+    .btnLogin{
+        margin-top: 15px;
+    }
+    .btnRegister{
+        margin-top: 15px;
+    }
 }
 @media screen and (min-width: 928px) {/*Computers */
     #mainBlock{
@@ -231,6 +242,12 @@ body{
     #menuContainer{      
         margin-left: @content-space-l;
         margin-right: @content-space-r;
+    }
+    .btnLogin{
+        margin-top: 15px;
+    }
+    .btnRegister{
+        margin-top: 15px;
     }
 }
 p{
@@ -475,22 +492,18 @@ input[type="checkbox"].green.ios-switch:checked + div > div {
 }
 
 .btnLogin{
-    margin-top: 15px;
     margin-left: 12px;
     font-weight: bold;
     float: right;
-    font-size: 18px;
 }
 
 .btnRegister{
-    margin-top: 15px;
     margin-left: 6px;
     margin-right: 6px;
     color: @color-danger;
     font-weight: bold;
     background-color: transparent;
     float: right;
-    font-size: 18px;
 }
 
 .bigText{

@@ -1,3 +1,4 @@
+<script>$("#liHome").addClass("active");</script>
 <div id="content" class="container content"> 
     <div class="news">
         <?php

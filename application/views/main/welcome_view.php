@@ -1,3 +1,4 @@
+<script>$("#liHome").addClass("active");</script>
 <div id="content" class="content">
     <h2>Welcome Back, <?php echo $this->session->userdata('user_name'); ?>!</h2>
     <p>This section represents the area that only logged in members can access.</p>

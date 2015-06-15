@@ -1,4 +1,4 @@
-<div id="data" class='content col-md-12'>
+<div id="data" class='content col-md-12' style="width: 100%;">
     <?php
     if (isset($postData) && $postData != false) {
         $isAuthor = ($postData['post_user'] == $this->session->userdata('user_login'));

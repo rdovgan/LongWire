@@ -10,6 +10,11 @@
         <li id="userItem"><?php echo anchor('profile/search', '<span class="glyphicon glyphicon-user" aria-hidden="true"></span>People') ?></li>
         <li id="personItem"><?php echo anchor('user/person', '<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>Person') ?></li>
         <li id="achievItem"><?php echo anchor('user/achiev', '<span class="glyphicon glyphicon-star" aria-hidden="true"></span>Achievements') ?></li>
+        <div class="forMob">
+            <?php foreach ($head_menu as $item): ?>
+                <?php echo $item; ?>
+            <?php endforeach; ?>
+        </div>
     </ul>
     <script>var activeItem = "<?php echo $activeItem; ?>";
         var upUrl = '<?php echo anchor("post/up"); ?>';

@@ -21,44 +21,74 @@ class Likes_model extends CI_Model {
     }
 
     public function hasUp($postId) {
+        if ($this->session->userdata('user_id')) {
+            $userId = $this->session->userdata('user_id');
+        } else {
+            $userId = 35;
+        }
         $this->db->where('post_up_post', $postId);
-        $this->db->where('post_up_user', $this->session->userdata('user_id'));
+        $this->db->where('post_up_user', $userId);
         $query = $this->db->get('post_ups');
         return ($query->num_rows() > 0) ? true : false;
     }
 
     public function hasDown($postId) {
+        if ($this->session->userdata('user_id')) {
+            $userId = $this->session->userdata('user_id');
+        } else {
+            $userId = 35;
+        }
         $this->db->where('post_down_post', $postId);
-        $this->db->where('post_down_user', $this->session->userdata('user_id'));
+        $this->db->where('post_down_user', $userId);
         $query = $this->db->get('post_downs');
         return ($query->num_rows() > 0) ? true : false;
     }
 
     public function createUp($postId) {
+        if ($this->session->userdata('user_id')) {
+            $userId = $this->session->userdata('user_id');
+        } else {
+            $userId = 35;
+        }
         $data = array(
-            'post_up_user' => $this->session->userdata('user_id'),
+            'post_up_user' => $userId,
             'post_up_post' => $postId
         );
         $this->db->insert('post_ups', $data);
     }
 
     public function createDown($postId) {
+        if ($this->session->userdata('user_id')) {
+            $userId = $this->session->userdata('user_id');
+        } else {
+            $userId = 35;
+        }
         $data = array(
-            'post_down_user' => $this->session->userdata('user_id'),
+            'post_down_user' => $userId,
             'post_down_post' => $postId
         );
         $this->db->insert('post_downs', $data);
     }
 
     public function deleteUp($postId) {
+        if ($this->session->userdata('user_id')) {
+            $userId = $this->session->userdata('user_id');
+        } else {
+            $userId = 35;
+        }
         $this->db->where('post_up_post', $postId);
-        $this->db->where('post_up_user', $this->session->userdata('user_id'));
+        $this->db->where('post_up_user', $userId);
         $this->db->delete('post_ups');
     }
 
     public function deleteDown($postId) {
+        if ($this->session->userdata('user_id')) {
+            $userId = $this->session->userdata('user_id');
+        } else {
+            $userId = 35;
+        }
         $this->db->where('post_down_post', $postId);
-        $this->db->where('post_down_user', $this->session->userdata('user_id'));
+        $this->db->where('post_down_user', $userId);
         $this->db->delete('post_downs');
     }
 
@@ -103,7 +133,7 @@ class Likes_model extends CI_Model {
     }
 
     public function up($postId) {
-        Events::log_message('debug', "Session : USER : ID : ".$this->session->userdata('user_id'));
+//        Events::log_message('debug', "Session : USER : ID : " . $this->session->userdata('user_id'));
         if (!$this->hasUp($postId)) {
             if (!$this->hasDown($postId)) {
                 $this->createUp($postId);
@@ -122,7 +152,7 @@ class Likes_model extends CI_Model {
     }
 
     public function down($postId) {
-        Events::log_message("Session : USER : ID : ".$this->session->userdata('user_id'));
+//        Events::log_message("Session : USER : ID : " . $this->session->userdata('user_id'));
         if (!$this->hasDown($postId)) {
             if (!$this->hasUp($postId)) {
                 $this->createDown($postId);
@@ -163,15 +193,15 @@ class Likes_model extends CI_Model {
         }
         return $items;
     }
-    
-    public function getLikesOfPost($postId){
+
+    public function getLikesOfPost($postId) {
         $this->db->select('post_up_id');
         $this->db->from('post_ups');
         $this->db->where('post_up_post', $postId);
         return $this->db->count_all_results();
     }
-    
-    public function getDislikesOfPost($postId){
+
+    public function getDislikesOfPost($postId) {
         $this->db->select('post_down_id');
         $this->db->from('post_downs');
         $this->db->where('post_down_post', $postId);

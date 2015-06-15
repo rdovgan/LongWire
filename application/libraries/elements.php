@@ -15,21 +15,21 @@ class Elements {
     }
 
     public static function getMenu($isLoggedIn) {
-        $data = array();
+        $createPost = '<a href="#" onclick="createPostDialog();"><h4><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></h4></a>';
+        $userLink = anchor(
+                "user/profile", '<h4><span class="glyphicon glyphicon-user" aria-hidden="true"></span></h4><h6 hidden><span class="glyphicon glyphicon-info-sign badgeInfo" aria-hidden="true"></span></h6>', array('id' => 'userLink', 'class' => 'invlink')
+        );
+        $logoutLink = anchor(
+                "user/logout", '<h4><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></h4>', array('id' => 'logoutLink', 'class' => 'invlink')
+        );
+        $data = array(Elements::makeBtn($createPost), Elements::makeBtn($userLink));
         if ($isLoggedIn) {
-            $createPost = '<a href="#" onclick="createPostDialog();"><h4><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></h4></a>';
-            $userLink = anchor(
-                    "user/profile", '<h4><span class="glyphicon glyphicon-user" aria-hidden="true"></span></h4><h6 hidden><span class="glyphicon glyphicon-info-sign badgeInfo" aria-hidden="true"></span></h6>', array('id' => 'userLink', 'class' => 'invlink')
-            );
-            $logoutLink = anchor(
-                    "user/logout", '<h4><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></h4>', array('id' => 'logoutLink', 'class' => 'invlink')
-            );
-            $data = array(Elements::makeBtn($createPost), Elements::makeBtn($userLink), Elements::makeBtn($logoutLink));
-        } else {
-            $data = array(
+            array_push($data, Elements::makeBtn($logoutLink));
+        }
+        else{
+            array_push($data, 
                 '<button id = "btnRegister" class="btn btn-sm btnRegister">Sign Up</button>',
-                '<button id = "btnLogin" class="btn btn-sm btn-danger btnLogin">Sign In</button>'
-            );
+                '<button id = "btnLogin" class="btn btn-sm btn-danger btnLogin">Sign In</button>');
         }
         return $data;
     }
@@ -93,9 +93,8 @@ class Elements {
         $result .= '<div class="col-md-12 newName">' . $item['new_name'] . '</div>';
         $result .= '<div class="col-md-12 newBody">' . nl2br($item['new_body']) . '</div>';
         $result .= '<div class="col-md-6 newDate">' . $item['new_date'] . '</div>';
-        $result .= '<div class="col-md-6 newUser">' . anchor('profile/user/' . $item['new_user'], 
-                '<span class="glyphicon glyphicon-user" aria-hidden="true"></span>' 
-                . $item["new_user"] . '</div>') . '</div><div class="br"></div>';
+        $result .= '<div class="col-md-6 newUser">' . anchor('profile/user/' . $item['new_user'], '<span class="glyphicon glyphicon-user" aria-hidden="true"></span>'
+                        . $item["new_user"] . '</div>') . '</div><div class="br"></div>';
         echo $result;
     }
 

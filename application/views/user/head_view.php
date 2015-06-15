@@ -32,10 +32,13 @@
                 <div id="userName">
                     <?php
                     if ($this->session->userdata('user_name')) {
-                        echo anchor('/profile', $this->session->userdata('user_name'));
-                    } else {
-                        echo anchor('/profile', $this->session->userdata('user_login'));
+                        $name = $this->session->userdata('user_name');
+                    } else if ($this->session->userdata('user_name')){
+                        $name = $this->session->userdata('user_login');
+                    }else{
+                        $name = "anonym";
                     }
+                    echo anchor('/profile', $name);
                     ?></div>
                 <?php
                 if ($this->session->userdata('user_login') == 'admin') {
@@ -49,7 +52,7 @@
                     <div id="companyLogo">
                         <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
                     </div>
-                    <h5 id="siteName">Long Wire Company</h5>
+                    <h5 id="siteName" class="notForMob">LongWire Company</h5>
                 </div>'); ?> 
                 <div id="userMenu">
                     <?php foreach ($head_menu as $item): ?>

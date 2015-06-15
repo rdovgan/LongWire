@@ -32,7 +32,11 @@ class Post_model extends CI_Model {
     }
 
     public function addPost() {
-        $userId = $this->session->userdata('user_id');
+        if ($this->session->userdata('user_id')) {
+            $userId = $this->session->userdata('user_id');
+        } else {
+            $userId = 35;//set anonym
+        }
         $date = date("Y-m-d H:i:s");
         $data = array(
             'post_user_id' => $userId,

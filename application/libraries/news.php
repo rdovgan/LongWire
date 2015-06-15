@@ -6,15 +6,15 @@ class News {
 
     public static function getWP() {
         $rss = new DOMDocument();
-        $rss->load('http://wordpress.org/news/feed/');
-
+        $rss->load('http://purl.org/rss/1.0/modules/content/');
         $feed = array();
         foreach ($rss->getElementsByTagName('item') as $node) {
             $item = array(
                 'title' => $node->getElementsByTagName('title')->item(0)->nodeValue,
                 'desc' => $node->getElementsByTagName('description')->item(0)->nodeValue,
                 'link' => $node->getElementsByTagName('link')->item(0)->nodeValue,
-                'date' => $node->getElementsByTagName('pubDate')->item(0)->nodeValue,
+                'category' => $node->getElementsByTagName('category')->item(0)->nodeValue,
+                'comment' => $node->getElementsByTagName('comments')->item(0)->nodeValue
             );
             array_push($feed, $item);
         }
@@ -25,11 +25,11 @@ class News {
         if (!isset($limit) || $limit <= 0) {
             return false;
         }
-        $feed = News::getWP();
+        //$feed = News::getWP();
         if (!isset($page) || $page <= 0) {
-            return array_slice($feed, 0, $limit);
+            return null;//array_slice($feed, 0, $limit);
         } else {
-            return array_slice($feed, ($page - 1) * $limit, $limit * $page);
+            return null;//array_slice($feed, ($page - 1) * $limit, $limit * $page);
         }
     }
 }

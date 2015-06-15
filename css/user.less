@@ -62,7 +62,7 @@
         float: right;
     }
     #companyLogo{
-        margin-top: -10px;
+        margin-top: -12px;
     }
     #siteName{
         margin-top: -5px;
@@ -70,6 +70,9 @@
     }
     .forMob{
         display: block;
+    }
+    .notForMob{
+        display: none;
     }
     #userPanel > ul > li{
         height: 40px;
@@ -128,6 +131,9 @@
     .forMob{
         display: none;
     }
+    .notForMob{
+        display: inline-block;
+    }
     #userPanel > ul > li{
         height: 31px;
         font-size: 15px;
@@ -184,6 +190,9 @@
     }
     .forMob{
         display: none;
+    }
+    .notForMob{
+        display: inline-block;
     }
     #userPanel > ul > li{
         height: 31px;
@@ -454,9 +463,10 @@ th{
 }
 
 .userItem{
-    padding: 20px;
+    padding: 10px;
     box-shadow: 0px 0px 1px 0px #888888;
     width: 100%;
+    float: left;
     display: inline-block;
 }
 
@@ -604,7 +614,6 @@ th{
     margin-left: 10px;
     float: left;
     color: @color-white;
-    display: inline-block;
 }
 
 #companyLogo{
@@ -665,7 +674,6 @@ th{
     color: @color-back;
     float: right;
 }
-
 #personGender{
     padding: 5px;
     height: 33px;
@@ -673,7 +681,6 @@ th{
 
 #adminLink{
     float: right;
-
 }
 .posts{
     margin-top: 20px;
@@ -691,4 +698,20 @@ th{
 }
 .hamburger > span{
     margin: 7px;
+}
+.btnLogin{
+    margin-top: 15px;
+    margin-left: 12px;
+    font-weight: bold;
+    float: right;
+}
+
+.btnRegister{
+    margin-top: 15px;
+    margin-left: 6px;
+    margin-right: 6px;
+    color: @color-danger;
+    font-weight: bold;
+    background-color: transparent;
+    float: right;
 }
